@@ -9,4 +9,555 @@
 </body>
 </html>
 <p>Your site is now live 🚀</p> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Nikhil Rajan — Quantitative Finance</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --navy: #0a0f1e;
+  --navy-mid: #111827;
+  --navy-light: #1a2540;
+  --gold: #c9a84c;
+  --gold-light: #e8c97a;
+  --gold-pale: rgba(201,168,76,0.12);
+  --cream: #f5f0e8;
+  --white: #ffffff;
+  --gray: #8899aa;
+  --gray-light: #cdd5e0;
+  --accent: #4a90d9;
+  --border: rgba(201,168,76,0.2);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--navy);
+  color:var(--cream);
+  font-family:'Outfit',sans-serif;
+  font-weight:300;
+  line-height:1.7;
+  overflow-x:hidden;
+}
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:var(--navy);}
+::-webkit-scrollbar-thumb{background:var(--gold);border-radius:2px;}
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:1.2rem 4rem;
+  background:rgba(10,15,30,0.85);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+}
+.nav-logo{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.4rem;font-weight:600;
+  color:var(--gold);letter-spacing:0.05em;
+}
+.nav-links{display:flex;gap:2.2rem;list-style:none;}
+.nav-links a{
+  color:var(--gray-light);font-size:0.78rem;
+  letter-spacing:0.12em;text-transform:uppercase;
+  text-decoration:none;transition:color 0.3s;font-weight:500;
+}
+.nav-links a:hover{color:var(--gold);}
+.hero{
+  min-height:100vh;display:flex;flex-direction:column;
+  justify-content:center;padding:8rem 4rem 4rem;
+  position:relative;overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;z-index:0;
+  background:
+    radial-gradient(ellipse 80% 60% at 70% 40%, rgba(201,168,76,0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 20% 70%, rgba(74,144,217,0.06) 0%, transparent 60%),
+    linear-gradient(160deg, #0a0f1e 0%, #111827 100%);
+}
+.hero-grid{
+  position:absolute;inset:0;z-index:0;
+  background-image:
+    linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+  background-size:60px 60px;
+  mask-image:radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+}
+.hero-content{position:relative;z-index:1;max-width:900px;}
+.hero-eyebrow{
+  font-family:'DM Mono',monospace;font-size:0.75rem;
+  color:var(--gold);letter-spacing:0.25em;text-transform:uppercase;
+  margin-bottom:1.5rem;opacity:0;
+  animation:fadeUp 0.8s 0.2s forwards;
+}
+.hero-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(3.5rem,8vw,7rem);
+  font-weight:300;line-height:1.05;
+  color:var(--white);
+  opacity:0;animation:fadeUp 0.8s 0.4s forwards;
+}
+.hero-name em{color:var(--gold);font-style:italic;}
+.hero-tagline{
+  font-size:clamp(1rem,2vw,1.25rem);
+  color:var(--gray-light);max-width:620px;
+  margin:1.5rem 0 2.5rem;font-weight:300;
+  opacity:0;animation:fadeUp 0.8s 0.6s forwards;
+}
+.hero-cta{
+  display:flex;gap:1rem;flex-wrap:wrap;
+  opacity:0;animation:fadeUp 0.8s 0.8s forwards;
+}
+.btn-primary{
+  display:inline-block;padding:0.85rem 2.2rem;
+  background:var(--gold);color:var(--navy);
+  font-size:0.8rem;font-weight:600;letter-spacing:0.1em;
+  text-transform:uppercase;text-decoration:none;
+  border:none;cursor:pointer;transition:all 0.3s;
+  clip-path:polygon(8px 0%,100% 0%,100% calc(100% - 8px),calc(100% - 8px) 100%,0% 100%,0% 8px);
+}
+.btn-primary:hover{background:var(--gold-light);transform:translateY(-2px);}
+.btn-secondary{
+  display:inline-block;padding:0.85rem 2.2rem;
+  background:transparent;color:var(--gold);
+  font-size:0.8rem;font-weight:500;letter-spacing:0.1em;
+  text-transform:uppercase;text-decoration:none;
+  border:1px solid var(--gold);cursor:pointer;transition:all 0.3s;
+}
+.btn-secondary:hover{background:var(--gold-pale);transform:translateY(-2px);}
+.hero-stats{
+  display:flex;gap:3rem;margin-top:4rem;
+  opacity:0;animation:fadeUp 0.8s 1s forwards;flex-wrap:wrap;
+}
+.stat{border-left:2px solid var(--gold);padding-left:1rem;}
+.stat-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:2rem;font-weight:600;color:var(--gold);
+}
+.stat-label{font-size:0.72rem;color:var(--gray);letter-spacing:0.1em;text-transform:uppercase;}
+section{padding:6rem 4rem;}
+.section-label{
+  font-family:'DM Mono',monospace;font-size:0.7rem;
+  color:var(--gold);letter-spacing:0.25em;text-transform:uppercase;
+  margin-bottom:0.75rem;display:flex;align-items:center;gap:1rem;
+}
+.section-label::after{content:'';flex:1;max-width:60px;height:1px;background:var(--gold);}
+.section-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2rem,4vw,3.2rem);
+  font-weight:300;color:var(--white);margin-bottom:3rem;line-height:1.15;
+}
+.section-title em{color:var(--gold);font-style:italic;}
+.about{background:var(--navy-mid);}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
+.about-text p{color:var(--gray-light);margin-bottom:1.2rem;font-size:1rem;}
+.about-text strong{color:var(--gold);}
+.about-highlights{display:flex;flex-direction:column;gap:1rem;}
+.highlight-card{
+  padding:1.5rem;border:1px solid var(--border);
+  background:var(--gold-pale);border-left:3px solid var(--gold);transition:transform 0.3s;
+}
+.highlight-card:hover{transform:translateX(6px);}
+.highlight-card h4{
+  font-family:'DM Mono',monospace;font-size:0.75rem;
+  color:var(--gold);letter-spacing:0.1em;margin-bottom:0.3rem;
+}
+.highlight-card p{font-size:0.88rem;color:var(--gray-light);}
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;}
+.skill-category{
+  padding:2rem;border:1px solid var(--border);
+  background:var(--navy-light);transition:border-color 0.3s,transform 0.3s;
+  position:relative;overflow:hidden;
+}
+.skill-category::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--gold),transparent);
+}
+.skill-category:hover{border-color:var(--gold);transform:translateY(-4px);}
+.skill-category h3{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.2rem;color:var(--gold);margin-bottom:1rem;font-weight:600;
+}
+.skill-tags{display:flex;flex-wrap:wrap;gap:0.5rem;}
+.tag{
+  font-family:'DM Mono',monospace;
+  font-size:0.68rem;padding:0.3rem 0.7rem;
+  border:1px solid var(--border);color:var(--gray-light);letter-spacing:0.05em;
+}
+.edu{background:var(--navy-mid);}
+.colleges{display:grid;grid-template-columns:1fr 1fr;gap:2rem;}
+.college-card{
+  border:1px solid var(--border);padding:2.5rem;
+  background:var(--navy-light);position:relative;overflow:hidden;transition:transform 0.3s;
+}
+.college-card:hover{transform:translateY(-4px);}
+.college-card::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--gold));
+}
+.college-badge{
+  font-family:'DM Mono',monospace;font-size:0.65rem;
+  color:var(--navy);background:var(--gold);
+  padding:0.2rem 0.7rem;display:inline-block;letter-spacing:0.1em;margin-bottom:1rem;
+}
+.college-card h3{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.5rem;color:var(--white);margin-bottom:0.25rem;font-weight:500;
+}
+.college-card .degree{font-size:0.85rem;color:var(--gold);margin-bottom:0.25rem;}
+.college-card .duration{
+  font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--gray);margin-bottom:1.5rem;
+}
+.gpa-badge{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  background:var(--gold-pale);border:1px solid var(--border);
+  padding:0.4rem 1rem;margin-bottom:1.5rem;
+}
+.gpa-badge span:first-child{
+  font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--gold);font-weight:600;
+}
+.gpa-badge span:last-child{font-size:0.7rem;color:var(--gray);}
+.course-list{display:flex;flex-direction:column;gap:0.5rem;}
+.course-item{
+  display:flex;align-items:flex-start;gap:0.75rem;
+  padding:0.6rem 0.75rem;cursor:pointer;
+  border:1px solid transparent;transition:all 0.2s;
+}
+.course-item:hover{border-color:var(--border);background:var(--gold-pale);}
+.course-item-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--gold);flex-shrink:0;margin-top:0.5rem;
+}
+.course-item-name{font-size:0.88rem;color:var(--cream);}
+.course-item-desc{
+  font-size:0.75rem;color:var(--gray);
+  display:none;margin-top:0.3rem;line-height:1.5;
+}
+.course-item.open .course-item-desc{display:block;}
+.course-item-arrow{
+  margin-left:auto;color:var(--gold);font-size:0.8rem;
+  transition:transform 0.2s;flex-shrink:0;margin-top:0.3rem;
+}
+.course-item.open .course-item-arrow{transform:rotate(90deg);}
+.upload-slot{
+  margin-top:1rem;border:1px dashed var(--border);
+  padding:1rem;text-align:center;cursor:pointer;
+  transition:all 0.2s;color:var(--gray);font-size:0.8rem;
+}
+.upload-slot:hover{border-color:var(--gold);color:var(--gold);}
+.research-list{display:flex;flex-direction:column;gap:1.5rem;}
+.research-card{
+  display:grid;grid-template-columns:auto 1fr;gap:2rem;
+  padding:2rem;border:1px solid var(--border);
+  background:var(--navy-light);transition:border-color 0.3s,transform 0.3s;align-items:start;
+}
+.research-card:hover{border-color:var(--gold);transform:translateX(6px);}
+.research-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:2.5rem;color:var(--gold);font-weight:300;line-height:1;opacity:0.5;
+}
+.research-card h3{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.2rem;color:var(--white);margin-bottom:0.5rem;font-weight:500;
+}
+.research-card p{font-size:0.85rem;color:var(--gray-light);line-height:1.6;}
+.research-tags{display:flex;gap:0.5rem;flex-wrap:wrap;margin-top:0.75rem;}
+.teaching{background:var(--navy-mid);}
+.teaching-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;}
+.teaching-card{
+  padding:2rem;border:1px solid var(--border);
+  background:var(--navy-light);transition:transform 0.3s,border-color 0.3s;
+}
+.teaching-card:hover{transform:translateY(-4px);border-color:var(--gold);}
+.teaching-sem{
+  font-family:'DM Mono',monospace;font-size:0.65rem;
+  color:var(--navy);background:var(--gold);
+  padding:0.15rem 0.6rem;display:inline-block;letter-spacing:0.08em;margin-bottom:0.75rem;
+}
+.teaching-card h3{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.15rem;color:var(--white);margin-bottom:0.5rem;font-weight:500;
+}
+.teaching-card p{font-size:0.82rem;color:var(--gray-light);line-height:1.6;}
+.exp-list{display:flex;flex-direction:column;gap:2rem;}
+.exp-card{
+  padding:2rem 2.5rem;border:1px solid var(--border);
+  background:var(--navy-light);border-left:3px solid var(--gold);transition:transform 0.3s;
+}
+.exp-card:hover{transform:translateX(6px);}
+.exp-header{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.5rem;}
+.exp-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--white);font-weight:500;}
+.exp-company{color:var(--gold);font-size:0.85rem;margin-bottom:0.25rem;}
+.exp-date{font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--gray);white-space:nowrap;}
+.exp-bullets{list-style:none;margin-top:1rem;}
+.exp-bullets li{
+  font-size:0.88rem;color:var(--gray-light);
+  padding:0.3rem 0 0.3rem 1.2rem;position:relative;line-height:1.6;
+}
+.exp-bullets li::before{content:'▸';position:absolute;left:0;color:var(--gold);font-size:0.7rem;top:0.45rem;}
+.extra-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;}
+.extra-card{padding:2rem;border:1px solid var(--border);background:var(--navy-light);}
+.extra-card h3{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--gold);margin-bottom:1rem;font-weight:600;}
+.extra-card ul{list-style:none;}
+.extra-card ul li{
+  font-size:0.85rem;color:var(--gray-light);
+  padding:0.35rem 0 0.35rem 1.2rem;position:relative;border-bottom:1px solid rgba(201,168,76,0.08);
+}
+.extra-card ul li::before{content:'—';position:absolute;left:0;color:var(--gold);}
+.contact{background:var(--navy-mid);}
+.contact-inner{max-width:700px;text-align:center;margin:0 auto;}
+.contact-inner p{color:var(--gray-light);margin-bottom:2.5rem;font-size:1rem;}
+.contact-links{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin-bottom:3rem;}
+.contact-link{
+  display:flex;align-items:center;gap:0.6rem;
+  color:var(--cream);text-decoration:none;font-size:0.85rem;
+  padding:0.75rem 1.5rem;border:1px solid var(--border);transition:all 0.3s;
+}
+.contact-link:hover{border-color:var(--gold);color:var(--gold);}
+.contact-link svg{width:16px;height:16px;fill:currentColor;}
+footer{
+  text-align:center;padding:2rem;border-top:1px solid var(--border);
+  font-family:'DM Mono',monospace;font-size:0.68rem;color:var(--gray);letter-spacing:0.1em;
+}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.7s,transform 0.7s;}
+.reveal.visible{opacity:1;transform:none;}
+@media(max-width:900px){
+  nav{padding:1rem 1.5rem;}.nav-links{gap:1.2rem;}
+  .hero,.about,section{padding:5rem 1.5rem;}
+  .about-grid,.colleges,.extra-grid{grid-template-columns:1fr;}
+  .hero-stats{gap:1.5rem;}
+}
+@media(max-width:600px){.nav-links{display:none;}.hero{padding:6rem 1.2rem 3rem;}}
+</style>
+</head>
+<body>
 
+<nav>
+  <div class="nav-logo">N. Rajan</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#education">Coursework</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#teaching">Teaching</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Quantitative Finance · Stochastic Calculus · Economic Theory</p>
+    <h1 class="hero-name">Nikhil<br/><em>Rajan</em></h1>
+    <p class="hero-tagline">Economist & aspiring quantitative researcher with a rigorous foundation in stochastic processes, mathematical finance, and econometrics — bridging theory with computation.</p>
+    <div class="hero-cta">
+      <a href="#research" class="btn-primary">View Research</a>
+      <a href="#contact" class="btn-secondary">Get in Touch</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">9.66</div><div class="stat-label">CGPA / 10.0</div></div>
+      <div class="stat"><div class="stat-num">3×</div><div class="stat-label">Dean's List</div></div>
+      <div class="stat"><div class="stat-num">4+</div><div class="stat-label">Research Projects</div></div>
+      <div class="stat"><div class="stat-num">7</div><div class="stat-label">TA Roles</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="reveal">
+    <p class="section-label">About Me</p>
+    <h2 class="section-title">Rigorous. Curious.<br/><em>Mathematically driven.</em></h2>
+  </div>
+  <div class="about-grid reveal">
+    <div class="about-text">
+      <p>I am an undergraduate economist at <strong>Madras School of Economics</strong>, ranked in the top of my cohort with a CGPA of <strong>9.66/10</strong> and multiple Dean's List distinctions.</p>
+      <p>I will be pursuing advanced study in quantitative finance at the <strong>London School of Economics</strong>, covering the Mathematics of Black–Scholes, Stochastic Calculus, Derivatives, Machine Learning in Finance, Financial Statistics, and Advanced Time Series.</p>
+      <p>Beyond academics, I bring hands-on experience as a <strong>research intern</strong> and <strong>finance intern</strong>, and have taught 7 courses across mathematics, economics, and finance.</p>
+      <p>I am actively seeking opportunities in <strong>quantitative research, derivatives pricing, and systematic finance</strong> in London and global financial hubs.</p>
+    </div>
+    <div class="about-highlights">
+      <div class="highlight-card"><h4>📍 Location</h4><p>Chennai, India → London, UK (LSE)</p></div>
+      <div class="highlight-card"><h4>🎯 Target Roles</h4><p>Quantitative Researcher · Derivatives Analyst · Systematic Trader · Risk Quant</p></div>
+      <div class="highlight-card"><h4>🏆 Academic Achievement</h4><p>Dean's List: Sem II (9.9 GPA), Sem III (10.0 GPA), Sem IV (9.77 GPA)</p></div>
+      <div class="highlight-card"><h4>♟️ Chess</h4><p>FIDE-rated player; 13th in SRM International Open; represented Chennai District at State level.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="skills" style="background:var(--navy);">
+  <div class="reveal">
+    <p class="section-label">Expertise</p>
+    <h2 class="section-title">Skills & <em>Competencies</em></h2>
+  </div>
+  <div class="skills-grid reveal">
+    <div class="skill-category"><h3>Programming</h3><div class="skill-tags"><span class="tag">Python</span><span class="tag">MATLAB</span><span class="tag">Julia</span><span class="tag">Stata</span><span class="tag">LaTeX</span><span class="tag">Excel/VBA</span></div></div>
+    <div class="skill-category"><h3>Mathematical Finance</h3><div class="skill-tags"><span class="tag">Stochastic Calculus</span><span class="tag">Black–Scholes</span><span class="tag">Derivatives Pricing</span><span class="tag">Markov Chains</span><span class="tag">Optimal Control</span><span class="tag">Risk-Neutral Pricing</span></div></div>
+    <div class="skill-category"><h3>Statistics & Econometrics</h3><div class="skill-tags"><span class="tag">Time Series</span><span class="tag">OLS / GMM</span><span class="tag">Stochastic Simulation</span><span class="tag">ML in Finance</span><span class="tag">Microdata Analysis</span></div></div>
+    <div class="skill-category"><h3>Economic Theory</h3><div class="skill-tags"><span class="tag">Asset Pricing</span><span class="tag">CAPM / SDF</span><span class="tag">Game Theory</span><span class="tag">Macro Modeling</span><span class="tag">Public Policy</span></div></div>
+    <div class="skill-category"><h3>Mathematics</h3><div class="skill-tags"><span class="tag">Real Analysis</span><span class="tag">Linear Algebra</span><span class="tag">Differential Equations</span><span class="tag">Martingale Theory</span></div></div>
+    <div class="skill-category"><h3>Other</h3><div class="skill-tags"><span class="tag">App Development</span><span class="tag">Financial Reporting</span><span class="tag">Credit Analysis</span><span class="tag">Teaching & Pedagogy</span></div></div>
+  </div>
+</section>
+
+<section class="edu" id="education">
+  <div class="reveal">
+    <p class="section-label">Academic Background</p>
+    <h2 class="section-title">Education & <em>Coursework</em></h2>
+    <p style="color:var(--gray-light);margin-bottom:2.5rem;max-width:600px;font-size:0.95rem;">Click any course to expand its description. Upload syllabus PDFs using the buttons below each college.</p>
+  </div>
+  <div class="colleges reveal">
+    <div class="college-card">
+      <span class="college-badge">Upcoming · 2025</span>
+      <h3>London School of Economics</h3>
+      <div class="degree">MSc / PG · Quantitative Finance</div>
+      <div class="duration">London, United Kingdom · 2025–2026</div>
+      <div class="course-list">
+        <div class="course-item" onclick="toggleCourse(this)"><div class="course-item-dot"></div><div class="course-item-content"><div class="course-item-name">Mathematics of Black–Scholes</div><div class="course-item-desc">Rigorous derivation of the Black–Scholes PDE, risk-neutral pricing, self-financing portfolios, put–call parity, and the Greeks. Extensions to American options and early exercise boundaries.</div></div><div class="course-item-arrow">▶</div></div>
+        <div class="course-item" onclick="toggleCourse(this)"><div class="course-item-dot"></div><div class="course-item-content"><div class="course-item-name">Stochastic Calculus</div><div class="course-item-desc">Itô calculus, stochastic differential equations (SDEs), Girsanov's theorem, martingale representation theorem, change of measure, and applications to financial modelling.</div></div><div class="course-item-arrow">▶</div></div>
+        <div class="course-item" onclick="toggleCourse(this)"><div class="course-item-dot"></div><div class="course-item-content"><div class="course-item-name">Derivatives</div><div class="course-item-desc">Pricing and hedging of vanilla and exotic options, futures, swaps, and structured products. Volatility surfaces, local/stochastic volatility models, and model calibration.</div></div><div class="course-item-arrow">▶</div></div>
+        <div class="course-item" onclick="toggleCourse(this)"><div class="course-item-dot"></div><div class="course-item-content"><div class="course-item-name">Advanced Time Series</div><div class="course-item-desc">ARIMA, VAR, GARCH, cointegration, unit roots, state-space models, Kalman filtering, and spectral analysis applied to financial and macroeconomic data.</div></div><div class="course-item-arrow">▶</div></div>
+        <div class="course-item" onclick="toggleCourse(this)"><div class="course-item-dot"></div><div class="course-item-content"><div class="course-item-name">Stochastic Simulation</div><div class="course-item-desc">Monte Carlo methods, variance reduction techniques, quasi-Monte Carlo, simulation of SDEs, and applications in option pricing and risk management.</div></div><div class="course-item-arrow">▶</div></div>
+        <div class="course-item" onclick="toggleCourse(this)"><div class="course-item-dot"></div><div class="course-item-content"><div class="course-item-name">Machine Learning in Finance</div><div class="course-item-desc">Supervised and unsupervised learning, neural networks, reinforcement learning for trading, regularisation methods, and ML in factor models and credit risk.</div></div><div class="course-item-arrow">▶</div></div>
+        <div class="course-item" onclick="toggleCourse(this)"><div class="course-item-dot"></div><div class="course-item-content"><div class="course-item-name">Financial Statistics</div><div class="course-item-desc">Statistical inference for financial data: extreme value theory, copulas, tail risk, high-frequency data analysis, robust estimation, and empirical asset pricing.</div></div><div class="course-item-arrow">▶</div></div>
+      </div>
+      <div class="upload-slot" onclick="document.getElementById('lse-upload').click()">＋ Upload LSE Syllabus PDF<input type="file" id="lse-upload" accept=".pdf" style="display:none" onchange="handleUpload(this,'lse')"/></div>
+    </div>
+
+    <div class="college-card">
+      <span class="college-badge">Current · GPA 9.66/10</span>
+      <h3>Madras School of Economics</h3>
+      <div class="degree">BA (Honours) in Economics</div>
+      <div class="duration">Chennai, India · August 2023 – Present</div>
+      <div class="gpa-badge"><span>9.66</span><span>/ 10.0 CGPA · Dean's List ×3</span></div>
+      <div class="course-list">
+        <div class="course-item" onclick="toggleCourse(this)"><div class="course-item-dot"></div><div class="course-item-content"><div class="course-item-name">Stochastic Processes</div><div class="course-item-desc">Markov chains (discrete & continuous time), martingales, Brownian motion, Poisson processes, and applications to financial modelling and queueing theory.</div></div><div class="course-item-arrow">▶</div></div>
+        <div class="course-item" onclick="toggleCourse(this)"><div class="course-item-dot"></div><div class="course-item-content"><div class="course-item-name">Real Analysis</div><div class="course-item-desc">Sequences and series, continuity, differentiability, Riemann integration, metric spaces, and convergence theorems forming the mathematical backbone of economic theory.</div></div><div class="course-item-arrow">▶</div></div>
+        <div class="course-item" onclick="toggleCourse(this)"><div class="course-item-dot"></div><div class="course-item-content"><div class="course-item-name">Advanced Differential Equations</div><div class="course-item-desc">ODEs, PDEs, boundary value problems, phase plane analysis, and Fourier methods with applications to dynamic economic and financial models.</div></div><div class="course-item-arrow">▶</div></div>
+        <div class="course-item" onclick="toggleCourse(this)"><div class="course-item-dot"></div><div class="course-item-content"><div class="course-item-name">Linear Algebra</div><div class="course-item-desc">Vector spaces, eigenvalue decomposition, matrix factorisation, linear transformations, and applications to econometric estimation and PCA.</div></div><div class="course-item-arrow">▶</div></div>
+        <div class="course-item" onclick="toggleCourse(this)"><div class="course-item-dot"></div><div class="course-item-content"><div class="course-item-name">Time Series Analysis</div><div class="course-item-desc">Hamilton's Time Series Analysis — ARMA, ARIMA, VAR, unit roots, cointegration, and spectral methods applied to macroeconomic and financial data.</div></div><div class="course-item-arrow">▶</div></div>
+        <div class="course-item" onclick="toggleCourse(this)"><div class="course-item-dot"></div><div class="course-item-content"><div class="course-item-name">Econometrics</div><div class="course-item-desc">OLS, GLS, IV, panel data methods, treatment effects, and regression-based causal inference with applications using Stata and microdata.</div></div><div class="course-item-arrow">▶</div></div>
+        <div class="course-item" onclick="toggleCourse(this)"><div class="course-item-dot"></div><div class="course-item-content"><div class="course-item-name">Game Theory</div><div class="course-item-desc">Normal and extensive form games, Nash equilibrium, subgame perfection, mechanism design, auctions, and applications to industrial organisation.</div></div><div class="course-item-arrow">▶</div></div>
+        <div class="course-item" onclick="toggleCourse(this)"><div class="course-item-dot"></div><div class="course-item-content"><div class="course-item-name">Money and Banking</div><div class="course-item-desc">Monetary theory, central banking, credit creation, interest rate determination, and monetary policy transmission mechanisms.</div></div><div class="course-item-arrow">▶</div></div>
+        <div class="course-item" onclick="toggleCourse(this)"><div class="course-item-dot"></div><div class="course-item-content"><div class="course-item-name">Data Science & Python/MATLAB</div><div class="course-item-desc">Computational methods for economics: data wrangling, visualisation, numerical optimisation, simulation, and ML foundations in Python and MATLAB.</div></div><div class="course-item-arrow">▶</div></div>
+        <div class="course-item" onclick="toggleCourse(this)"><div class="course-item-dot"></div><div class="course-item-content"><div class="course-item-name">Statistics</div><div class="course-item-desc">Probability theory, distributions, hypothesis testing, maximum likelihood estimation, Bayesian inference, and statistical computing.</div></div><div class="course-item-arrow">▶</div></div>
+      </div>
+      <div class="upload-slot" onclick="document.getElementById('mse-upload').click()">＋ Upload MSE Syllabus PDF<input type="file" id="mse-upload" accept=".pdf" style="display:none" onchange="handleUpload(this,'mse')"/></div>
+    </div>
+  </div>
+</section>
+
+<section id="research" style="background:var(--navy);">
+  <div class="reveal">
+    <p class="section-label">Research</p>
+    <h2 class="section-title">Research <em>Projects</em></h2>
+  </div>
+  <div class="research-list reveal">
+    <div class="research-card"><div class="research-num">01</div><div><h3>Liquidity Regimes as a Markov Chain & Optimal Execution as an MDP</h3><p>Proposed a DTMC-based regime-switching model to characterise liquidity states; developing continuous-time optimal execution strategies using stochastic control theory.</p><div class="research-tags"><span class="tag">Markov Chains</span><span class="tag">Stochastic Control</span><span class="tag">Market Microstructure</span><span class="tag">MDP</span></div></div></div>
+    <div class="research-card"><div class="research-num">02</div><div><h3>Credit Rating Transitions and Markov Chains</h3><p>Reconstructed Jarrow–Lando–Turnbull (1997) from first principles; derived hedging strategies and risk-neutral transition matrices for credit risk modelling.</p><div class="research-tags"><span class="tag">Credit Risk</span><span class="tag">JLT Model</span><span class="tag">Risk-Neutral Pricing</span><span class="tag">Markov Chains</span></div></div></div>
+    <div class="research-card"><div class="research-num">03</div><div><h3>Stochastic Welfare Analysis of Sin Taxation Under India's New GST Regime</h3><p>Modelled cigarette taxation through a Markov-based behavioural transition model using NSSO microdata. Connects welfare economics with probabilistic consumer behaviour modelling.</p><div class="research-tags"><span class="tag">Markov Models</span><span class="tag">NSSO Microdata</span><span class="tag">Sin Tax</span><span class="tag">Welfare Economics</span></div></div></div>
+    <div class="research-card"><div class="research-num">04</div><div><h3>Impact of MGNREGA on India's Labour and Development Outcomes</h3><p>Used OLS regression models to analyse how MGNREGA spending shapes rural wages, labour market intensity, and women's labour force participation.</p><div class="research-tags"><span class="tag">OLS Regression</span><span class="tag">Labour Economics</span><span class="tag">Panel Data</span><span class="tag">Development Economics</span></div></div></div>
+  </div>
+</section>
+
+<section class="teaching" id="teaching">
+  <div class="reveal">
+    <p class="section-label">Teaching</p>
+    <h2 class="section-title">Teaching <em>Assistantships</em></h2>
+  </div>
+  <div class="teaching-grid reveal">
+    <div class="teaching-card"><span class="teaching-sem">Sem IV</span><h3>Foundations of Modern Finance I & II</h3><p>Conducted quizzes and weekly assignments; explained CAPM, Stochastic Discount Factors, and derivatives pricing.</p></div>
+    <div class="teaching-card"><span class="teaching-sem">Sem V</span><h3>Stochastic Processes</h3><p>Created detailed notes on martingales, Markov Decision Processes, and Brownian motion; led problem-solving sessions.</p></div>
+    <div class="teaching-card"><span class="teaching-sem">Sem II</span><h3>Multivariable Calculus</h3><p>Delivered revision lectures on multivariate calculus and series convergence; simplified key proofs for students.</p></div>
+    <div class="teaching-card"><span class="teaching-sem">Sem IV · Junior</span><h3>Multivariable Calculus (Junior Batch)</h3><p>Held weekly tutorials and guided juniors through complex assignments and mathematical proofs.</p></div>
+    <div class="teaching-card"><span class="teaching-sem">Sem V · Junior</span><h3>Intermediate Microeconomics (Junior Batch)</h3><p>Designed assignments and grading rubrics on monopoly, exchange, externalities, and welfare analysis.</p></div>
+    <div class="teaching-card"><span class="teaching-sem">Sem VI</span><h3>Time Series Analysis</h3><p>Weekly assignments covering Hamilton's Time Series Analysis — ARMA, ARIMA, unit roots, and spectral methods.</p></div>
+    <div class="teaching-card"><span class="teaching-sem">Sem VI · Junior</span><h3>Game Theory (Junior Batch)</h3><p>Weekly assignments on core game-theoretic concepts: Nash equilibria, extensive form games, and mechanism design.</p></div>
+  </div>
+</section>
+
+<section id="experience" style="background:var(--navy);">
+  <div class="reveal">
+    <p class="section-label">Experience</p>
+    <h2 class="section-title">Professional <em>Experience</em></h2>
+  </div>
+  <div class="exp-list reveal">
+    <div class="exp-card">
+      <div class="exp-header"><div><div class="exp-title">Research Intern</div><div class="exp-company">Madras School of Economics · Advisor: Dr. Naveen Srinivasan</div></div><div class="exp-date">Dec 2024 – Jan 2025</div></div>
+      <ul class="exp-bullets">
+        <li>Studied horizontal innovation and knowledge spillovers within the Romer endogenous growth model using analytical and numerical methods.</li>
+        <li>Developed micro-founded models and simulations to examine how innovation intensity affects long-run productivity growth.</li>
+      </ul>
+    </div>
+    <div class="exp-card">
+      <div class="exp-header"><div><div class="exp-title">Finance Intern</div><div class="exp-company">V MACS Yosaney · Chennai, India</div></div><div class="exp-date">May 2024 – Jul 2024</div></div>
+      <ul class="exp-bullets">
+        <li>Built an automated tool to generate P&L statements, balance sheets, and schedules — improving reporting speed and accuracy.</li>
+        <li>Analysed MSME financial statements and evaluated bank/NBFC credit products to map documentation and risk requirements.</li>
+        <li>Collaborated directly with clients on financial reports and automation, strengthening analytical and structuring skills.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--navy-mid);padding:6rem 4rem;" id="extra">
+  <div class="reveal">
+    <p class="section-label">Beyond Academics</p>
+    <h2 class="section-title">Achievements & <em>Interests</em></h2>
+  </div>
+  <div class="extra-grid reveal">
+    <div class="extra-card"><h3>♟️ Chess</h3><ul>
+      <li>FIDE-rated · Multiple national & state tournaments</li>
+      <li>13th — 1st SRM International Open FIDE Rapid (2022)</li>
+      <li>Captained school team in CBSE Cluster Championships; 5.5/6 on Board 1 (2022)</li>
+      <li>2nd place Under-15 — Talent Chess Academy 2nd FIDE-rated tournament (2019)</li>
+      <li>Represented Chennai District in Tamil Nadu State U-17 Open (2018)</li>
+    </ul></div>
+    <div class="extra-card"><h3>💡 Projects & More</h3><ul>
+      <li>App Development — Eminence Class Recognition (IIT Madras, Rhapsody Plus, Intellect, UC San Diego)</li>
+      <li>Keyboard player</li>
+      <li>Avid volunteer and community contributor</li>
+    </ul></div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="reveal contact-inner">
+    <p class="section-label" style="justify-content:center;">Contact</p>
+    <h2 class="section-title">Let's <em>Connect</em></h2>
+    <p>Open to quantitative research internships, graduate roles, and research collaborations in mathematical finance. Based in Chennai, heading to London.</p>
+    <div class="contact-links">
+      <a href="mailto:nikhilrajan0502@gmail.com" class="contact-link"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>nikhilrajan0502@gmail.com</a>
+      <a href="https://linkedin.com/in/nikhil-rajan-7bb37a360" target="_blank" class="contact-link"><svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>LinkedIn</a>
+    </div>
+    <a href="mailto:nikhilrajan0502@gmail.com" class="btn-primary">Send me an email</a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Nikhil Rajan · Quantitative Finance · Chennai → London</p>
+</footer>
+
+<script>
+function toggleCourse(el){ el.classList.toggle('open'); }
+function handleUpload(input, college){
+  if(input.files && input.files[0]){
+    const fname = input.files[0].name;
+    const slot = input.parentElement;
+    slot.innerHTML = `✅ Uploaded: ${fname}`;
+    slot.style.borderColor = 'var(--gold)';
+    slot.style.color = 'var(--gold)';
+  }
+}
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); observer.unobserve(e.target); } });
+},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
