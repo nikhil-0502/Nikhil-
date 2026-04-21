@@ -135,17 +135,6 @@ nav {
   margin-bottom: 2.8rem;
   padding-bottom: 0.9rem;
   border-bottom: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-.section-label::before {
-  content: '';
-  display: inline-block;
-  width: 22px;
-  height: 1px;
-  background: var(--cream-ghost);
-  flex-shrink: 0;
 }
 
 /* === ABOUT === */
@@ -188,7 +177,6 @@ nav {
   pointer-events: none;
 }
 
-/* Photo placeholder shown when image fails to load */
 .photo-placeholder {
   width: 100%;
   aspect-ratio: 3 / 4;
@@ -277,7 +265,6 @@ nav {
   letter-spacing: 0.02em;
 }
 
-/* ABOUT MAIN TEXT */
 .about-bio {
   font-family: var(--serif);
   font-size: 1.08rem;
@@ -287,7 +274,112 @@ nav {
 .about-bio p { margin-bottom: 1.25rem; }
 .about-bio p:last-child { margin-bottom: 0; }
 
-/* === RESEARCH === */
+/* === RESEARCH LANDING === */
+.res-cat-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.6rem;
+}
+
+.res-cat-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  padding: 2.8rem 2.4rem 2.4rem;
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  position: relative;
+}
+
+.res-cat-card:hover {
+  border-color: var(--cream-faint);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+}
+
+.res-cat-num {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
+  color: var(--cream-ghost);
+  margin-bottom: 1.6rem;
+  text-transform: uppercase;
+}
+
+.res-cat-title {
+  font-family: var(--display);
+  font-size: 1.45rem;
+  font-weight: 500;
+  color: var(--cream);
+  line-height: 1.3;
+  margin-bottom: 1.8rem;
+  letter-spacing: 0.01em;
+}
+
+.res-cat-papers {
+  border-top: 1px solid var(--border);
+  padding-top: 1.1rem;
+  margin-bottom: 1.8rem;
+}
+
+.res-cat-paper {
+  font-family: var(--serif);
+  font-size: 0.87rem;
+  color: var(--cream-dim);
+  padding: 0.58rem 0;
+  border-bottom: 1px solid var(--border);
+  line-height: 1.5;
+  display: flex;
+  align-items: baseline;
+  gap: 0.7rem;
+}
+.res-cat-paper:last-child { border-bottom: none; }
+
+.res-cat-paper-num {
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  color: var(--cream-ghost);
+  flex-shrink: 0;
+}
+
+.res-cat-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 0.4rem;
+}
+
+.res-cat-count {
+  font-family: var(--serif);
+  font-size: 0.67rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cream-ghost);
+}
+
+.res-cat-arrow {
+  font-family: var(--serif);
+  font-size: 0.78rem;
+  color: var(--cream-faint);
+  transition: color 0.15s, transform 0.15s;
+  display: inline-block;
+}
+.res-cat-card:hover .res-cat-arrow {
+  color: var(--cream-mid);
+  transform: translateX(5px);
+}
+
+/* research sub-header */
+.res-sub-hd {
+  font-family: var(--display);
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--cream);
+  margin-bottom: 2.2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+  letter-spacing: 0.01em;
+}
+
+/* === RESEARCH PROJECTS === */
 .proj-item {
   padding: 2rem 0;
   border-bottom: 1px solid var(--border);
@@ -734,17 +826,6 @@ nav {
   margin: 3rem 0 0;
   padding-top: 2.4rem;
   border-top: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-}
-.sub-label::before {
-  content: '';
-  display: inline-block;
-  width: 14px;
-  height: 1px;
-  background: var(--cream-ghost);
-  flex-shrink: 0;
 }
 
 /* === ARTICLES === */
@@ -784,6 +865,7 @@ footer p {
   .sidebar-photo { max-width: 220px; }
   .teaching-grid { grid-template-columns: repeat(2, 1fr); }
   .edu-header, .exp-header { flex-direction: column; gap: 0.25rem; }
+  .res-cat-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 520px) {
   .teaching-grid { grid-template-columns: 1fr; }
@@ -793,10 +875,10 @@ footer p {
 <body>
 
 <nav>
-  <span class="nav-name" onclick="showPage('about')">Nikhil Rajan</span>
+  <span class="nav-name" onclick="showResearchLanding(); showPage('about');">Nikhil Rajan</span>
   <ul class="nav-links">
     <li><button onclick="showPage('about')" id="nb-about" class="active">About</button></li>
-    <li><button onclick="showPage('research')" id="nb-research">Research</button></li>
+    <li><button onclick="showResearchLanding()" id="nb-research">Research</button></li>
     <li><button onclick="showPage('teaching')" id="nb-teaching">Teaching</button></li>
     <li><button onclick="showPage('education')" id="nb-education">Education</button></li>
     <li><button onclick="showPage('experience')" id="nb-experience">Experience</button></li>
@@ -812,7 +894,6 @@ footer p {
     <div class="about-layout">
       <div class="sidebar">
         <div class="sidebar-photo-wrap">
-          <!-- Place your photo file named "View recent photos.jpeg" in the same folder as this HTML file -->
           <img
             src="View recent photos.jpeg"
             alt="Nikhil Rajan"
@@ -827,7 +908,7 @@ footer p {
         <div class="sidebar-name">Nikhil Rajan</div>
         <div class="sidebar-deg">
           BA Economics, Madras School of Economics (2023 to 2026)<br/>
-          MSc Financial Statistics & Mathematics, LSE (2026 to 2027, incoming)
+          MSc Financial Statistics &amp; Mathematics, LSE (2026 to 2027, incoming)
         </div>
 
         <div class="sidebar-rule"></div>
@@ -885,86 +966,63 @@ footer p {
 <div class="page" id="page-research">
   <div class="wrap">
     <div class="section-label">Research</div>
-    <div class="proj-list">
 
-      <div style="font-family:var(--serif);font-size:0.66rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--cream-ghost);padding:0.5rem 0 0.7rem;border-bottom:1px solid var(--border);">Mathematical Finance</div>
+    <!-- Landing: two category cards -->
+    <div id="research-landing">
+      <div class="res-cat-grid">
 
-      <div class="proj-item" onclick="showProject('liquidity')">
-        <div class="proj-code">F &middot; 01 &middot; Mathematical Finance</div>
-        <div class="proj-title">Liquidity Regimes as a Markov Chain and Optimal Execution as a Markov Decision Process</div>
-        <div class="proj-desc">Discrete-time Markov chain model of market liquidity regimes combined with a formal MDP framework for optimal trade execution. The optimal policy is state-dependent: execute aggressively in high-liquidity states, conservatively in stressed states.</div>
-        <div class="proj-foot">
-          <div class="proj-tags">
-            <span class="proj-tag">Markov Chains</span>
-            <span class="proj-tag">MDP</span>
-            <span class="proj-tag">Optimal Execution</span>
-            <span class="proj-tag">Market Microstructure</span>
+        <div class="res-cat-card" onclick="showResearchCat('finance')">
+          <div class="res-cat-num">I &nbsp;&middot;&nbsp; Mathematical Finance</div>
+          <div class="res-cat-title">Mathematical Finance</div>
+          <div class="res-cat-papers">
+            <div class="res-cat-paper">
+              <span class="res-cat-paper-num">01</span>
+              Liquidity Regimes and Optimal Execution
+            </div>
+            <div class="res-cat-paper">
+              <span class="res-cat-paper-num">02</span>
+              Credit Rating Transitions and Defaultable Bonds
+            </div>
+            <div class="res-cat-paper">
+              <span class="res-cat-paper-num">03</span>
+              Financial Contagion: S&amp;P 500 and Nifty 50
+            </div>
           </div>
-          <span class="proj-status status-wp">Working Paper</span>
-        </div>
-      </div>
-
-      <div class="proj-item" onclick="showProject('credit')">
-        <div class="proj-code">F &middot; 02 &middot; Mathematical Finance</div>
-        <div class="proj-title">Credit Rating Transitions and Risk-Neutral Pricing of Defaultable Bonds</div>
-        <div class="proj-desc">Finite-state Markov chain model of credit migration with an absorbing default state. Reconstructs the JLT (1997) framework from first principles; derives risk-neutral bond prices, credit spreads, and hedging strategies.</div>
-        <div class="proj-foot">
-          <div class="proj-tags">
-            <span class="proj-tag">Credit Risk</span>
-            <span class="proj-tag">JLT Framework</span>
-            <span class="proj-tag">Risk-Neutral Pricing</span>
-            <span class="proj-tag">Hitting Times</span>
+          <div class="res-cat-footer">
+            <span class="res-cat-count">3 papers</span>
+            <span class="res-cat-arrow">&#8594;</span>
           </div>
-          <span class="proj-status status-done">Complete</span>
         </div>
-      </div>
 
-      <div class="proj-item" onclick="showProject('contagion')">
-        <div class="proj-code">F &middot; 03 &middot; Mathematical Finance</div>
-        <div class="proj-title">Financial Contagion and Cross-Market Return Transmission: S&amp;P 500 and Nifty 50</div>
-        <div class="proj-desc">Estimates lagged return spillovers using OLS, logistic regression, and a two-state Markov regime-switching model. The stress-regime coefficient is approximately three times the tranquil-regime coefficient, confirming state-dependent contagion.</div>
-        <div class="proj-foot">
-          <div class="proj-tags">
-            <span class="proj-tag">Regime Switching</span>
-            <span class="proj-tag">Contagion</span>
-            <span class="proj-tag">Time Series</span>
-            <span class="proj-tag">VIX</span>
+        <div class="res-cat-card" onclick="showResearchCat('economics')">
+          <div class="res-cat-num">II &nbsp;&middot;&nbsp; Mathematical Economics</div>
+          <div class="res-cat-title">Mathematical Economics</div>
+          <div class="res-cat-papers">
+            <div class="res-cat-paper">
+              <span class="res-cat-paper-num">01</span>
+              Optimal Sin Taxation under Stochastic Consumption
+            </div>
+            <div class="res-cat-paper">
+              <span class="res-cat-paper-num">02</span>
+              Labour Market Effects of MGNREGA
+            </div>
           </div>
-          <span class="proj-status status-done">Complete</span>
-        </div>
-      </div>
-
-      <div class="proj-item" onclick="showProject('sintax')">
-        <div class="proj-code">E &middot; 01 &middot; Economics</div>
-        <div class="proj-title">Optimal Sin Taxation Under Stochastic Consumption: A Dynamic Welfare Framework</div>
-        <div class="proj-desc">Dynamic welfare framework with Markov consumption transitions for addictive goods. The optimal tax formula generalises the Pigouvian result with a dynamic adjustment term that accounts for the long-run stationary distribution.</div>
-        <div class="proj-foot">
-          <div class="proj-tags">
-            <span class="proj-tag">Markov Models</span>
-            <span class="proj-tag">Welfare Economics</span>
-            <span class="proj-tag">Dynamic Optimisation</span>
-            <span class="proj-tag">NSSO</span>
+          <div class="res-cat-footer">
+            <span class="res-cat-count">2 papers</span>
+            <span class="res-cat-arrow">&#8594;</span>
           </div>
-          <span class="proj-status status-wip">Ongoing</span>
         </div>
-      </div>
 
-      <div class="proj-item" onclick="showProject('mgnrega')">
-        <div class="proj-code">E &middot; 02 &middot; Economics</div>
-        <div class="proj-title">Labour Market Effects of MGNREGA: Panel Econometric Analysis of Rural Wages, Employment, and Female LFPR</div>
-        <div class="proj-desc">State-level panel data with two-way fixed effects estimating the causal impact of MGNREGA expenditure on rural labour market outcomes across 20 states over 13 years.</div>
-        <div class="proj-foot">
-          <div class="proj-tags">
-            <span class="proj-tag">Panel Data</span>
-            <span class="proj-tag">Fixed Effects</span>
-            <span class="proj-tag">Labour Economics</span>
-            <span class="proj-tag">Causal Inference</span>
-          </div>
-          <span class="proj-status status-done">Complete</span>
-        </div>
       </div>
-
     </div>
+
+    <!-- Category view: projects -->
+    <div id="research-cat-view" style="display:none;">
+      <button class="d-back" id="res-cat-back-btn" onclick="showResearchLanding()">&#8592; All Research</button>
+      <div id="res-cat-label-display"></div>
+      <div class="proj-list" id="research-cat-projects"></div>
+    </div>
+
   </div>
   <footer><p>Nikhil Rajan</p><p>nikhilrajan0502@gmail.com</p></footer>
 </div>
@@ -972,7 +1030,7 @@ footer p {
 <!-- PROJECT DETAIL -->
 <div class="page" id="page-project-detail">
   <div class="wrap">
-    <button class="d-back" onclick="showPage('research')">&#8592; Back to Research</button>
+    <button class="d-back" onclick="backFromProject()">&#8592; <span id="proj-back-label">Research</span></button>
     <div id="project-detail-content"></div>
   </div>
 </div>
@@ -1077,51 +1135,15 @@ footer p {
       <div class="edu-header">
         <div>
           <div class="edu-school">London School of Economics and Political Science</div>
-          <div class="edu-deg">MSc Financial Statistics & Mathematics &nbsp;&middot;&nbsp; <span style="font-style:normal;font-size:0.85em;color:var(--cream-faint);">with computational finance courses</span></div>
+          <div class="edu-deg">MSc Financial Statistics &amp; Mathematics</div>
         </div>
         <div class="edu-meta">London, United Kingdom &middot; 2026 to 2027</div>
-      </div>
-      <div class="edu-note">
-        Incoming. In addition to the core statistical training, I will be taking mathematical finance courses from the Department of Mathematics and the Department of Statistics, covering stochastic calculus, derivative pricing theory, and quantitative methods. Courses are listed below.
       </div>
 
       <div class="course-block">
 
-        <!-- COMPULSORY -->
-        <div style="font-family:var(--serif);font-size:0.66rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--cream-ghost);padding:0.7rem 0 0.4rem;border-top:1px solid var(--border);">Statistical finance courses</div>
-
-        <div class="course-row" onclick="this.classList.toggle('open')">
-          <div class="course-hdr">
-            <span class="course-nm"><span class="course-code">ST425</span>Statistical Inference: Principles, Methods and Computation</span>
-            <span class="course-arr">&#9658;</span>
-          </div>
-          <div class="course-body">
-            A rigorous graduate-level treatment of statistical inference. Covers the formal principles of likelihood-based inference: maximum likelihood estimation, score functions, Fisher information, and the Cramer-Rao lower bound. Develops Bayesian inference including prior and posterior distributions, conjugate families, and Markov chain Monte Carlo methods (Gibbs sampler, Metropolis-Hastings). Treats bootstrap and resampling methods, model selection (AIC, BIC, cross-validation), and elements of nonparametric and semiparametric inference. Computational implementation throughout in R.
-          </div>
-        </div>
-
-        <div class="course-row" onclick="this.classList.toggle('open')">
-          <div class="course-hdr">
-            <span class="course-nm"><span class="course-code">ST436</span>Financial Statistics</span>
-            <span class="course-arr">&#9658;</span>
-          </div>
-          <div class="course-body">
-            Covers key statistical methods and data analytic techniques most relevant to finance. Hands-on experience in analysing financial data in R is an essential part of the course. Topics include: obtaining and processing financial data; low- and high-frequency financial time series; ARCH-type models for low-frequency volatilities and their alternatives; predicting equity indices (case study); Markowitz portfolio theory and the Capital Asset Pricing Model; machine learning in financial forecasting; Value at Risk; and simple systematic trading strategies. The course concludes with an extended case study involving predictions of market movements in a virtual trading environment.
-          </div>
-        </div>
-
-        <div class="course-row" onclick="this.classList.toggle('open')">
-          <div class="course-hdr">
-            <span class="course-nm"><span class="course-code">ST458</span>Machine Learning in Finance</span>
-            <span class="course-arr">&#9658;</span>
-          </div>
-          <div class="course-body">
-            Covers a wide range of modern financial data analytics, bridging advanced concepts in financial statistics to hands-on practice. Builds directly on ST436, extending statistical and machine learning methods to more complex computational problems in finance. Topics include advanced portfolio optimisation, factor models, gross and maximum exposure constraints for large portfolios, algorithmic trading, and deep learning approaches to financial prediction. Consolidation through case studies and problem sets; implemented in R. Core references include Hastie, Tibshirani and Friedman (Elements of Statistical Learning), Dixon, Halperin and Bilokon (Machine Learning in Finance), and Jansen (Machine Learning for Algorithmic Trading).
-          </div>
-        </div>
-
-        <!-- MATHEMATICAL FINANCE COURSES -->
-        <div style="font-family:var(--serif);font-size:0.66rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--cream-ghost);padding:1.2rem 0 0.4rem;border-top:1px solid var(--border);margin-top:0.4rem;">Mathematical Finance Courses</div>
+        <!-- MATHEMATICAL FINANCE FIRST -->
+        <div style="font-family:var(--serif);font-size:0.66rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--cream-ghost);padding:0.7rem 0 0.4rem;border-top:1px solid var(--border);">Mathematical Finance</div>
 
         <div class="course-row" onclick="this.classList.toggle('open')">
           <div class="course-hdr">
@@ -1129,7 +1151,7 @@ footer p {
             <span class="course-arr">&#9658;</span>
           </div>
           <div class="course-body">
-            A rigorous introduction to stochastic processes with emphasis on financial and actuarial applications. Covers martingales and the optional stopping theorem; Poisson processes and their financial applications; Brownian motion, quadratic variation, and the construction of the Ito integral; stochastic differential equations and diffusion processes; Ito's formula and Girsanov's theorem; and the Feynman-Kac representation linking SDEs to PDEs. Applications include option pricing under risk-neutral measure, ruin theory in insurance, and continuous-time interest rate models.
+            Martingales, optional stopping theorem. Poisson processes. BM construction, quadratic variation, the It&ocirc; integral. SDEs and diffusions &mdash; It&ocirc;'s formula, Girsanov's theorem. Feynman-Kac connecting SDEs to PDEs. Option pricing under the risk-neutral measure, ruin theory, interest rate models.
           </div>
         </div>
 
@@ -1139,7 +1161,7 @@ footer p {
             <span class="course-arr">&#9658;</span>
           </div>
           <div class="course-body">
-            Develops the mathematical theory of risk-neutral valuation from first principles. In the binomial tree model, introduces replication, no-arbitrage pricing, and martingale probability measures. Extends to continuous time: derives European contingent claim prices as risk-neutral expectations, pricing formulae for put and call options, and the Black and Scholes PDE via self-financing portfolio arguments. Establishes the connection to the heat equation via Feynman-Kac. PDE methods for pricing barrier options, American options, and path-dependent derivatives. Treats implied volatility surfaces and stochastic volatility models. Extends the framework to foreign exchange markets and currency options.
+            Risk-neutral valuation built from the ground up. Binomial model first: replication portfolios, no-arbitrage, martingale measures. Then continuous time: European claims as risk-neutral expectations, BS PDE via self-financing portfolio arguments, Feynman-Kac and the connection to the heat equation. Barrier options, American options, path-dependent claims. Implied vol and stochastic vol models. FX market extensions.
           </div>
         </div>
 
@@ -1149,7 +1171,7 @@ footer p {
             <span class="course-arr">&#9658;</span>
           </div>
           <div class="course-body">
-            Advanced mathematical frameworks for modern market microstructure modelling. Part I covers stochastic processes with and without jumps for order arrival and price formation; the Hamilton-Jacobi-Bellman equation and dynamic programming under uncertainty; inventory models and market liquidity; price impact without asymmetric information; optimal execution via the Almgren-Chriss and Obizhaeva-Wang frameworks; and the Avellaneda-Stoikov model of limit order books. Part II treats market equilibrium under asymmetric information in continuous time using stochastic filtering and Kalman filtering: the Kyle model in continuous time and extensions; the Glosten-Milgrom sequential trading model and its continuous-time extension; and the Glosten model of electronic limit order books. Part III addresses current challenges including decentralised exchanges, automated market making, and dark pools.
+            Part I: HJB equation and dynamic programming under uncertainty. Inventory models and price impact. Optimal execution &mdash; Almgren-Chriss and Obizhaeva-Wang frameworks. Avellaneda-Stoikov limit order book model. Part II: asymmetric information in continuous time. Stochastic and Kalman filtering. Kyle model and extensions, Glosten-Milgrom, Glosten's electronic LOB. Part III: DEXes, AMMs, dark pools.
           </div>
         </div>
 
@@ -1159,7 +1181,7 @@ footer p {
             <span class="course-arr">&#9658;</span>
           </div>
           <div class="course-body">
-            Develops computational skills and introduces numerical techniques of central importance to financial engineering. Covers random number generation, Monte Carlo simulation fundamentals, variance reduction techniques (antithetic variates, control variates, importance sampling), and quasi-Monte Carlo methods. Numerical solutions to stochastic differential equations via Euler-Maruyama and Milstein schemes. Finite-difference methods for PDEs arising in finance: explicit and implicit schemes applied to the Black and Scholes PDE, including stability and convergence analysis.
+            RNG and Monte Carlo basics. Variance reduction: antithetic variates, control variates, importance sampling, quasi-MC. SDE simulation via Euler-Maruyama and Milstein schemes. Finite-difference methods for the BS PDE &mdash; explicit and implicit schemes, stability and convergence.
           </div>
         </div>
 
@@ -1169,7 +1191,7 @@ footer p {
             <span class="course-arr">&#9658;</span>
           </div>
           <div class="course-body">
-            Equips students with skills to apply modern statistical and machine learning methods to computational problems in quantitative finance, risk management, and insurance. Covers key aspects of Monte Carlo methods; simulation of stochastic processes; and generative adversarial networks with applications to risk management. Develops generalised linear models as a bridge to deep neural networks, with applications in insurance pricing. Addresses the key challenges of effective calibration of statistical and machine learning models. Concludes with reinforcement learning and applications to hedging in commodity and energy markets via swing option pricing. Core references include Glasserman (Monte Carlo Methods in Financial Engineering) and Sutton and Barto (Reinforcement Learning: An Introduction).
+            Monte Carlo and process simulation. GANs for risk management. GLMs as a bridge to deep learning, applied to insurance pricing. Model calibration. RL for hedging and swing option pricing. Main references: Glasserman and Sutton-Barto.
           </div>
         </div>
 
@@ -1179,7 +1201,40 @@ footer p {
             <span class="course-arr">&#9658;</span>
           </div>
           <div class="course-body">
-            Introduces computational problems in financial markets and their solution using deep learning and machine learning. Applications include portfolio optimisation, optimal trade execution, pricing and hedging of financial derivatives, and calibration of stochastic volatility models. Theoretical foundations cover empirical risk minimisation, bias-complexity tradeoff, model selection, and validation. Advanced topics include deep learning: feedforward neural networks, universal approximation theorems, stochastic gradient descent, backpropagation, regularisation, recurrent networks, and convolutional architectures. Practical implementation in Python throughout. Key references include Goodfellow, Bengio and Courville (Deep Learning) and Horvath, Muruguza and Tomas (Deep Learning Volatility).
+            Deep learning for portfolio optimisation, optimal execution, derivative pricing and hedging, vol model calibration. ERM, bias-complexity tradeoff. Feedforward NNs, universal approximation, SGD, backprop, regularisation, RNNs, CNNs. Python throughout. Goodfellow et al. and Horvath et al. as main references.
+          </div>
+        </div>
+
+        <!-- STATISTICAL FINANCE SECOND -->
+        <div style="font-family:var(--serif);font-size:0.66rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--cream-ghost);padding:1.2rem 0 0.4rem;border-top:1px solid var(--border);margin-top:0.4rem;">Statistical Finance</div>
+
+        <div class="course-row" onclick="this.classList.toggle('open')">
+          <div class="course-hdr">
+            <span class="course-nm"><span class="course-code">ST425</span>Statistical Inference: Principles, Methods and Computation</span>
+            <span class="course-arr">&#9658;</span>
+          </div>
+          <div class="course-body">
+            MLE, score functions, Fisher information, Cram&eacute;r-Rao. Bayesian inference &mdash; conjugate priors, MCMC (Gibbs sampler, Metropolis-Hastings). Bootstrap, model selection via AIC/BIC and cross-validation, elements of nonparametric inference. R throughout.
+          </div>
+        </div>
+
+        <div class="course-row" onclick="this.classList.toggle('open')">
+          <div class="course-hdr">
+            <span class="course-nm"><span class="course-code">ST436</span>Financial Statistics</span>
+            <span class="course-arr">&#9658;</span>
+          </div>
+          <div class="course-body">
+            Financial data in R. ARCH-type models and volatility. Markowitz portfolio theory and CAPM. ML in financial forecasting. VaR. Ends with a trading case study.
+          </div>
+        </div>
+
+        <div class="course-row" onclick="this.classList.toggle('open')">
+          <div class="course-hdr">
+            <span class="course-nm"><span class="course-code">ST458</span>Machine Learning in Finance</span>
+            <span class="course-arr">&#9658;</span>
+          </div>
+          <div class="course-body">
+            Extension of ST436. Advanced portfolio optimisation, factor models, large-portfolio constraints, algorithmic trading, deep learning for prediction. R. Main references: Hastie-Tibshirani-Friedman, Dixon-Halperin-Bilokon, Jansen.
           </div>
         </div>
 
@@ -1202,52 +1257,52 @@ footer p {
 
         <div class="course-row" onclick="this.classList.toggle('open')">
           <div class="course-hdr"><span class="course-nm">Stochastic Processes</span><span class="course-arr">&#9658;</span></div>
-          <div class="course-body">Markov chains in discrete and continuous time, martingales, Brownian motion, Poisson processes, and financial applications including first-passage times and hitting probabilities.</div>
+          <div class="course-body">Markov chains in discrete and continuous time &mdash; classification of states, stationary distributions. Martingales. BM, Poisson processes. First-passage times and hitting probabilities.</div>
         </div>
 
         <div class="course-row" onclick="this.classList.toggle('open')">
           <div class="course-hdr"><span class="course-nm">Real Analysis</span><span class="course-arr">&#9658;</span></div>
-          <div class="course-body">Sequences and series, continuity, differentiability, Riemann integration, metric spaces, and convergence theorems forming the rigorous foundation of economic and financial theory.</div>
+          <div class="course-body">Sequences, series, continuity, differentiability, Riemann integration. Metric spaces. Convergence theorems.</div>
         </div>
 
         <div class="course-row" onclick="this.classList.toggle('open')">
           <div class="course-hdr"><span class="course-nm">Advanced Differential Equations</span><span class="course-arr">&#9658;</span></div>
-          <div class="course-body">ODEs and PDEs, boundary value problems, phase-plane analysis, and Fourier methods. Applications to continuous-time financial models and dynamic economic systems.</div>
+          <div class="course-body">ODEs and PDEs, BVPs, phase-plane analysis, Fourier methods. Applications to continuous-time financial and economic models.</div>
         </div>
 
         <div class="course-row" onclick="this.classList.toggle('open')">
           <div class="course-hdr"><span class="course-nm">Linear Algebra</span><span class="course-arr">&#9658;</span></div>
-          <div class="course-body">Vector spaces, eigenvalue decomposition, matrix factorisation, and linear transformations. Applied to transition probability matrices, PCA, and factor models.</div>
+          <div class="course-body">Vector spaces, eigendecomposition, matrix factorisation, linear transformations. Transition matrices, PCA, factor models.</div>
         </div>
 
         <div class="course-row" onclick="this.classList.toggle('open')">
           <div class="course-hdr"><span class="course-nm">Time Series Analysis</span><span class="course-arr">&#9658;</span></div>
-          <div class="course-body">Based on Hamilton's Time Series Analysis. ARMA, ARIMA, VAR, unit roots, cointegration, and spectral methods applied to macroeconomic and financial data.</div>
+          <div class="course-body">Hamilton's TSA. ARMA, ARIMA, VAR. Unit roots and cointegration, spectral methods.</div>
         </div>
 
         <div class="course-row" onclick="this.classList.toggle('open')">
           <div class="course-hdr"><span class="course-nm">Econometrics</span><span class="course-arr">&#9658;</span></div>
-          <div class="course-body">OLS, GLS, instrumental variables, panel data methods, treatment effects, and regression-based causal inference. Implemented in Stata with real microdata.</div>
+          <div class="course-body">OLS, GLS, IV, panel data, treatment effects. Causal inference. Stata.</div>
         </div>
 
         <div class="course-row" onclick="this.classList.toggle('open')">
           <div class="course-hdr"><span class="course-nm">Game Theory</span><span class="course-arr">&#9658;</span></div>
-          <div class="course-body">Normal and extensive form games, Nash equilibrium, subgame perfection, mechanism design, auctions, and applications to industrial organisation and public policy.</div>
+          <div class="course-body">Normal and extensive form games. Nash equilibrium, SPNE. Mechanism design, auctions. Applications to IO and policy.</div>
         </div>
 
         <div class="course-row" onclick="this.classList.toggle('open')">
           <div class="course-hdr"><span class="course-nm">Money and Banking</span><span class="course-arr">&#9658;</span></div>
-          <div class="course-body">Monetary theory, central banking, credit creation, interest rate determination, and monetary policy transmission mechanisms.</div>
+          <div class="course-body">Monetary theory, central banking, credit creation, interest rates, policy transmission.</div>
         </div>
 
         <div class="course-row" onclick="this.classList.toggle('open')">
           <div class="course-hdr"><span class="course-nm">Statistics</span><span class="course-arr">&#9658;</span></div>
-          <div class="course-body">Probability theory, distributions, hypothesis testing, maximum likelihood estimation, Bayesian inference, and statistical computing.</div>
+          <div class="course-body">Probability, distributions, hypothesis testing, MLE, Bayesian inference, statistical computing.</div>
         </div>
 
         <div class="course-row" onclick="this.classList.toggle('open')">
           <div class="course-hdr"><span class="course-nm">Data Science (Python and MATLAB)</span><span class="course-arr">&#9658;</span></div>
-          <div class="course-body">Computational economics: data wrangling, visualisation, numerical optimisation, simulation, and introductory machine learning using Python and MATLAB.</div>
+          <div class="course-body">Data wrangling, visualisation, numerical optimisation, simulation, intro ML. Python and MATLAB.</div>
         </div>
 
       </div>
@@ -1335,44 +1390,56 @@ footer p {
 </div>
 
 <script>
+var _researchCat = null;
+
 var PROJECTS = {
   liquidity: {
     cat: 'Mathematical Finance &middot; F &middot; 01',
+    catKey: 'finance',
     title: 'Liquidity Regimes as a Markov Chain and Optimal Execution as a Markov Decision Process',
     status: 'Working Paper', statusClass: 'status-wp',
     date: '2024 to 2025',
+    desc: 'Discrete-time Markov chain model of market liquidity regimes combined with a formal MDP framework for optimal trade execution. The optimal policy is state-dependent: execute aggressively in high-liquidity states, conservatively in stressed states.',
     tags: ['Markov Chains','MDP','Optimal Execution','Market Microstructure','Stochastic Control','Regime Switching'],
     body: '<h4>Motivation</h4><p>The classical Almgren-Chriss framework for optimal execution treats market impact as a deterministic function of trade rate, implicitly assuming that liquidity conditions are stationary throughout a liquidation schedule. This assumption fails in practice: order-book depth, bid-ask spreads, and volume profiles fluctuate substantially over intraday and multi-day horizons, exhibiting persistence, clustering, and regime-like behaviour. The central question is whether one can embed a probabilistic model of liquidity states directly into the execution problem, and what the optimal policy looks like when the trader must account for future regime transitions.</p><h4>Liquidity Regime Model</h4><p>Market liquidity is characterised as a finite-state, discrete-time, time-homogeneous Markov chain across three regimes: High liquidity (H) with tight bid-ask spread and deep order book; Normal liquidity (N) with intermediate spread and baseline cost structure; and Stressed liquidity (L) with wide spread, thin book, and high price impact.</p><div class="math-block">P = [ p_HH  p_HN  p_HL ]\n    [ p_NH  p_NN  p_NL ]\n    [ p_LH  p_LN  p_LL ]\n\npi = pi * P,  sum(pi_i) = 1\n\nMean first-passage time from state i to j:\n  m_ij = 1 + sum_{k != j} p_ik * m_kj</div><h4>Optimal Execution as an MDP</h4><p>The trader holds Q shares and must execute over T discrete periods. The state is (remaining inventory q_t, current regime s_t, time remaining tau_t). The action is the number of shares to trade x_t in [0, q_t]. The reward is execution proceeds net of transaction costs, with regime-dependent impact coefficients.</p><div class="math-block">Reward: r(q,s,x) = x * (P_mid - lambda(s) * x)\n  where lambda(H) &lt; lambda(N) &lt; lambda(L)\n\nValue function:\n  V(q,s,tau) = max_{x in [0,q]} { r(q,s,x)\n             + sum_{s\'} p_{ss\'} * V(q-x, s\', tau-1) }</div><h4>Key Results</h4><ul><li>The optimal policy is non-monotone in inventory: under deadline pressure the trader executes regardless of regime, while with sufficient time, waiting in the stressed state is optimal with positive probability.</li><li>The value function is strictly concave in remaining inventory and strictly decreasing in regime-stress level.</li><li>The welfare cost of ignoring regime structure is quantified and shown to be economically significant under calibrated parameters.</li></ul>'
   },
   credit: {
     cat: 'Mathematical Finance &middot; F &middot; 02',
+    catKey: 'finance',
     title: 'Credit Rating Transitions and Risk-Neutral Pricing of Defaultable Bonds',
     status: 'Complete', statusClass: 'status-done',
     date: '2024',
+    desc: 'Finite-state Markov chain model of credit migration with an absorbing default state. Reconstructs the JLT (1997) framework from first principles; derives risk-neutral bond prices, credit spreads, and hedging strategies.',
     tags: ['Credit Risk','Markov Chains','Risk-Neutral Pricing','JLT Framework','Hitting Times','Credit Spreads'],
     body: '<h4>Motivation</h4><p>The Jarrow-Lando-Turnbull (1997) framework characterises the default event not as a structural consequence of asset value falling below a threshold, but as the absorption of a Markov chain into a default state. This project reconstructs the full JLT framework from first principles, derives the key pricing equations independently, and examines the relationship between physical and risk-neutral transition matrices.</p><h4>The Credit Rating Markov Chain</h4><p>Credit ratings are modelled as a finite-state, time-homogeneous Markov chain on S = {AAA, AA, A, BBB, BB, B, CCC, D}, where D (default) is the unique absorbing state.</p><div class="math-block">Fundamental matrix: N = (I - Q)^{-1}\n  where Q = sub-matrix of P restricted to non-default states\n\nExpected absorption time from state i: t_i = sum_j N_{ij}\n\nDefault probability before period n from state i:\n  F_i(n) = 1 - sum_{j != D} [P^n]_{ij}</div><h4>Risk-Neutral Pricing</h4><div class="math-block">V_i(n) = e^{-rn} [ (1 - delta) * S_tilde_i(n) + delta ]\n\nCredit spread: cs_i(n) = -(1/n) * ln[ (1-delta)*S_tilde_i(n) + delta ]</div><h4>Key Results</h4><ul><li>Credit spreads are increasing in ratings distance from AAA and increasing in maturity for investment-grade ratings, consistent with empirical yield curve shapes.</li><li>The model matches the broad shape of historical investment-grade spreads, though it underestimates short-term spreads for speculative-grade issuers.</li><li>Hedging strategies derived by computing sensitivity of bond prices to shifts in the transition matrix.</li></ul>'
   },
   contagion: {
     cat: 'Mathematical Finance &middot; F &middot; 03',
+    catKey: 'finance',
     title: 'Financial Contagion and Cross-Market Return Transmission: S&amp;P 500 and Nifty 50',
     status: 'Complete', statusClass: 'status-done',
     date: '2024 to 2025',
+    desc: 'Estimates lagged return spillovers using OLS, logistic regression, and a two-state Markov regime-switching model. The stress-regime coefficient is approximately three times the tranquil-regime coefficient, confirming state-dependent contagion.',
     tags: ['Regime Switching','Financial Contagion','Time Series','VIX','OLS','Logit'],
     body: '<h4>Motivation</h4><p>Whether financial stress in the US equity market propagates causally to Indian equity markets, and whether this propagation intensifies during periods of elevated volatility, has direct implications for international portfolio diversification and macro-prudential policy. This project estimates cross-market return transmission between the S&amp;P 500 and Nifty 50 using linear regression, binary classification, and regime-switching models.</p><h4>Primary OLS Specification</h4><div class="math-block">r_{Nifty,t} = alpha + beta * r_{SP500,t-1}\n            + gamma_1 * DVIX_{t-1}\n            + gamma_2 * r_{Oil,t-1}\n            + gamma_3 * r_{USDINR,t-1} + eps_t\n\nEstimated: beta_hat ~ 0.28 (t-stat > 4.1), R^2 ~ 0.18</div><h4>Markov Regime-Switching Model</h4><div class="math-block">r_{Nifty,t} = alpha(s_t) + beta(s_t) * r_{SP500,t-1} + sigma(s_t) * eps_t\ns_t in {1 = tranquil, 2 = stress}\n\nbeta_hat(tranquil) ~ 0.14,  sigma_hat(tranquil) ~ 0.62%\nbeta_hat(stress)   ~ 0.43,  sigma_hat(stress)   ~ 1.74%\np_11_hat ~ 0.97,  p_22_hat ~ 0.91</div><h4>Key Results</h4><ul><li>Statistically significant lagged spillover from S&amp;P 500 to Nifty 50 identified across OLS, logit, and regime-switching specifications.</li><li>A 1% S&amp;P 500 decline is associated with approximately a 0.28% Nifty 50 decline the following trading day.</li><li>The stress-regime coefficient (~0.43) is approximately three times the tranquil-regime coefficient (~0.14), confirming state-dependent contagion intensification.</li><li>Smoothed regime probabilities align well with the March 2020 crash, late-2018 selloff, and mid-2022 episode.</li></ul>'
   },
   sintax: {
-    cat: 'Economics &middot; E &middot; 01',
+    cat: 'Mathematical Economics &middot; E &middot; 01',
+    catKey: 'economics',
     title: 'Optimal Sin Taxation Under Stochastic Consumption: A Dynamic Welfare Framework',
     status: 'Ongoing', statusClass: 'status-wip',
     date: '2024 to 2025',
-    tags: ['Markov Models','Dynamic Optimisation','Welfare Economics','Externalities','Addictive Goods','NSSO'],
+    desc: 'Dynamic welfare framework with Markov consumption transitions for addictive goods. The optimal tax formula generalises the Pigouvian result with a dynamic adjustment term that accounts for the long-run stationary distribution.',
+    tags: ['Markov Models','Welfare Economics','Dynamic Optimisation','Externalities','Addictive Goods','NSSO'],
     body: '<h4>Motivation</h4><p>Standard welfare analyses of sin taxes proceed in a static framework: a demand elasticity is estimated, welfare triangles are computed, and an optimal tax is derived from the Pigou formula. This approach misses two features of addictive consumption. First, individual consumption is inherently dynamic. Second, the welfare consequences of a tax change depend on the entire trajectory of consumption adjustments, including the long-run stationary distribution across consumption states.</p><h4>The Consumption Transition Model</h4><div class="math-block">State space: S = {N, L, M, H}\n\nTax-dependent TPM: P(tau) = [p_{ij}(tau)]\nStationary distribution: pi(tau) = pi(tau) * P(tau)\nAggregate consumption: C(tau) = sum_i pi_i(tau) * c_i</div><h4>Optimal Tax</h4><div class="math-block">tau* = e\'(C) * C\'(tau*)         [standard Pigou term]\n     + sum_i [d pi_i/d tau]      [dynamic adjustment term]\n         * [u_i + e\'(C) * c_i]\n\nd pi/d tau = pi * [dP/d tau] * (I - P + Pi)^{-1}</div><h4>Status</h4><p>The theoretical framework is fully developed. The ongoing component is empirical calibration using NSSO rounds 50, 60, and 68, estimating tax-sensitivity using household-level price variation as an instrument. Welfare simulations will derive the optimal tax rate and compare it to India\'s current GST rate on tobacco products.</p>'
   },
   mgnrega: {
-    cat: 'Economics &middot; E &middot; 02',
+    cat: 'Mathematical Economics &middot; E &middot; 02',
+    catKey: 'economics',
     title: 'Labour Market Effects of MGNREGA: Panel Econometric Analysis of Rural Wages, Employment, and Female LFPR',
     status: 'Complete', statusClass: 'status-done',
     date: '2024',
+    desc: 'State-level panel data with two-way fixed effects estimating the causal impact of MGNREGA expenditure on rural labour market outcomes across 20 states over 13 years.',
     tags: ['Panel Data','Two-Way Fixed Effects','Labour Economics','Rural Wages','Female LFPR','Causal Inference'],
     body: '<h4>Motivation</h4><p>The Mahatma Gandhi National Rural Employment Guarantee Act (2005) mandates one hundred days of wage employment per year to every rural household. By guaranteeing a statutory minimum wage, the programme creates a floor on rural casual wages and alters the outside option of agricultural labourers. This project estimates the magnitude of these effects using state-level panel data and a two-way fixed effects identification strategy.</p><h4>Specification</h4><div class="math-block">Y_{st} = alpha + beta * log(NREGS_{st})\n       + delta_s + lambda_t + gamma * X_{st} + eps_{st}\n\n  delta_s = state fixed effects (20 states)\n  lambda_t = year fixed effects (13 years)\n  X_{st} = rainfall deviation, NSDP growth, SC/ST share, rural density\n\nSEs clustered at state level. Sample: 20 x 13 = 260 observations</div><h4>Key Results</h4><ul><li>Rural wages: A 10% increase in real per capita MGNREGA expenditure is associated with a 1.8 to 2.3% increase in real casual agricultural wages (p &lt; 0.05).</li><li>Female LFPR: Significant increase of approximately 0.9 percentage points per 10% increase in MGNREGA expenditure (p &lt; 0.01). Effect larger in states with lower initial female LFPR.</li><li>Employment intensity: Positive and significant in non-drought years; attenuates in drought years, consistent with MGNREGA acting as a countercyclical buffer.</li><li>Non-agricultural wages: Spillover effect with elasticity approximately 40% of the agricultural wage elasticity.</li></ul><h4>Robustness</h4><ul><li>Results robust to dropping the four states with highest MGNREGA expenditure shares.</li><li>Placebo regressions using pre-programme periods (2000 to 2005) find no significant relationship, supporting parallel trends.</li></ul>'
   }
@@ -1446,6 +1513,48 @@ function showPage(id) {
   if (nb) nb.classList.add('active');
 }
 
+function showResearchLanding() {
+  _researchCat = null;
+  showPage('research');
+  document.getElementById('research-landing').style.display = 'block';
+  document.getElementById('research-cat-view').style.display = 'none';
+}
+
+function showResearchCat(cat) {
+  _researchCat = cat;
+  showPage('research');
+  document.getElementById('research-landing').style.display = 'none';
+  document.getElementById('research-cat-view').style.display = 'block';
+
+  var labels = { finance: 'Mathematical Finance', economics: 'Mathematical Economics' };
+  document.getElementById('res-cat-label-display').innerHTML =
+    '<div class="res-sub-hd">' + labels[cat] + '</div>';
+
+  var keys = { finance: ['liquidity','credit','contagion'], economics: ['sintax','mgnrega'] };
+  var html = '';
+  keys[cat].forEach(function(key) {
+    var p = PROJECTS[key];
+    var tags = p.tags.slice(0,4).map(function(t){ return '<span class="proj-tag">' + t + '</span>'; }).join('');
+    html += '<div class="proj-item" onclick="showProject(\'' + key + '\')">' +
+      '<div class="proj-code">' + p.cat + '</div>' +
+      '<div class="proj-title">' + p.title + '</div>' +
+      '<div class="proj-desc">' + p.desc + '</div>' +
+      '<div class="proj-foot"><div class="proj-tags">' + tags + '</div>' +
+      '<span class="proj-status ' + p.statusClass + '">' + p.status + '</span></div>' +
+      '</div>';
+  });
+  document.getElementById('research-cat-projects').innerHTML = html;
+  window.scrollTo(0, 0);
+}
+
+function backFromProject() {
+  if (_researchCat) {
+    showResearchCat(_researchCat);
+  } else {
+    showResearchLanding();
+  }
+}
+
 function showProject(key) {
   var p = PROJECTS[key];
   if (!p) return;
@@ -1456,6 +1565,11 @@ function showProject(key) {
     '<div class="d-meta">Status: ' + p.status + ' &nbsp;&middot;&nbsp; ' + p.date + '</div>' +
     '<div class="d-tags">' + tags + '</div>' +
     '<div class="d-body">' + p.body + '</div>';
+
+  var labels = { finance: 'Mathematical Finance', economics: 'Mathematical Economics' };
+  var backLabel = _researchCat ? labels[_researchCat] : 'Research';
+  document.getElementById('proj-back-label').textContent = backLabel;
+
   showPage('project-detail');
   document.querySelectorAll('.nav-links button').forEach(function(b){ b.classList.remove('active'); });
   document.getElementById('nb-research').classList.add('active');
