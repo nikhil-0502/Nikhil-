@@ -887,6 +887,8 @@ footer p {
     <div class="section-label">Research</div>
     <div class="proj-list">
 
+      <div style="font-family:var(--serif);font-size:0.66rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--cream-ghost);padding:0.5rem 0 0.7rem;border-bottom:1px solid var(--border);">Mathematical Finance</div>
+
       <div class="proj-item" onclick="showProject('liquidity')">
         <div class="proj-code">F &middot; 01 &middot; Mathematical Finance</div>
         <div class="proj-title">Liquidity Regimes as a Markov Chain and Optimal Execution as a Markov Decision Process</div>
@@ -1075,12 +1077,12 @@ footer p {
       <div class="edu-header">
         <div>
           <div class="edu-school">London School of Economics and Political Science</div>
-          <div class="edu-deg">MSc Financial Mathematics</div>
+          <div class="edu-deg">MSc Statistics (Financial Statistics) &nbsp;&middot;&nbsp; <span style="font-style:normal;font-size:0.85em;color:var(--cream-faint);">with mathematical finance courses</span></div>
         </div>
         <div class="edu-meta">London, United Kingdom &middot; 2026 to 2027</div>
       </div>
       <div class="edu-note">
-        Incoming. The programme comprises five compulsory half-unit courses and optional courses to the value of one and a half units. A two-week pre-sessional course (MA400) on probability, Brownian motion, and Ito calculus precedes the main programme. Compulsory courses are listed below, followed by elected optional courses.
+        Incoming. The programme takes three compulsory courses in statistics and probability, with optional courses to the value of two units. In addition to the core statistical training, I will be taking mathematical finance courses from the Department of Mathematics and the Department of Statistics, covering stochastic calculus, derivative pricing theory, and quantitative methods. Courses are listed below.
       </div>
 
       <div class="course-block">
@@ -1090,21 +1092,64 @@ footer p {
 
         <div class="course-row" onclick="this.classList.toggle('open')">
           <div class="course-hdr">
-            <span class="course-nm"><span class="course-code">MA415</span>The Mathematics of the Black and Scholes Theory</span>
+            <span class="course-nm"><span class="course-code">ST425</span>Statistical Inference: Principles, Methods and Computation</span>
             <span class="course-arr">&#9658;</span>
           </div>
           <div class="course-body">
-            Develops the mathematical theory of risk-neutral valuation. In the context of the binomial tree model for a risky asset, introduces replication and martingale probability measures. The Black and Scholes methodology follows: European contingent claims as risk-neutral expectations, pricing formulae for European put and call options, the Black and Scholes PDE, and its connection to the heat equation via Feynman-Kac. PDE techniques for pricing and hedging several options are developed. The course then treats implied volatility and stochastic volatility models, and extends the Black and Scholes framework to foreign exchange markets and currency options.
+            A rigorous graduate-level treatment of statistical inference. Covers the formal principles of likelihood-based inference: maximum likelihood estimation, score functions, Fisher information, and the Cramer-Rao lower bound. Develops Bayesian inference including prior and posterior distributions, conjugate families, and Markov chain Monte Carlo methods (Gibbs sampler, Metropolis-Hastings). Treats bootstrap and resampling methods, model selection (AIC, BIC, cross-validation), and elements of nonparametric and semiparametric inference. Computational implementation throughout in R.
           </div>
         </div>
 
         <div class="course-row" onclick="this.classList.toggle('open')">
           <div class="course-hdr">
-            <span class="course-nm"><span class="course-code">MA416</span>The Foundations of Interest Rate and Credit Risk Theory</span>
+            <span class="course-nm"><span class="course-code">ST436</span>Financial Statistics</span>
             <span class="course-arr">&#9658;</span>
           </div>
           <div class="course-body">
-            Studies the mathematical foundations of interest rate and credit risk theory. Begins with the multi-dimensional Black and Scholes theory with stochastic market data, and shows how discount bond dynamics can be approached via (a) short-rate process modelling with a market price of risk, giving rise to the family of short-rate models, or (b) the modelling of discount bond volatility structure, giving rise to the Heath-Jarrow-Morton framework. Extends to interest rate market models and credit risk, with emphasis on reduced-form and structural approaches.
+            Covers key statistical methods and data analytic techniques most relevant to finance. Hands-on experience in analysing financial data in R is an essential part of the course. Topics include: obtaining and processing financial data; low- and high-frequency financial time series; ARCH-type models for low-frequency volatilities and their alternatives; predicting equity indices (case study); Markowitz portfolio theory and the Capital Asset Pricing Model; machine learning in financial forecasting; Value at Risk; and simple systematic trading strategies. The course concludes with an extended case study involving predictions of market movements in a virtual trading environment.
+          </div>
+        </div>
+
+        <div class="course-row" onclick="this.classList.toggle('open')">
+          <div class="course-hdr">
+            <span class="course-nm"><span class="course-code">ST458</span>Machine Learning in Finance</span>
+            <span class="course-arr">&#9658;</span>
+          </div>
+          <div class="course-body">
+            Covers a wide range of modern financial data analytics, bridging advanced concepts in financial statistics to hands-on practice. Builds directly on ST436, extending statistical and machine learning methods to more complex computational problems in finance. Topics include advanced portfolio optimisation, factor models, gross and maximum exposure constraints for large portfolios, algorithmic trading, and deep learning approaches to financial prediction. Consolidation through case studies and problem sets; implemented in R. Core references include Hastie, Tibshirani and Friedman (Elements of Statistical Learning), Dixon, Halperin and Bilokon (Machine Learning in Finance), and Jansen (Machine Learning for Algorithmic Trading).
+          </div>
+        </div>
+
+        <!-- MATHEMATICAL FINANCE COURSES -->
+        <div style="font-family:var(--serif);font-size:0.66rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--cream-ghost);padding:1.2rem 0 0.4rem;border-top:1px solid var(--border);margin-top:0.4rem;">Mathematical Finance Courses</div>
+
+        <div class="course-row" onclick="this.classList.toggle('open')">
+          <div class="course-hdr">
+            <span class="course-nm"><span class="course-code">ST409</span>Stochastic Calculus</span>
+            <span class="course-arr">&#9658;</span>
+          </div>
+          <div class="course-body">
+            A rigorous introduction to stochastic processes with emphasis on financial and actuarial applications. Covers martingales and the optional stopping theorem; Poisson processes and their financial applications; Brownian motion, quadratic variation, and the construction of the Ito integral; stochastic differential equations and diffusion processes; Ito's formula and Girsanov's theorem; and the Feynman-Kac representation linking SDEs to PDEs. Applications include option pricing under risk-neutral measure, ruin theory in insurance, and continuous-time interest rate models.
+          </div>
+        </div>
+
+        <div class="course-row" onclick="this.classList.toggle('open')">
+          <div class="course-hdr">
+            <span class="course-nm"><span class="course-code">MA415</span>Mathematics of the Black and Scholes Theory</span>
+            <span class="course-arr">&#9658;</span>
+          </div>
+          <div class="course-body">
+            Develops the mathematical theory of risk-neutral valuation from first principles. In the binomial tree model, introduces replication, no-arbitrage pricing, and martingale probability measures. Extends to continuous time: derives European contingent claim prices as risk-neutral expectations, pricing formulae for put and call options, and the Black and Scholes PDE via self-financing portfolio arguments. Establishes the connection to the heat equation via Feynman-Kac. PDE methods for pricing barrier options, American options, and path-dependent derivatives. Treats implied volatility surfaces and stochastic volatility models. Extends the framework to foreign exchange markets and currency options.
+          </div>
+        </div>
+
+        <div class="course-row" onclick="this.classList.toggle('open')">
+          <div class="course-hdr">
+            <span class="course-nm"><span class="course-code">ST461</span>Mathematics of Market Microstructure</span>
+            <span class="course-arr">&#9658;</span>
+          </div>
+          <div class="course-body">
+            Advanced mathematical frameworks for modern market microstructure modelling. Part I covers stochastic processes with and without jumps for order arrival and price formation; the Hamilton-Jacobi-Bellman equation and dynamic programming under uncertainty; inventory models and market liquidity; price impact without asymmetric information; optimal execution via the Almgren-Chriss and Obizhaeva-Wang frameworks; and the Avellaneda-Stoikov model of limit order books. Part II treats market equilibrium under asymmetric information in continuous time using stochastic filtering and Kalman filtering: the Kyle model in continuous time and extensions; the Glosten-Milgrom sequential trading model and its continuous-time extension; and the Glosten model of electronic limit order books. Part III addresses current challenges including decentralised exchanges, automated market making, and dark pools.
           </div>
         </div>
 
@@ -1114,60 +1159,27 @@ footer p {
             <span class="course-arr">&#9658;</span>
           </div>
           <div class="course-body">
-            Develops computational skills and introduces numerical techniques of importance to financial engineering. Covers random number generation, Monte Carlo simulation fundamentals, and variance reduction methods. Numerical solutions to stochastic differential equations and their implementation are treated in detail. The course then addresses finite-difference schemes for partial differential equations arising in finance, including the explicit and implicit schemes applied to the Black and Scholes PDE.
+            Develops computational skills and introduces numerical techniques of central importance to financial engineering. Covers random number generation, Monte Carlo simulation fundamentals, variance reduction techniques (antithetic variates, control variates, importance sampling), and quasi-Monte Carlo methods. Numerical solutions to stochastic differential equations via Euler-Maruyama and Milstein schemes. Finite-difference methods for PDEs arising in finance: explicit and implicit schemes applied to the Black and Scholes PDE, including stability and convergence analysis.
           </div>
         </div>
 
         <div class="course-row" onclick="this.classList.toggle('open')">
           <div class="course-hdr">
-            <span class="course-nm"><span class="course-code">ST409</span>Stochastic Processes</span>
+            <span class="course-nm"><span class="course-code">ST463</span>Stochastic Simulation and Calibration</span>
             <span class="course-arr">&#9658;</span>
           </div>
           <div class="course-body">
-            A rigorous introduction to stochastic processes with emphasis on financial and actuarial applications. Covers martingales, Poisson processes, Brownian motion, stochastic differential equations, and diffusion processes. Examines Ito's formula, Girsanov's theorem, and the Feynman-Kac representation. Applications span option pricing, ruin theory, and continuous-time interest rate models.
+            Equips students with skills to apply modern statistical and machine learning methods to computational problems in quantitative finance, risk management, and insurance. Covers key aspects of Monte Carlo methods; simulation of stochastic processes; and generative adversarial networks with applications to risk management. Develops generalised linear models as a bridge to deep neural networks, with applications in insurance pricing. Addresses the key challenges of effective calibration of statistical and machine learning models. Concludes with reinforcement learning and applications to hedging in commodity and energy markets via swing option pricing. Core references include Glasserman (Monte Carlo Methods in Financial Engineering) and Sutton and Barto (Reinforcement Learning: An Introduction).
           </div>
         </div>
 
         <div class="course-row" onclick="this.classList.toggle('open')">
           <div class="course-hdr">
-            <span class="course-nm"><span class="course-code">FM413</span>Fixed Income Markets</span>
+            <span class="course-nm"><span class="course-code">MA435</span>Deep Learning in Finance</span>
             <span class="course-arr">&#9658;</span>
           </div>
           <div class="course-body">
-            An advanced course in fixed income valuation and hedging. Topics include: yield, duration, and convexity; curve fitting and bootstrapping; duration-based hedging and asset-liability management; factor models for the yield curve; government and corporate bond valuation (convertible, callable, puttable); plain vanilla interest rate derivatives (caps, floors, swaps, swaptions) and their evaluation; mortgage-backed securities and credit risk transfer; and destabilising effects of derivatives written on fixed income instruments.
-          </div>
-        </div>
-
-        <!-- OPTIONAL -->
-        <div style="font-family:var(--serif);font-size:0.66rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--cream-ghost);padding:1.2rem 0 0.4rem;border-top:1px solid var(--border);margin-top:0.4rem;">Elected Optional Courses</div>
-
-        <div class="course-row" onclick="this.classList.toggle('open')">
-          <div class="course-hdr">
-            <span class="course-nm"><span class="course-code">ST461</span>Mathematics of Market Microstructure</span>
-            <span class="course-arr">&#9658;</span>
-          </div>
-          <div class="course-body">
-            Advanced mathematical frameworks for modern market microstructure modelling. Part I covers stochastic processes with and without jumps for order arrival and price formation, Hamilton-Jacobi-Bellman equations, inventory models and market liquidity, optimal execution (Almgren-Chriss; Obizhaeva and Wang), and the Avellaneda-Stoikov model of limit order books. Part II treats market equilibrium under asymmetric information in continuous time via stochastic filtering and Kalman filtering: the Kyle model in continuous time and its extensions, the Glosten-Milgrom sequential trading model and its continuous-time extension, and the Glosten model of electronic limit order books. Part III addresses recent challenges including decentralised exchanges, automated market making, and dark pools.
-          </div>
-        </div>
-
-        <div class="course-row" onclick="this.classList.toggle('open')">
-          <div class="course-hdr">
-            <span class="course-nm"><span class="course-code">MA435</span>Machine Learning in Financial Mathematics</span>
-            <span class="course-arr">&#9658;</span>
-          </div>
-          <div class="course-body">
-            Introduces computational problems in financial markets and their solution using machine learning. Applications include portfolio optimisation, optimal trade execution, pricing and hedging of financial derivatives, and calibration of stochastic volatility models. Theoretical content covers empirical risk minimisation, bias-complexity tradeoff, model selection, and validation, as well as deep learning: feedforward neural networks, universal approximation theorems, stochastic gradient descent, backpropagation, regularisation, and different neural network architectures. Practical implementation in Python throughout.
-          </div>
-        </div>
-
-        <div class="course-row" onclick="this.classList.toggle('open')">
-          <div class="course-hdr">
-            <span class="course-nm"><span class="course-code">MA420</span>Topics in Financial Mathematics</span>
-            <span class="course-arr">&#9658;</span>
-          </div>
-          <div class="course-body">
-            Covers modern and advanced topics in financial mathematics; syllabus varies by year. Representative areas include stochastic control, rough volatility, mean-field games in finance, deep hedging, and mathematical aspects of systemic risk. The course is designed to bring students to the research frontier in quantitative finance.
+            Introduces computational problems in financial markets and their solution using deep learning and machine learning. Applications include portfolio optimisation, optimal trade execution, pricing and hedging of financial derivatives, and calibration of stochastic volatility models. Theoretical foundations cover empirical risk minimisation, bias-complexity tradeoff, model selection, and validation. Advanced topics include deep learning: feedforward neural networks, universal approximation theorems, stochastic gradient descent, backpropagation, regularisation, recurrent networks, and convolutional architectures. Practical implementation in Python throughout. Key references include Goodfellow, Bengio and Courville (Deep Learning) and Horvath, Muruguza and Tomas (Deep Learning Volatility).
           </div>
         </div>
 
