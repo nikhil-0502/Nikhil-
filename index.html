@@ -6,870 +6,284 @@
 <title>Nikhil Rajan</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Source+Code+Pro:wght@300;400;500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,300;1,8..60,400;1,8..60,500&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg:         #0e0d0b;
-  --bg2:        #141210;
-  --bg3:        #1a1815;
-  --bg4:        #1f1d19;
-  --border:     #252219;
-  --border2:    #302d24;
-  --cream:      #e8e0d0;
-  --cream-mid:  #cec4b2;
-  --cream-dim:  #a89d8a;
-  --cream-faint:#6b6358;
-  --cream-ghost:#3d3830;
-  --accent:     #c9bfa8;
-  --serif:      'EB Garamond', 'Cormorant Garamond', Georgia, serif;
-  --display:    'Playfair Display', 'EB Garamond', Georgia, serif;
-  --mono:       'Source Code Pro', monospace;
-  --nav-h:      60px;
+  --bg:          #fafaf8;
+  --bg-alt:      #f3f2ee;
+  --bg-card:     #ffffff;
+  --border:      #e2ddd6;
+  --border-mid:  #ccc8c0;
+  --text:        #1a1916;
+  --text-mid:    #3a3730;
+  --text-dim:    #5a5650;
+  --text-faint:  #8a8680;
+  --text-ghost:  #bab6b0;
+  --accent:      #1a4a8a;
+  --accent-mid:  #2256a3;
+  --accent-light:#3a6ec0;
+  --accent-bg:   #eef2f9;
+  --green:       #216238;
+  --amber:       #7a5e12;
+  --purple:      #503e7a;
+  --serif:       'Source Serif 4', 'Lora', Georgia, serif;
+  --display:     'Lora', 'Source Serif 4', Georgia, serif;
+  --mono:        'JetBrains Mono', monospace;
+  --nav-h:       58px;
 }
 
-html { font-size: 17px; scroll-behavior: smooth; }
-
+html { font-size: 16px; scroll-behavior: smooth; }
 body {
   background: var(--bg);
-  color: var(--cream);
+  color: var(--text);
   font-family: var(--serif);
-  line-height: 1.85;
+  line-height: 1.8;
   min-height: 100vh;
 }
+a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+a:hover { color: var(--accent-light); }
 
-a { color: var(--cream-mid); text-decoration: underline; text-underline-offset: 3px; }
-a:hover { color: var(--cream); }
-
-/* === NAV === */
+/* NAV */
 nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 200;
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
   height: var(--nav-h);
-  background: var(--bg2);
+  background: rgba(250,250,248,0.97);
+  backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  padding: 0 3rem;
-  gap: 0;
+  display: flex; align-items: center; padding: 0 2.8rem;
 }
-
 .nav-name {
-  font-family: var(--display);
-  font-size: 1.05rem;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  color: var(--cream);
-  margin-right: 3rem;
-  cursor: pointer;
-  white-space: nowrap;
-  flex-shrink: 0;
-  font-style: italic;
-}
-
-.nav-links {
-  display: flex;
-  list-style: none;
-  flex: 1;
-  gap: 0;
-}
-
-.nav-links button {
-  font-family: var(--serif);
-  font-size: 0.82rem;
-  font-weight: 400;
-  letter-spacing: 0.08em;
-  color: var(--cream-faint);
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0 1.1rem;
-  height: var(--nav-h);
+  font-family: var(--display); font-size: 1.05rem; font-weight: 600;
+  font-style: italic; color: var(--text); margin-right: 2.8rem;
+  cursor: pointer; white-space: nowrap; flex-shrink: 0; text-decoration: none;
   transition: color 0.15s;
-  position: relative;
 }
-.nav-links button:hover { color: var(--cream-mid); }
-.nav-links button.active { color: var(--cream); }
+.nav-name:hover { color: var(--accent); }
+.nav-links { display: flex; list-style: none; flex: 1; }
+.nav-links button {
+  font-family: var(--serif); font-size: 0.82rem; color: var(--text-dim);
+  background: none; border: none; cursor: pointer;
+  padding: 0 1rem; height: var(--nav-h);
+  transition: color 0.15s; position: relative;
+}
+.nav-links button:hover { color: var(--text); }
+.nav-links button.active { color: var(--accent); font-weight: 500; }
 .nav-links button.active::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 1.1rem; right: 1.1rem;
-  height: 1px;
-  background: var(--cream-dim);
+  content: ''; position: absolute; bottom: 0; left: 1rem; right: 1rem;
+  height: 2px; background: var(--accent); border-radius: 2px 2px 0 0;
 }
-
 .nav-cv {
-  margin-left: auto;
-  font-family: var(--serif);
-  font-size: 0.78rem;
-  letter-spacing: 0.08em;
-  color: var(--cream-faint);
-  text-decoration: none;
-  border: 1px solid var(--border2);
-  padding: 0.35rem 1.1rem;
-  transition: color 0.15s, border-color 0.15s;
-  flex-shrink: 0;
+  margin-left: auto; font-family: var(--serif); font-size: 0.78rem;
+  font-weight: 500; color: var(--accent); text-decoration: none;
+  border: 1.5px solid var(--accent); padding: 0.32rem 1rem;
+  border-radius: 3px; transition: all 0.15s; flex-shrink: 0;
 }
-.nav-cv:hover { color: var(--cream); border-color: var(--cream-faint); text-decoration: none; }
+.nav-cv:hover { background: var(--accent); color: white; text-decoration: none; }
 
-/* === PAGE SYSTEM === */
+/* PAGE SYSTEM */
 .page { display: none; }
 .page.active { display: block; }
 
-/* === SHARED WRAP === */
-.wrap {
-  max-width: 960px;
-  margin: 0 auto;
-  padding: calc(var(--nav-h) + 4rem) 3rem 6rem;
-}
-
+/* WRAP */
+.wrap { max-width: 980px; margin: 0 auto; padding: calc(var(--nav-h) + 3.5rem) 2.8rem 6rem; }
 .section-label {
-  font-family: var(--serif);
-  font-size: 0.72rem;
-  font-weight: 400;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--cream-faint);
-  margin-bottom: 2.8rem;
-  padding-bottom: 0.9rem;
-  border-bottom: 1px solid var(--border);
+  font-family: var(--mono); font-size: 0.67rem; letter-spacing: 0.20em;
+  text-transform: uppercase; color: var(--text-faint);
+  margin-bottom: 2.4rem; padding-bottom: 0.8rem; border-bottom: 1px solid var(--border);
 }
 
-/* === ABOUT === */
+/* ABOUT */
 #page-about .wrap { max-width: 1060px; }
+.about-layout { display: grid; grid-template-columns: 240px 1fr; gap: 5rem; align-items: start; }
+.sidebar { position: sticky; top: calc(var(--nav-h) + 2rem); }
 
-.about-layout {
-  display: grid;
-  grid-template-columns: 260px 1fr;
-  gap: 5rem;
-  align-items: start;
-}
-
-.sidebar {
-  position: sticky;
-  top: calc(var(--nav-h) + 2.5rem);
-}
-
-.sidebar-photo-wrap {
-  position: relative;
-  margin-bottom: 2rem;
-}
-
+.sidebar-photo-wrap { position: relative; margin-bottom: 1.8rem; width: 100%; }
 .sidebar-photo {
-  width: 100%;
-  aspect-ratio: 3 / 4;
-  object-fit: cover;
-  object-position: center top;
-  display: block;
-  border: 1px solid var(--border2);
-  filter: grayscale(15%) contrast(1.04) brightness(0.97);
+  width: 100%; aspect-ratio: 3 / 4;
+  object-fit: cover; object-position: center top;
+  display: block; border: 1px solid var(--border);
+  border-radius: 3px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);
 }
-
-.sidebar-photo-wrap::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border: 1px solid var(--cream-ghost);
-  transform: translate(7px, 7px);
-  z-index: -1;
-  pointer-events: none;
-}
-
 .photo-placeholder {
-  width: 100%;
-  aspect-ratio: 3 / 4;
-  background: var(--bg3);
-  border: 1px solid var(--border2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 0.5rem;
+  width: 100%; aspect-ratio: 3 / 4; background: var(--bg-alt);
+  border: 1px solid var(--border); border-radius: 3px;
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 0.5rem;
 }
 .photo-placeholder span {
-  font-family: var(--serif);
-  font-size: 0.7rem;
-  letter-spacing: 0.1em;
-  color: var(--cream-ghost);
-  text-align: center;
-  line-height: 1.7;
+  font-family: var(--serif); font-size: 0.72rem; color: var(--text-ghost);
+  text-align: center; line-height: 1.7;
 }
 
-.sidebar-name {
-  font-family: var(--display);
-  font-size: 1.4rem;
-  font-weight: 500;
-  color: var(--cream);
-  line-height: 1.25;
-  margin-bottom: 0.3rem;
-  letter-spacing: 0.01em;
-}
+.sidebar-name { font-family: var(--display); font-size: 1.3rem; font-weight: 700; color: var(--text); line-height: 1.2; margin-bottom: 0.25rem; }
+.sidebar-deg { font-family: var(--serif); font-size: 0.84rem; color: var(--text-dim); line-height: 1.75; margin-bottom: 1.4rem; font-style: italic; }
+.sidebar-rule { height: 1px; background: var(--border); margin: 1.2rem 0; }
 
-.sidebar-deg {
-  font-family: var(--serif);
-  font-size: 0.88rem;
-  color: var(--cream-dim);
-  line-height: 1.75;
-  margin-bottom: 1.6rem;
-  font-style: italic;
-}
+.contact-row { display: grid; grid-template-columns: 64px 1fr; gap: 0.5rem; align-items: baseline; margin-bottom: 0.6rem; }
+.clabel { font-family: var(--mono); font-size: 0.60rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-faint); }
+.cval { font-family: var(--serif); font-size: 0.85rem; color: var(--text-mid); line-height: 1.55; word-break: break-all; }
+.cval a { color: var(--accent); text-decoration: none; }
+.cval a:hover { text-decoration: underline; }
 
-.sidebar-rule {
-  height: 1px;
-  background: var(--border);
-  margin: 1.4rem 0;
-}
-
-.contact-block { margin-bottom: 0.2rem; }
-
-.contact-row {
-  display: grid;
-  grid-template-columns: 68px 1fr;
-  gap: 0.6rem;
-  align-items: baseline;
-  margin-bottom: 0.7rem;
-}
-
-.clabel {
-  font-family: var(--serif);
-  font-size: 0.65rem;
-  font-weight: 400;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--cream-ghost);
-  padding-top: 0.06rem;
-}
-
-.cval {
-  font-family: var(--serif);
-  font-size: 0.9rem;
-  color: var(--cream-dim);
-  line-height: 1.6;
-  word-break: break-all;
-}
-.cval a { color: var(--cream-dim); text-decoration: none; }
-.cval a:hover { color: var(--cream); text-decoration: underline; text-underline-offset: 3px; }
-
-.interest-chips { margin-top: 0.3rem; }
 .chip {
-  display: inline-block;
-  font-family: var(--serif);
-  font-size: 0.7rem;
-  color: var(--cream-faint);
-  border: 1px solid var(--border2);
-  padding: 0.18rem 0.6rem;
-  margin: 0.22rem 0.12rem 0 0;
-  background: var(--bg3);
-  letter-spacing: 0.02em;
+  display: inline-block; font-family: var(--mono); font-size: 0.62rem;
+  color: var(--accent); background: var(--accent-bg);
+  border: 1px solid #d4e0f5; padding: 0.18rem 0.6rem;
+  margin: 0.2rem 0.1rem 0 0; border-radius: 2px;
 }
 
-.about-bio {
-  font-family: var(--serif);
-  font-size: 1.08rem;
-  color: var(--cream-mid);
-  line-height: 2;
+.inst-link {
+  color: var(--accent); text-decoration: none; font-weight: 500;
+  border-bottom: 1.5px solid #d4e0f5; transition: border-color 0.15s, color 0.15s;
 }
-.about-bio p { margin-bottom: 1.25rem; }
+.inst-link:hover { color: var(--accent-light); border-bottom-color: var(--accent-light); text-decoration: none; }
+
+.about-bio { font-family: var(--serif); font-size: 1.04rem; color: var(--text-mid); line-height: 1.95; }
+.about-bio p { margin-bottom: 1.2rem; }
 .about-bio p:last-child { margin-bottom: 0; }
 
-/* === RESEARCH LANDING === */
-.res-cat-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.6rem;
-}
-
+/* RESEARCH */
+.res-cat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; }
 .res-cat-card {
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  padding: 2.8rem 2.4rem 2.4rem;
-  cursor: pointer;
-  transition: border-color 0.2s, box-shadow 0.2s;
-  position: relative;
+  background: var(--bg-card); border: 1px solid var(--border);
+  padding: 2.2rem 2rem 1.8rem; cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+  border-radius: 4px; box-shadow: 0 1px 4px rgba(0,0,0,0.06);
 }
-
-.res-cat-card:hover {
-  border-color: var(--cream-faint);
-  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-}
-
-.res-cat-num {
-  font-family: var(--mono);
-  font-size: 0.6rem;
-  letter-spacing: 0.18em;
-  color: var(--cream-ghost);
-  margin-bottom: 1.6rem;
-  text-transform: uppercase;
-}
-
-.res-cat-title {
-  font-family: var(--display);
-  font-size: 1.45rem;
-  font-weight: 500;
-  color: var(--cream);
-  line-height: 1.3;
-  margin-bottom: 1.8rem;
-  letter-spacing: 0.01em;
-}
-
-.res-cat-papers {
-  border-top: 1px solid var(--border);
-  padding-top: 1.1rem;
-  margin-bottom: 1.8rem;
-}
-
-.res-cat-paper {
-  font-family: var(--serif);
-  font-size: 0.87rem;
-  color: var(--cream-dim);
-  padding: 0.58rem 0;
-  border-bottom: 1px solid var(--border);
-  line-height: 1.5;
-  display: flex;
-  align-items: baseline;
-  gap: 0.7rem;
-}
+.res-cat-card:hover { border-color: var(--accent); box-shadow: 0 8px 32px rgba(0,0,0,0.10); transform: translateY(-2px); }
+.res-cat-num { font-family: var(--mono); font-size: 0.60rem; letter-spacing: 0.14em; color: var(--text-faint); margin-bottom: 1rem; text-transform: uppercase; }
+.res-cat-title { font-family: var(--display); font-size: 1.3rem; font-weight: 600; color: var(--text); line-height: 1.3; margin-bottom: 1.5rem; }
+.res-cat-papers { border-top: 1px solid var(--border); padding-top: 1rem; margin-bottom: 1.4rem; }
+.res-cat-paper { font-family: var(--serif); font-size: 0.86rem; color: var(--text-dim); padding: 0.5rem 0; border-bottom: 1px solid var(--border); line-height: 1.5; display: flex; align-items: baseline; gap: 0.7rem; }
 .res-cat-paper:last-child { border-bottom: none; }
+.res-cat-paper-num { font-family: var(--mono); font-size: 0.56rem; color: var(--text-ghost); flex-shrink: 0; }
+.res-cat-footer { display: flex; justify-content: space-between; align-items: center; }
+.res-cat-count { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-faint); }
+.res-cat-arrow { font-size: 0.85rem; color: var(--accent); transition: transform 0.2s; display: inline-block; }
+.res-cat-card:hover .res-cat-arrow { transform: translateX(5px); }
+.res-sub-hd { font-family: var(--display); font-size: 1.1rem; font-weight: 600; color: var(--text); margin-bottom: 2rem; padding-bottom: 0.9rem; border-bottom: 1px solid var(--border); }
 
-.res-cat-paper-num {
-  font-family: var(--mono);
-  font-size: 0.58rem;
-  color: var(--cream-ghost);
-  flex-shrink: 0;
-}
-
-.res-cat-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 0.4rem;
-}
-
-.res-cat-count {
-  font-family: var(--serif);
-  font-size: 0.67rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--cream-ghost);
-}
-
-.res-cat-arrow {
-  font-family: var(--serif);
-  font-size: 0.78rem;
-  color: var(--cream-faint);
-  transition: color 0.15s, transform 0.15s;
-  display: inline-block;
-}
-.res-cat-card:hover .res-cat-arrow {
-  color: var(--cream-mid);
-  transform: translateX(5px);
-}
-
-/* research sub-header */
-.res-sub-hd {
-  font-family: var(--display);
-  font-size: 1.1rem;
-  font-weight: 500;
-  color: var(--cream);
-  margin-bottom: 2.2rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid var(--border);
-  letter-spacing: 0.01em;
-}
-
-/* === RESEARCH PROJECTS === */
-.proj-item {
-  padding: 2rem 0;
-  border-bottom: 1px solid var(--border);
-  cursor: pointer;
-  transition: padding-left 0.18s;
-}
+/* PROJECTS */
+.proj-item { padding: 1.8rem 0; border-bottom: 1px solid var(--border); cursor: pointer; transition: padding-left 0.18s; }
 .proj-item:first-child { border-top: 1px solid var(--border); }
-.proj-item:hover { padding-left: 0.6rem; }
-.proj-item:hover .proj-title { color: var(--cream); }
-
-.proj-code {
-  font-family: var(--serif);
-  font-size: 0.68rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--cream-ghost);
-  margin-bottom: 0.5rem;
-}
-
-.proj-title {
-  font-family: var(--display);
-  font-size: 1.12rem;
-  font-weight: 500;
-  color: var(--cream-mid);
-  line-height: 1.45;
-  margin-bottom: 0.6rem;
-  transition: color 0.15s;
-}
-
-.proj-desc {
-  font-family: var(--serif);
-  font-size: 0.93rem;
-  color: var(--cream-dim);
-  line-height: 1.82;
-  margin-bottom: 0.85rem;
-}
-
-.proj-foot { display: flex; gap: 0.7rem; align-items: center; flex-wrap: wrap; }
-.proj-tags { display: flex; gap: 0.35rem; flex-wrap: wrap; }
-.proj-tag {
-  font-family: var(--serif);
-  font-size: 0.66rem;
-  letter-spacing: 0.04em;
-  color: var(--cream-faint);
-  border: 1px solid var(--border2);
-  padding: 0.14rem 0.55rem;
-  background: var(--bg3);
-}
-.proj-status {
-  font-family: var(--serif);
-  font-size: 0.66rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  margin-left: auto;
-  color: var(--cream-faint);
-}
-.status-done { color: #7aaa8a; }
-.status-wip  { color: #aaa07a; }
-.status-wp   { color: #8a8aaa; }
+.proj-item:hover { padding-left: 0.5rem; }
+.proj-item:hover .proj-title { color: var(--accent); }
+.proj-code { font-family: var(--mono); font-size: 0.60rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 0.4rem; }
+.proj-title { font-family: var(--display); font-size: 1.04rem; font-weight: 600; color: var(--text); line-height: 1.42; margin-bottom: 0.5rem; transition: color 0.15s; }
+.proj-desc { font-family: var(--serif); font-size: 0.92rem; color: var(--text-dim); line-height: 1.8; margin-bottom: 0.8rem; }
+.proj-foot { display: flex; gap: 0.6rem; align-items: center; flex-wrap: wrap; }
+.proj-tags { display: flex; gap: 0.3rem; flex-wrap: wrap; }
+.proj-tag { font-family: var(--mono); font-size: 0.60rem; color: var(--text-dim); border: 1px solid var(--border-mid); padding: 0.12rem 0.5rem; background: var(--bg-alt); border-radius: 2px; }
+.proj-status { font-family: var(--mono); font-size: 0.60rem; letter-spacing: 0.08em; text-transform: uppercase; margin-left: auto; padding: 0.14rem 0.55rem; border-radius: 2px; }
+.status-done { color: var(--green); background: #f0f8f4; border: 1px solid #c0ddd0; }
+.status-wip  { color: var(--amber); background: #fdf8ee; border: 1px solid #e8d8a0; }
+.status-wp   { color: var(--purple); background: #f4f1fb; border: 1px solid #cec5ec; }
 
 /* PROJECT DETAIL */
-.d-back {
-  font-family: var(--serif);
-  font-size: 0.76rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--cream-faint);
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  margin-bottom: 3rem;
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  transition: color 0.15s;
-}
-.d-back:hover { color: var(--cream); }
-
-.d-cat {
-  font-family: var(--serif);
-  font-size: 0.7rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--cream-ghost);
-  margin-bottom: 0.7rem;
-}
-
-.d-title {
-  font-family: var(--display);
-  font-size: 1.6rem;
-  font-weight: 500;
-  color: var(--cream);
-  line-height: 1.35;
-  margin-bottom: 0.8rem;
-  letter-spacing: 0.01em;
-}
-
-.d-meta {
-  font-family: var(--serif);
-  font-size: 0.8rem;
-  color: var(--cream-faint);
-  margin-bottom: 0.9rem;
-}
-
-.d-tags {
-  display: flex; flex-wrap: wrap; gap: 0.4rem;
-  margin-bottom: 2.4rem;
-  padding-bottom: 1.8rem;
-  border-bottom: 1px solid var(--border);
-}
-
-.d-body h4 {
-  font-family: var(--serif);
-  font-size: 0.7rem;
-  font-weight: 400;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--cream-faint);
-  margin: 2.4rem 0 0.9rem;
-}
-.d-body p {
-  font-family: var(--serif);
-  font-size: 1rem;
-  color: var(--cream-mid);
-  line-height: 1.95;
-  margin-bottom: 0.9rem;
-}
+.d-back { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); background: none; border: none; cursor: pointer; padding: 0; margin-bottom: 2.5rem; display: flex; align-items: center; gap: 0.5rem; transition: color 0.15s; }
+.d-back:hover { color: var(--accent-light); }
+.d-cat { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 0.6rem; }
+.d-title { font-family: var(--display); font-size: 1.55rem; font-weight: 700; color: var(--text); line-height: 1.32; margin-bottom: 0.7rem; }
+.d-meta { font-family: var(--serif); font-size: 0.82rem; color: var(--text-dim); margin-bottom: 0.8rem; font-style: italic; }
+.d-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 2.2rem; padding-bottom: 1.6rem; border-bottom: 1px solid var(--border); }
+.d-body h4 { font-family: var(--mono); font-size: 0.65rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-faint); margin: 2.2rem 0 0.8rem; }
+.d-body p { font-family: var(--serif); font-size: 0.98rem; color: var(--text-mid); line-height: 1.92; margin-bottom: 0.85rem; }
 .d-body ul { list-style: none; margin-bottom: 1rem; }
-.d-body ul li {
-  font-family: var(--serif);
-  font-size: 0.92rem;
-  color: var(--cream-dim);
-  padding: 0.45rem 0 0.45rem 1.3rem;
-  position: relative;
-  line-height: 1.78;
-  border-bottom: 1px solid var(--border);
-}
+.d-body ul li { font-family: var(--serif); font-size: 0.91rem; color: var(--text-mid); padding: 0.5rem 0 0.5rem 1.4rem; position: relative; line-height: 1.75; border-bottom: 1px solid var(--border); }
 .d-body ul li:last-child { border-bottom: none; }
-.d-body ul li::before {
-  content: '';
-  position: absolute;
-  left: 0; top: 0.98rem;
-  width: 6px; height: 1px;
-  background: var(--cream-ghost);
-}
+.d-body ul li::before { content: '–'; position: absolute; left: 0; top: 0.5rem; color: var(--text-faint); }
+.math-block { background: var(--bg-alt); border: 1px solid var(--border); border-left: 3px solid var(--accent); padding: 1.1rem 1.4rem; margin: 1.3rem 0; font-family: var(--mono); font-size: 0.75rem; color: var(--text-mid); line-height: 2; overflow-x: auto; white-space: pre; border-radius: 0 3px 3px 0; }
 
-.math-block {
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  border-left: 2px solid var(--cream-ghost);
-  padding: 1.2rem 1.6rem;
-  margin: 1.4rem 0;
-  font-family: var(--mono);
-  font-size: 0.78rem;
-  color: var(--cream-dim);
-  line-height: 2;
-  overflow-x: auto;
-  white-space: pre;
-}
-
-/* === TEACHING === */
-.teaching-intro {
-  font-family: var(--serif);
-  font-size: 0.97rem;
-  color: var(--cream-dim);
-  margin-bottom: 2.6rem;
-  font-style: italic;
-  line-height: 1.78;
-}
-
-.teaching-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.2rem;
-}
-
-.ta-card {
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  cursor: pointer;
-  transition: border-color 0.18s, transform 0.18s, box-shadow 0.18s;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
-.ta-card:hover {
-  border-color: var(--cream-ghost);
-  transform: translateY(-3px);
-  box-shadow: 0 10px 32px rgba(0,0,0,0.45);
-}
-.ta-card:hover .ta-card-title { color: var(--cream); }
-
-.ta-card-icon {
-  width: 100%; height: 100px;
-  display: flex; align-items: center; justify-content: center;
-  border-bottom: 1px solid var(--border);
-  flex-shrink: 0;
-}
-.ta-bg-1 { background: linear-gradient(145deg, #151210, #1e1a14); }
-.ta-bg-2 { background: linear-gradient(145deg, #101318, #161c24); }
-.ta-bg-3 { background: linear-gradient(145deg, #101614, #16201c); }
-.ta-bg-4 { background: linear-gradient(145deg, #161012, #20161a); }
-.ta-bg-5 { background: linear-gradient(145deg, #131018, #1c1622); }
-.ta-bg-6 { background: linear-gradient(145deg, #151410, #1e1c16); }
-.ta-bg-7 { background: linear-gradient(145deg, #101518, #16202a); }
-
-.ta-icon-text {
-  font-family: var(--mono);
-  font-size: 1.7rem;
-  color: var(--cream-ghost);
-  opacity: 0.8;
-}
-
-.ta-card-body {
-  padding: 1.1rem 1.2rem 1.2rem;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.ta-card-sem {
-  font-family: var(--serif);
-  font-size: 0.65rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--cream-ghost);
-  margin-bottom: 0.45rem;
-}
-
-.ta-card-title {
-  font-family: var(--display);
-  font-size: 0.98rem;
-  font-weight: 500;
-  color: var(--cream-mid);
-  line-height: 1.42;
-  margin-bottom: 0.38rem;
-  transition: color 0.15s;
-  flex: 1;
-}
-
-.ta-card-inst {
-  font-family: var(--serif);
-  font-size: 0.76rem;
-  color: var(--cream-ghost);
-  font-style: italic;
-}
-
-.ta-card-cta {
-  font-family: var(--serif);
-  font-size: 0.66rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--cream-ghost);
-  margin-top: 0.8rem;
-}
+/* TEACHING */
+.teaching-intro { font-family: var(--serif); font-size: 0.97rem; color: var(--text-dim); margin-bottom: 2.4rem; font-style: italic; line-height: 1.78; }
+.teaching-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; }
+.ta-card { background: var(--bg-card); border: 1px solid var(--border); cursor: pointer; transition: border-color 0.18s, transform 0.18s, box-shadow 0.18s; display: flex; flex-direction: column; overflow: hidden; border-radius: 4px; box-shadow: 0 1px 4px rgba(0,0,0,0.05); }
+.ta-card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 8px 32px rgba(0,0,0,0.10); }
+.ta-card:hover .ta-card-title { color: var(--accent); }
+.ta-card-icon { width: 100%; height: 84px; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid var(--border); flex-shrink: 0; }
+.ta-bg-1 { background: linear-gradient(135deg, #eef2f9, #dce8f4); }
+.ta-bg-2 { background: linear-gradient(135deg, #eef7f2, #dcf0e6); }
+.ta-bg-3 { background: linear-gradient(135deg, #f7f4ee, #f0e8dc); }
+.ta-bg-4 { background: linear-gradient(135deg, #f5eef7, #ecdcf4); }
+.ta-bg-5 { background: linear-gradient(135deg, #eef7f7, #dceeee); }
+.ta-bg-6 { background: linear-gradient(135deg, #fdf8ee, #f5ecda); }
+.ta-bg-7 { background: linear-gradient(135deg, #f2eef7, #e4daf0); }
+.ta-icon-text { font-family: var(--mono); font-size: 1.6rem; color: var(--accent); opacity: 0.8; }
+.ta-card-body { padding: 1rem 1.1rem 1.1rem; flex: 1; display: flex; flex-direction: column; }
+.ta-card-sem { font-family: var(--mono); font-size: 0.60rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 0.4rem; }
+.ta-card-title { font-family: var(--display); font-size: 0.95rem; font-weight: 600; color: var(--text); line-height: 1.4; margin-bottom: 0.35rem; transition: color 0.15s; flex: 1; }
+.ta-card-inst { font-family: var(--serif); font-size: 0.75rem; color: var(--text-faint); font-style: italic; }
+.ta-card-cta { font-family: var(--mono); font-size: 0.60rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-top: 0.7rem; }
 
 /* TEACHING DETAIL */
-.td-section { margin-top: 2.2rem; }
-.td-hd {
-  font-family: var(--serif);
-  font-size: 0.7rem;
-  font-weight: 400;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--cream-faint);
-  margin-bottom: 0.9rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid var(--border);
-}
-.td-section p {
-  font-family: var(--serif);
-  font-size: 1rem;
-  color: var(--cream-mid);
-  line-height: 1.9;
-}
+.td-section { margin-top: 2rem; }
+.td-hd { font-family: var(--mono); font-size: 0.65rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 0.8rem; padding-bottom: 0.45rem; border-bottom: 1px solid var(--border); }
+.td-section p { font-family: var(--serif); font-size: 0.98rem; color: var(--text-mid); line-height: 1.88; }
 .td-topics { list-style: none; }
-.td-topics li {
-  font-family: var(--serif);
-  font-size: 0.92rem;
-  color: var(--cream-dim);
-  padding: 0.45rem 0 0.45rem 1.3rem;
-  position: relative;
-  border-bottom: 1px solid var(--border);
-  line-height: 1.75;
-}
+.td-topics li { font-family: var(--serif); font-size: 0.92rem; color: var(--text-mid); padding: 0.5rem 0 0.5rem 1.4rem; position: relative; border-bottom: 1px solid var(--border); line-height: 1.72; }
 .td-topics li:last-child { border-bottom: none; }
-.td-topics li::before {
-  content: '';
-  position: absolute;
-  left: 0; top: 0.98rem;
-  width: 6px; height: 1px;
-  background: var(--cream-ghost);
-}
+.td-topics li::before { content: '–'; position: absolute; left: 0; top: 0.5rem; color: var(--text-faint); }
 
-/* === EDUCATION === */
+/* EDUCATION */
 .edu-entry { padding: 2.2rem 0; border-bottom: 1px solid var(--border); }
 .edu-entry:first-child { border-top: 1px solid var(--border); }
+.edu-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 2rem; margin-bottom: 0.2rem; }
+.edu-school { font-family: var(--display); font-size: 1.1rem; font-weight: 600; color: var(--text); }
+.edu-deg { font-family: var(--serif); font-size: 0.9rem; color: var(--text-dim); font-style: italic; margin-top: 0.18rem; }
+.edu-meta { font-family: var(--mono); font-size: 0.68rem; color: var(--text-faint); letter-spacing: 0.04em; white-space: nowrap; padding-top: 0.25rem; flex-shrink: 0; }
+.edu-note { font-family: var(--serif); font-size: 0.9rem; color: var(--text-dim); line-height: 1.8; margin: 0.9rem 0 1.1rem; }
+.edu-note strong { color: var(--green); font-weight: 600; }
 
-.edu-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 2rem;
-  margin-bottom: 0.2rem;
-}
-
-.edu-school {
-  font-family: var(--display);
-  font-size: 1.15rem;
-  font-weight: 500;
-  color: var(--cream);
-  letter-spacing: 0.01em;
-}
-.edu-deg {
-  font-family: var(--serif);
-  font-size: 0.92rem;
-  color: var(--cream-dim);
-  font-style: italic;
-  margin-top: 0.18rem;
-}
-.edu-meta {
-  font-family: var(--serif);
-  font-size: 0.75rem;
-  color: var(--cream-ghost);
-  letter-spacing: 0.04em;
-  white-space: nowrap;
-  padding-top: 0.2rem;
-  flex-shrink: 0;
-}
-.edu-note {
-  font-family: var(--serif);
-  font-size: 0.92rem;
-  color: var(--cream-dim);
-  line-height: 1.82;
-  margin: 1rem 0 1.2rem;
-}
-.edu-note strong { color: var(--cream-mid); font-weight: 500; }
-
+.course-sub-label { font-family: var(--mono); font-size: 0.60rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-faint); padding: 0.7rem 0 0.4rem; border-top: 1px solid var(--border); }
 .course-block { margin-top: 0.7rem; }
 .course-row { border-top: 1px solid var(--border); cursor: pointer; }
 .course-row:last-child { border-bottom: 1px solid var(--border); }
-.course-hdr {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.7rem 0;
-}
-.course-nm {
-  font-family: var(--serif);
-  font-size: 0.92rem;
-  color: var(--cream-dim);
-  transition: color 0.15s;
-  line-height: 1.5;
-}
-.course-row:hover .course-nm { color: var(--cream); }
-.course-arr {
-  font-family: var(--mono);
-  font-size: 0.58rem;
-  color: var(--cream-ghost);
-  transition: transform 0.18s;
-  flex-shrink: 0;
-  margin-left: 1rem;
-}
+.course-hdr { display: flex; justify-content: space-between; align-items: center; padding: 0.65rem 0; }
+.course-nm { font-family: var(--serif); font-size: 0.9rem; color: var(--text-mid); transition: color 0.15s; line-height: 1.5; }
+.course-row:hover .course-nm { color: var(--accent); }
+.course-arr { font-family: var(--mono); font-size: 0.6rem; color: var(--text-faint); transition: transform 0.18s; flex-shrink: 0; margin-left: 1rem; }
 .course-row.open .course-arr { transform: rotate(90deg); }
-.course-body {
-  display: none;
-  padding: 0 0 1rem;
-  font-family: var(--serif);
-  font-size: 0.88rem;
-  color: var(--cream-faint);
-  line-height: 1.85;
-}
+.course-body { display: none; font-family: var(--serif); font-size: 0.88rem; color: var(--text-dim); line-height: 1.85; background: var(--bg-alt); padding: 0.8rem 1rem; border-radius: 3px; margin-bottom: 0.4rem; }
 .course-row.open .course-body { display: block; }
-.course-code {
-  font-family: var(--mono);
-  font-size: 0.68rem;
-  color: var(--cream-ghost);
-  margin-right: 0.6rem;
-  letter-spacing: 0.05em;
-}
+.course-code { font-family: var(--mono); font-size: 0.64rem; color: var(--accent); margin-right: 0.55rem; letter-spacing: 0.04em; background: var(--accent-bg); padding: 0.08rem 0.35rem; border-radius: 2px; }
 
-/* === EXPERIENCE === */
+/* EXPERIENCE */
 .exp-entry { padding: 2rem 0; border-bottom: 1px solid var(--border); }
 .exp-entry:first-child { border-top: 1px solid var(--border); }
-
-.exp-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 2rem;
-  margin-bottom: 0.15rem;
-}
-
-.exp-role {
-  font-family: var(--display);
-  font-size: 1.08rem;
-  font-weight: 500;
-  color: var(--cream);
-  letter-spacing: 0.01em;
-}
-.exp-org {
-  font-family: var(--serif);
-  font-size: 0.9rem;
-  color: var(--cream-dim);
-  font-style: italic;
-  margin-top: 0.12rem;
-}
-.exp-date {
-  font-family: var(--serif);
-  font-size: 0.75rem;
-  color: var(--cream-ghost);
-  letter-spacing: 0.04em;
-  white-space: nowrap;
-  padding-top: 0.2rem;
-  flex-shrink: 0;
-}
-.exp-ul { list-style: none; margin-top: 0.85rem; }
-.exp-ul li {
-  font-family: var(--serif);
-  font-size: 0.92rem;
-  color: var(--cream-dim);
-  padding: 0.42rem 0 0.42rem 1.3rem;
-  position: relative;
-  line-height: 1.78;
-  border-bottom: 1px solid var(--border);
-}
+.exp-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 2rem; margin-bottom: 0.15rem; }
+.exp-role { font-family: var(--display); font-size: 1.04rem; font-weight: 600; color: var(--text); }
+.exp-org { font-family: var(--serif); font-size: 0.88rem; color: var(--text-dim); font-style: italic; margin-top: 0.1rem; }
+.exp-date { font-family: var(--mono); font-size: 0.68rem; color: var(--text-faint); letter-spacing: 0.04em; white-space: nowrap; padding-top: 0.25rem; flex-shrink: 0; }
+.exp-ul { list-style: none; margin-top: 0.8rem; }
+.exp-ul li { font-family: var(--serif); font-size: 0.90rem; color: var(--text-mid); padding: 0.45rem 0 0.45rem 1.4rem; position: relative; line-height: 1.78; border-bottom: 1px solid var(--border); }
 .exp-ul li:last-child { border-bottom: none; }
-.exp-ul li::before {
-  content: '';
-  position: absolute;
-  left: 0; top: 0.95rem;
-  width: 6px; height: 1px;
-  background: var(--cream-ghost);
-}
+.exp-ul li::before { content: '–'; position: absolute; left: 0; top: 0.45rem; color: var(--text-faint); }
+.sub-label { font-family: var(--mono); font-size: 0.65rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-faint); margin: 2.8rem 0 0; padding-top: 2.2rem; border-top: 1px solid var(--border); }
 
-.sub-label {
-  font-family: var(--serif);
-  font-size: 0.7rem;
-  font-weight: 400;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--cream-ghost);
-  margin: 3rem 0 0;
-  padding-top: 2.4rem;
-  border-top: 1px solid var(--border);
-}
+/* ARTICLES */
+.articles-empty { padding: 3rem 0; font-family: var(--serif); font-size: 0.95rem; color: var(--text-faint); font-style: italic; }
 
-/* === ARTICLES === */
-.articles-empty {
-  padding: 3.5rem 0;
-  font-family: var(--serif);
-  font-size: 0.97rem;
-  color: var(--cream-ghost);
-  font-style: italic;
-}
+/* FOOTER */
+footer { border-top: 1px solid var(--border); padding: 1.4rem 2.8rem; max-width: 980px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+footer p { font-family: var(--mono); font-size: 0.68rem; color: var(--text-faint); letter-spacing: 0.06em; }
 
-/* === FOOTER === */
-footer {
-  border-top: 1px solid var(--border);
-  padding: 1.6rem 3rem;
-  max-width: 960px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-footer p {
-  font-family: var(--serif);
-  font-size: 0.72rem;
-  color: var(--cream-ghost);
-  letter-spacing: 0.07em;
-}
-
+/* RESPONSIVE */
 @media (max-width: 820px) {
   nav { padding: 0 1.2rem; }
-  .nav-name { margin-right: 0.8rem; font-size: 0.92rem; }
-  .nav-links button { padding: 0 0.55rem; font-size: 0.74rem; }
-  .wrap { padding: calc(var(--nav-h) + 2.5rem) 1.4rem 4.5rem; }
+  .nav-name { margin-right: 0.8rem; font-size: 0.9rem; }
+  .nav-links button { padding: 0 0.5rem; font-size: 0.74rem; }
+  .wrap { padding: calc(var(--nav-h) + 2.2rem) 1.4rem 4rem; }
   footer { padding: 1.2rem 1.4rem; }
-  .about-layout { grid-template-columns: 1fr; gap: 2.8rem; }
+  .about-layout { grid-template-columns: 1fr; gap: 2.4rem; }
   .sidebar { position: static; }
-  .sidebar-photo { max-width: 220px; }
+  .sidebar-photo-wrap { width: 200px; }
   .teaching-grid { grid-template-columns: repeat(2, 1fr); }
-  .edu-header, .exp-header { flex-direction: column; gap: 0.25rem; }
+  .edu-header, .exp-header { flex-direction: column; gap: 0.2rem; }
   .res-cat-grid { grid-template-columns: 1fr; }
 }
-@media (max-width: 520px) {
-  .teaching-grid { grid-template-columns: 1fr; }
-}
+@media (max-width: 520px) { .teaching-grid { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -884,7 +298,7 @@ footer p {
     <li><button onclick="showPage('experience')" id="nb-experience">Experience</button></li>
     <li><button onclick="showPage('articles')" id="nb-articles">Articles</button></li>
   </ul>
-  <a href="nikhil_cv.pdf" download class="nav-cv">CV</a>
+  <a href="nikhil_cv.pdf" download class="nav-cv">CV ↓</a>
 </nav>
 
 <!-- ABOUT -->
@@ -894,25 +308,18 @@ footer p {
     <div class="about-layout">
       <div class="sidebar">
         <div class="sidebar-photo-wrap">
-          <img
-            src="View recent photos.jpeg"
-            alt="Nikhil Rajan"
-            class="sidebar-photo"
-            onerror="this.style.display='none'; document.getElementById('photo-fallback').style.display='flex';"
-          />
+          <img src="View recent photos.jpeg" alt="Nikhil Rajan" class="sidebar-photo"
+            onerror="this.style.display='none'; document.getElementById('photo-fallback').style.display='flex';"/>
           <div class="photo-placeholder" id="photo-fallback" style="display:none;">
-            <span>Nikhil Rajan<br/>Photo<br/>(place image here)</span>
+            <span>Nikhil Rajan<br/>Photo</span>
           </div>
         </div>
-
         <div class="sidebar-name">Nikhil Rajan</div>
         <div class="sidebar-deg">
-          BA Economics, Madras School of Economics (2023 to 2026)<br/>
-          MSc Financial Statistics &amp; Mathematics, LSE (2026 to 2027, incoming)
+          BA Economics, <a href="https://mse.ac.in/" target="_blank" class="inst-link">Madras School of Economics</a> (2023–2026)<br/>
+          MSc Financial Statistics &amp; Mathematics, <a href="https://www.lse.ac.uk/" target="_blank" class="inst-link">LSE</a> (2026–2027, incoming)
         </div>
-
         <div class="sidebar-rule"></div>
-
         <div class="contact-block">
           <div class="contact-row">
             <span class="clabel">Location</span>
@@ -927,30 +334,26 @@ footer p {
             <span class="cval"><a href="https://linkedin.com/in/nikhil-rajan-7bb37a360" target="_blank">nikhil-rajan-7bb37a360</a></span>
           </div>
         </div>
-
         <div class="sidebar-rule"></div>
-
-        <div class="clabel" style="margin-bottom:0.7rem;">Research Interests</div>
-        <div class="interest-chips" style="margin-bottom:1.4rem;">
+        <div class="clabel" style="margin-bottom:0.6rem;">Research Interests</div>
+        <div style="margin-bottom:1.3rem;">
           <span class="chip">Stochastic Modelling</span>
           <span class="chip">Derivative Pricing</span>
           <span class="chip">Credit Risk</span>
           <span class="chip">Market Microstructure</span>
           <span class="chip">Welfare Economics</span>
         </div>
-
         <div class="sidebar-rule"></div>
-
-        <div class="clabel" style="margin-bottom:0.5rem;">Chess</div>
-        <div class="cval" style="font-size:0.83rem;">FIDE-rated (~1500) &middot; District and State representative</div>
+        <div class="clabel" style="margin-bottom:0.45rem;">Chess</div>
+        <div class="cval" style="font-size:0.82rem;color:var(--text-dim);">FIDE-rated (~1500) &middot; District and State representative</div>
       </div>
 
       <div class="about-main">
         <div class="about-bio">
-          <p>I am a final-year undergraduate at the Madras School of Economics, heading to post graduation in quant finance at the London School of Economics. What caught my attention was seeing measure-theoretic ideas, especially risk-neutral expectations, show up in actual pricing formulas rather than staying abstract.</p>
+          <p>I am a final-year undergraduate at the <a href="https://mse.ac.in/" target="_blank" class="inst-link">Madras School of Economics</a>, heading to post graduation in quant finance at the <a href="https://www.lse.ac.uk/" target="_blank" class="inst-link">London School of Economics</a>. What caught my attention was seeing measure-theoretic ideas, especially risk-neutral expectations, show up in actual pricing formulas rather than staying abstract.</p>
           <p>Since then, I have been building and testing models around that: simulating GBM paths, pricing options with Monte Carlo, and checking how sensitive outputs are to discretisation, volatility, and parameter shifts. Most of this I have implemented in Python and C++, focusing less on getting a number and more on how stable that number actually is.</p>
           <p>I am most interested in the point a model stops giving the same answer once you tweak things like the time step, volatility, or even the scheme you are using. My current projects span market microstructure (liquidity regimes as Markov chains), credit risk (reconstructing the Jarrow-Lando-Turnbull framework from first principles), financial contagion between the S&amp;P 500 and Nifty 50, and a dynamic welfare analysis of sin taxation using Markov consumption models calibrated to NSSO data.</p>
-          <p>At Madras School of Economics, I have held 7 teaching assistantships covering stochastic processes, game theory, time series analysis, microeconomics, multivariable calculus, and finance. I maintain a CGPA of 9.66 and have been on the Dean's List in every graded semester.</p>
+          <p>At <a href="https://mse.ac.in/" target="_blank" class="inst-link">Madras School of Economics</a>, I have held 7 teaching assistantships covering stochastic processes, game theory, time series analysis, microeconomics, multivariable calculus, and finance. I maintain a CGPA of 9.66 and have been on the Dean's List in every graded semester.</p>
           <p>Outside of economics and finance, I am a FIDE-rated chess player who has represented Chennai District at state level. I am drawn to the kind of mathematics and statistics that surprises you.</p>
         </div>
       </div>
@@ -966,63 +369,40 @@ footer p {
 <div class="page" id="page-research">
   <div class="wrap">
     <div class="section-label">Research</div>
-
-    <!-- Landing: two category cards -->
     <div id="research-landing">
       <div class="res-cat-grid">
-
         <div class="res-cat-card" onclick="showResearchCat('finance')">
           <div class="res-cat-num">I &nbsp;&middot;&nbsp; Mathematical Finance</div>
           <div class="res-cat-title">Mathematical Finance</div>
           <div class="res-cat-papers">
-            <div class="res-cat-paper">
-              <span class="res-cat-paper-num">01</span>
-              Liquidity Regimes and Optimal Execution
-            </div>
-            <div class="res-cat-paper">
-              <span class="res-cat-paper-num">02</span>
-              Credit Rating Transitions and Defaultable Bonds
-            </div>
-            <div class="res-cat-paper">
-              <span class="res-cat-paper-num">03</span>
-              Financial Contagion: S&amp;P 500 and Nifty 50
-            </div>
+            <div class="res-cat-paper"><span class="res-cat-paper-num">01</span>Liquidity Regimes and Optimal Execution</div>
+            <div class="res-cat-paper"><span class="res-cat-paper-num">02</span>Credit Rating Transitions and Defaultable Bonds</div>
+            <div class="res-cat-paper"><span class="res-cat-paper-num">03</span>Financial Contagion: S&amp;P 500 and Nifty 50</div>
           </div>
           <div class="res-cat-footer">
             <span class="res-cat-count">3 papers</span>
             <span class="res-cat-arrow">&#8594;</span>
           </div>
         </div>
-
         <div class="res-cat-card" onclick="showResearchCat('economics')">
           <div class="res-cat-num">II &nbsp;&middot;&nbsp; Mathematical Economics</div>
           <div class="res-cat-title">Mathematical Economics</div>
           <div class="res-cat-papers">
-            <div class="res-cat-paper">
-              <span class="res-cat-paper-num">01</span>
-              Optimal Sin Taxation under Stochastic Consumption
-            </div>
-            <div class="res-cat-paper">
-              <span class="res-cat-paper-num">02</span>
-              Labour Market Effects of MGNREGA
-            </div>
+            <div class="res-cat-paper"><span class="res-cat-paper-num">01</span>Optimal Sin Taxation under Stochastic Consumption</div>
+            <div class="res-cat-paper"><span class="res-cat-paper-num">02</span>Labour Market Effects of MGNREGA</div>
           </div>
           <div class="res-cat-footer">
             <span class="res-cat-count">2 papers</span>
             <span class="res-cat-arrow">&#8594;</span>
           </div>
         </div>
-
       </div>
     </div>
-
-    <!-- Category view: projects -->
     <div id="research-cat-view" style="display:none;">
-      <button class="d-back" id="res-cat-back-btn" onclick="showResearchLanding()">&#8592; All Research</button>
+      <button class="d-back" onclick="showResearchLanding()">&#8592; All Research</button>
       <div id="res-cat-label-display"></div>
       <div class="proj-list" id="research-cat-projects"></div>
     </div>
-
   </div>
   <footer><p>Nikhil Rajan</p><p>nikhilrajan0502@gmail.com</p></footer>
 </div>
@@ -1039,9 +419,8 @@ footer p {
 <div class="page" id="page-teaching">
   <div class="wrap">
     <div class="section-label">Teaching</div>
-    <p class="teaching-intro">Seven teaching assistantships at Madras School of Economics, spanning mathematics, probability, economics, and finance. Click any card to read what was covered.</p>
+    <p class="teaching-intro">Seven teaching assistantships at <a href="https://mse.ac.in/" target="_blank" class="inst-link">Madras School of Economics</a>, spanning mathematics, probability, economics, and finance. Click any card to read what was covered.</p>
     <div class="teaching-grid">
-
       <div class="ta-card" onclick="showTeaching('ts26')">
         <div class="ta-card-icon ta-bg-1"><span class="ta-icon-text">&#x223F;</span></div>
         <div class="ta-card-body">
@@ -1051,7 +430,6 @@ footer p {
           <div class="ta-card-cta">View Topics &#8594;</div>
         </div>
       </div>
-
       <div class="ta-card" onclick="showTeaching('gt26')">
         <div class="ta-card-icon ta-bg-2"><span class="ta-icon-text">&#x25B7;&#x25B7;</span></div>
         <div class="ta-card-body">
@@ -1061,7 +439,6 @@ footer p {
           <div class="ta-card-cta">View Topics &#8594;</div>
         </div>
       </div>
-
       <div class="ta-card" onclick="showTeaching('sp25')">
         <div class="ta-card-icon ta-bg-3"><span class="ta-icon-text">&#x03A9;</span></div>
         <div class="ta-card-body">
@@ -1071,7 +448,6 @@ footer p {
           <div class="ta-card-cta">View Topics &#8594;</div>
         </div>
       </div>
-
       <div class="ta-card" onclick="showTeaching('micro25')">
         <div class="ta-card-icon ta-bg-4"><span class="ta-icon-text">&#x03C3;</span></div>
         <div class="ta-card-body">
@@ -1081,7 +457,6 @@ footer p {
           <div class="ta-card-cta">View Topics &#8594;</div>
         </div>
       </div>
-
       <div class="ta-card" onclick="showTeaching('mitx25')">
         <div class="ta-card-icon ta-bg-5"><span class="ta-icon-text">&#x221E;</span></div>
         <div class="ta-card-body">
@@ -1091,7 +466,6 @@ footer p {
           <div class="ta-card-cta">View Topics &#8594;</div>
         </div>
       </div>
-
       <div class="ta-card" onclick="showTeaching('calc25')">
         <div class="ta-card-icon ta-bg-6"><span class="ta-icon-text">&#x2207;</span></div>
         <div class="ta-card-body">
@@ -1101,7 +475,6 @@ footer p {
           <div class="ta-card-cta">View Topics &#8594;</div>
         </div>
       </div>
-
       <div class="ta-card" onclick="showTeaching('calc24')">
         <div class="ta-card-icon ta-bg-7"><span class="ta-icon-text">&#x222B;</span></div>
         <div class="ta-card-body">
@@ -1111,7 +484,6 @@ footer p {
           <div class="ta-card-cta">View Topics &#8594;</div>
         </div>
       </div>
-
     </div>
   </div>
   <footer><p>Nikhil Rajan</p><p>nikhilrajan0502@gmail.com</p></footer>
@@ -1129,185 +501,80 @@ footer p {
 <div class="page" id="page-education">
   <div class="wrap">
     <div class="section-label">Education</div>
-
-    <!-- LSE -->
     <div class="edu-entry">
       <div class="edu-header">
         <div>
-          <div class="edu-school">London School of Economics and Political Science</div>
+          <div class="edu-school"><a href="https://www.lse.ac.uk/" target="_blank" class="inst-link">London School of Economics and Political Science</a></div>
           <div class="edu-deg">MSc Financial Statistics &amp; Mathematics</div>
         </div>
-        <div class="edu-meta">London, United Kingdom &middot; 2026 to 2027</div>
+        <div class="edu-meta">London, United Kingdom &middot; 2026–2027</div>
       </div>
-
       <div class="course-block">
-
-        <!-- MATHEMATICAL FINANCE FIRST -->
-        <div style="font-family:var(--serif);font-size:0.66rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--cream-ghost);padding:0.7rem 0 0.4rem;border-top:1px solid var(--border);">Mathematical Finance</div>
-
+        <div class="course-sub-label">Mathematical Finance</div>
         <div class="course-row" onclick="this.classList.toggle('open')">
-          <div class="course-hdr">
-            <span class="course-nm"><span class="course-code">ST409</span>Stochastic Calculus</span>
-            <span class="course-arr">&#9658;</span>
-          </div>
-          <div class="course-body">
-            Martingales, optional stopping theorem. Poisson processes. BM construction, quadratic variation, the It&ocirc; integral. SDEs and diffusions &mdash; It&ocirc;'s formula, Girsanov's theorem. Feynman-Kac connecting SDEs to PDEs. Option pricing under the risk-neutral measure, ruin theory, interest rate models.
-          </div>
+          <div class="course-hdr"><span class="course-nm"><span class="course-code">ST409</span>Stochastic Calculus</span><span class="course-arr">&#9658;</span></div>
+          <div class="course-body">Martingales, optional stopping theorem. Poisson processes. BM construction, quadratic variation, the Itô integral. SDEs and diffusions — Itô's formula, Girsanov's theorem. Feynman-Kac connecting SDEs to PDEs. Option pricing under the risk-neutral measure, ruin theory, interest rate models.</div>
         </div>
-
         <div class="course-row" onclick="this.classList.toggle('open')">
-          <div class="course-hdr">
-            <span class="course-nm"><span class="course-code">MA415</span>Mathematics of the Black and Scholes Theory</span>
-            <span class="course-arr">&#9658;</span>
-          </div>
-          <div class="course-body">
-            Risk-neutral valuation built from the ground up. Binomial model first: replication portfolios, no-arbitrage, martingale measures. Then continuous time: European claims as risk-neutral expectations, BS PDE via self-financing portfolio arguments, Feynman-Kac and the connection to the heat equation. Barrier options, American options, path-dependent claims. Implied vol and stochastic vol models. FX market extensions.
-          </div>
+          <div class="course-hdr"><span class="course-nm"><span class="course-code">MA415</span>Mathematics of the Black and Scholes Theory</span><span class="course-arr">&#9658;</span></div>
+          <div class="course-body">Risk-neutral valuation built from the ground up. Binomial model first: replication portfolios, no-arbitrage, martingale measures. Then continuous time: European claims as risk-neutral expectations, BS PDE via self-financing portfolio arguments, Feynman-Kac and the connection to the heat equation. Barrier options, American options, path-dependent claims. Implied vol and stochastic vol models. FX market extensions.</div>
         </div>
-
         <div class="course-row" onclick="this.classList.toggle('open')">
-          <div class="course-hdr">
-            <span class="course-nm"><span class="course-code">ST461</span>Mathematics of Market Microstructure</span>
-            <span class="course-arr">&#9658;</span>
-          </div>
-          <div class="course-body">
-            Part I: HJB equation and dynamic programming under uncertainty. Inventory models and price impact. Optimal execution &mdash; Almgren-Chriss and Obizhaeva-Wang frameworks. Avellaneda-Stoikov limit order book model. Part II: asymmetric information in continuous time. Stochastic and Kalman filtering. Kyle model and extensions, Glosten-Milgrom, Glosten's electronic LOB. Part III: DEXes, AMMs, dark pools.
-          </div>
+          <div class="course-hdr"><span class="course-nm"><span class="course-code">ST461</span>Mathematics of Market Microstructure</span><span class="course-arr">&#9658;</span></div>
+          <div class="course-body">Part I: HJB equation and dynamic programming under uncertainty. Inventory models and price impact. Optimal execution — Almgren-Chriss and Obizhaeva-Wang frameworks. Avellaneda-Stoikov limit order book model. Part II: asymmetric information in continuous time. Stochastic and Kalman filtering. Kyle model and extensions, Glosten-Milgrom, Glosten's electronic LOB. Part III: DEXes, AMMs, dark pools.</div>
         </div>
-
         <div class="course-row" onclick="this.classList.toggle('open')">
-          <div class="course-hdr">
-            <span class="course-nm"><span class="course-code">MA417</span>Computational Methods in Finance</span>
-            <span class="course-arr">&#9658;</span>
-          </div>
-          <div class="course-body">
-            RNG and Monte Carlo basics. Variance reduction: antithetic variates, control variates, importance sampling, quasi-MC. SDE simulation via Euler-Maruyama and Milstein schemes. Finite-difference methods for the BS PDE &mdash; explicit and implicit schemes, stability and convergence.
-          </div>
+          <div class="course-hdr"><span class="course-nm"><span class="course-code">MA417</span>Computational Methods in Finance</span><span class="course-arr">&#9658;</span></div>
+          <div class="course-body">RNG and Monte Carlo basics. Variance reduction: antithetic variates, control variates, importance sampling, quasi-MC. SDE simulation via Euler-Maruyama and Milstein schemes. Finite-difference methods for the BS PDE — explicit and implicit schemes, stability and convergence.</div>
         </div>
-
         <div class="course-row" onclick="this.classList.toggle('open')">
-          <div class="course-hdr">
-            <span class="course-nm"><span class="course-code">ST463</span>Stochastic Simulation and Calibration</span>
-            <span class="course-arr">&#9658;</span>
-          </div>
-          <div class="course-body">
-            Monte Carlo and process simulation. GANs for risk management. GLMs as a bridge to deep learning, applied to insurance pricing. Model calibration. RL for hedging and swing option pricing. Main references: Glasserman and Sutton-Barto.
-          </div>
+          <div class="course-hdr"><span class="course-nm"><span class="course-code">ST463</span>Stochastic Simulation and Calibration</span><span class="course-arr">&#9658;</span></div>
+          <div class="course-body">Monte Carlo and process simulation. GANs for risk management. GLMs as a bridge to deep learning, applied to insurance pricing. Model calibration. RL for hedging and swing option pricing. Main references: Glasserman and Sutton-Barto.</div>
         </div>
-
         <div class="course-row" onclick="this.classList.toggle('open')">
-          <div class="course-hdr">
-            <span class="course-nm"><span class="course-code">MA435</span>Deep Learning in Finance</span>
-            <span class="course-arr">&#9658;</span>
-          </div>
-          <div class="course-body">
-            Deep learning for portfolio optimisation, optimal execution, derivative pricing and hedging, vol model calibration. ERM, bias-complexity tradeoff. Feedforward NNs, universal approximation, SGD, backprop, regularisation, RNNs, CNNs. Python throughout. Goodfellow et al. and Horvath et al. as main references.
-          </div>
+          <div class="course-hdr"><span class="course-nm"><span class="course-code">MA435</span>Deep Learning in Finance</span><span class="course-arr">&#9658;</span></div>
+          <div class="course-body">Deep learning for portfolio optimisation, optimal execution, derivative pricing and hedging, vol model calibration. ERM, bias-complexity tradeoff. Feedforward NNs, universal approximation, SGD, backprop, regularisation, RNNs, CNNs. Python throughout. Goodfellow et al. and Horvath et al. as main references.</div>
         </div>
-
-        <!-- STATISTICAL FINANCE SECOND -->
-        <div style="font-family:var(--serif);font-size:0.66rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--cream-ghost);padding:1.2rem 0 0.4rem;border-top:1px solid var(--border);margin-top:0.4rem;">Statistical Finance</div>
-
+        <div class="course-sub-label" style="border-top:1px solid var(--border);margin-top:0.4rem;">Statistical Finance</div>
         <div class="course-row" onclick="this.classList.toggle('open')">
-          <div class="course-hdr">
-            <span class="course-nm"><span class="course-code">ST425</span>Statistical Inference: Principles, Methods and Computation</span>
-            <span class="course-arr">&#9658;</span>
-          </div>
-          <div class="course-body">
-            MLE, score functions, Fisher information, Cram&eacute;r-Rao. Bayesian inference &mdash; conjugate priors, MCMC (Gibbs sampler, Metropolis-Hastings). Bootstrap, model selection via AIC/BIC and cross-validation, elements of nonparametric inference. R throughout.
-          </div>
+          <div class="course-hdr"><span class="course-nm"><span class="course-code">ST425</span>Statistical Inference: Principles, Methods and Computation</span><span class="course-arr">&#9658;</span></div>
+          <div class="course-body">MLE, score functions, Fisher information, Cramér-Rao. Bayesian inference — conjugate priors, MCMC (Gibbs sampler, Metropolis-Hastings). Bootstrap, model selection via AIC/BIC and cross-validation, elements of nonparametric inference. R throughout.</div>
         </div>
-
         <div class="course-row" onclick="this.classList.toggle('open')">
-          <div class="course-hdr">
-            <span class="course-nm"><span class="course-code">ST436</span>Financial Statistics</span>
-            <span class="course-arr">&#9658;</span>
-          </div>
-          <div class="course-body">
-            Financial data in R. ARCH-type models and volatility. Markowitz portfolio theory and CAPM. ML in financial forecasting. VaR. Ends with a trading case study.
-          </div>
+          <div class="course-hdr"><span class="course-nm"><span class="course-code">ST436</span>Financial Statistics</span><span class="course-arr">&#9658;</span></div>
+          <div class="course-body">Financial data in R. ARCH-type models and volatility. Markowitz portfolio theory and CAPM. ML in financial forecasting. VaR. Ends with a trading case study.</div>
         </div>
-
         <div class="course-row" onclick="this.classList.toggle('open')">
-          <div class="course-hdr">
-            <span class="course-nm"><span class="course-code">ST458</span>Machine Learning in Finance</span>
-            <span class="course-arr">&#9658;</span>
-          </div>
-          <div class="course-body">
-            Extension of ST436. Advanced portfolio optimisation, factor models, large-portfolio constraints, algorithmic trading, deep learning for prediction. R. Main references: Hastie-Tibshirani-Friedman, Dixon-Halperin-Bilokon, Jansen.
-          </div>
+          <div class="course-hdr"><span class="course-nm"><span class="course-code">ST458</span>Machine Learning in Finance</span><span class="course-arr">&#9658;</span></div>
+          <div class="course-body">Extension of ST436. Advanced portfolio optimisation, factor models, large-portfolio constraints, algorithmic trading, deep learning for prediction. R. Main references: Hastie-Tibshirani-Friedman, Dixon-Halperin-Bilokon, Jansen.</div>
         </div>
-
       </div>
     </div>
 
-    <!-- MSE -->
     <div class="edu-entry">
       <div class="edu-header">
         <div>
-          <div class="edu-school">Madras School of Economics</div>
+          <div class="edu-school"><a href="https://mse.ac.in/" target="_blank" class="inst-link">Madras School of Economics</a></div>
           <div class="edu-deg">BA (Honours) Economics</div>
         </div>
-        <div class="edu-meta">Chennai, India &middot; 2023 to 2026</div>
+        <div class="edu-meta">Chennai, India &middot; 2023–2026</div>
       </div>
       <div class="edu-note">
         <strong>CGPA: 9.66 / 10.0</strong> &nbsp;&middot;&nbsp; Dean's List: Semester II (9.9), Semester III (10.0), Semester IV (9.77)
       </div>
       <div class="course-block">
-
-        <div class="course-row" onclick="this.classList.toggle('open')">
-          <div class="course-hdr"><span class="course-nm">Stochastic Processes</span><span class="course-arr">&#9658;</span></div>
-          <div class="course-body">Markov chains in discrete and continuous time &mdash; classification of states, stationary distributions. Martingales. BM, Poisson processes. First-passage times and hitting probabilities.</div>
-        </div>
-
-        <div class="course-row" onclick="this.classList.toggle('open')">
-          <div class="course-hdr"><span class="course-nm">Real Analysis</span><span class="course-arr">&#9658;</span></div>
-          <div class="course-body">Sequences, series, continuity, differentiability, Riemann integration. Metric spaces. Convergence theorems.</div>
-        </div>
-
-        <div class="course-row" onclick="this.classList.toggle('open')">
-          <div class="course-hdr"><span class="course-nm">Advanced Differential Equations</span><span class="course-arr">&#9658;</span></div>
-          <div class="course-body">ODEs and PDEs, BVPs, phase-plane analysis, Fourier methods. Applications to continuous-time financial and economic models.</div>
-        </div>
-
-        <div class="course-row" onclick="this.classList.toggle('open')">
-          <div class="course-hdr"><span class="course-nm">Linear Algebra</span><span class="course-arr">&#9658;</span></div>
-          <div class="course-body">Vector spaces, eigendecomposition, matrix factorisation, linear transformations. Transition matrices, PCA, factor models.</div>
-        </div>
-
-        <div class="course-row" onclick="this.classList.toggle('open')">
-          <div class="course-hdr"><span class="course-nm">Time Series Analysis</span><span class="course-arr">&#9658;</span></div>
-          <div class="course-body">Hamilton's TSA. ARMA, ARIMA, VAR. Unit roots and cointegration, spectral methods.</div>
-        </div>
-
-        <div class="course-row" onclick="this.classList.toggle('open')">
-          <div class="course-hdr"><span class="course-nm">Econometrics</span><span class="course-arr">&#9658;</span></div>
-          <div class="course-body">OLS, GLS, IV, panel data, treatment effects. Causal inference. Stata.</div>
-        </div>
-
-        <div class="course-row" onclick="this.classList.toggle('open')">
-          <div class="course-hdr"><span class="course-nm">Game Theory</span><span class="course-arr">&#9658;</span></div>
-          <div class="course-body">Normal and extensive form games. Nash equilibrium, SPNE. Mechanism design, auctions. Applications to IO and policy.</div>
-        </div>
-
-        <div class="course-row" onclick="this.classList.toggle('open')">
-          <div class="course-hdr"><span class="course-nm">Money and Banking</span><span class="course-arr">&#9658;</span></div>
-          <div class="course-body">Monetary theory, central banking, credit creation, interest rates, policy transmission.</div>
-        </div>
-
-        <div class="course-row" onclick="this.classList.toggle('open')">
-          <div class="course-hdr"><span class="course-nm">Statistics</span><span class="course-arr">&#9658;</span></div>
-          <div class="course-body">Probability, distributions, hypothesis testing, MLE, Bayesian inference, statistical computing.</div>
-        </div>
-
-        <div class="course-row" onclick="this.classList.toggle('open')">
-          <div class="course-hdr"><span class="course-nm">Data Science (Python and MATLAB)</span><span class="course-arr">&#9658;</span></div>
-          <div class="course-body">Data wrangling, visualisation, numerical optimisation, simulation, intro ML. Python and MATLAB.</div>
-        </div>
-
+        <div class="course-row" onclick="this.classList.toggle('open')"><div class="course-hdr"><span class="course-nm">Stochastic Processes</span><span class="course-arr">&#9658;</span></div><div class="course-body">Markov chains in discrete and continuous time — classification of states, stationary distributions. Martingales. BM, Poisson processes. First-passage times and hitting probabilities.</div></div>
+        <div class="course-row" onclick="this.classList.toggle('open')"><div class="course-hdr"><span class="course-nm">Real Analysis</span><span class="course-arr">&#9658;</span></div><div class="course-body">Sequences, series, continuity, differentiability, Riemann integration. Metric spaces. Convergence theorems.</div></div>
+        <div class="course-row" onclick="this.classList.toggle('open')"><div class="course-hdr"><span class="course-nm">Advanced Differential Equations</span><span class="course-arr">&#9658;</span></div><div class="course-body">ODEs and PDEs, BVPs, phase-plane analysis, Fourier methods. Applications to continuous-time financial and economic models.</div></div>
+        <div class="course-row" onclick="this.classList.toggle('open')"><div class="course-hdr"><span class="course-nm">Linear Algebra</span><span class="course-arr">&#9658;</span></div><div class="course-body">Vector spaces, eigendecomposition, matrix factorisation, linear transformations. Transition matrices, PCA, factor models.</div></div>
+        <div class="course-row" onclick="this.classList.toggle('open')"><div class="course-hdr"><span class="course-nm">Time Series Analysis</span><span class="course-arr">&#9658;</span></div><div class="course-body">Hamilton's TSA. ARMA, ARIMA, VAR. Unit roots and cointegration, spectral methods.</div></div>
+        <div class="course-row" onclick="this.classList.toggle('open')"><div class="course-hdr"><span class="course-nm">Econometrics</span><span class="course-arr">&#9658;</span></div><div class="course-body">OLS, GLS, IV, panel data, treatment effects. Causal inference. Stata.</div></div>
+        <div class="course-row" onclick="this.classList.toggle('open')"><div class="course-hdr"><span class="course-nm">Game Theory</span><span class="course-arr">&#9658;</span></div><div class="course-body">Normal and extensive form games. Nash equilibrium, SPNE. Mechanism design, auctions. Applications to IO and policy.</div></div>
+        <div class="course-row" onclick="this.classList.toggle('open')"><div class="course-hdr"><span class="course-nm">Money and Banking</span><span class="course-arr">&#9658;</span></div><div class="course-body">Monetary theory, central banking, credit creation, interest rates, policy transmission.</div></div>
+        <div class="course-row" onclick="this.classList.toggle('open')"><div class="course-hdr"><span class="course-nm">Statistics</span><span class="course-arr">&#9658;</span></div><div class="course-body">Probability, distributions, hypothesis testing, MLE, Bayesian inference, statistical computing.</div></div>
+        <div class="course-row" onclick="this.classList.toggle('open')"><div class="course-hdr"><span class="course-nm">Data Science (Python and MATLAB)</span><span class="course-arr">&#9658;</span></div><div class="course-body">Data wrangling, visualisation, numerical optimisation, simulation, intro ML. Python and MATLAB.</div></div>
       </div>
     </div>
-
   </div>
   <footer><p>Nikhil Rajan</p><p>nikhilrajan0502@gmail.com</p></footer>
 </div>
@@ -1316,28 +583,26 @@ footer p {
 <div class="page" id="page-experience">
   <div class="wrap">
     <div class="section-label">Experience</div>
-
     <div class="exp-entry">
       <div class="exp-header">
         <div>
           <div class="exp-role">Research Intern</div>
-          <div class="exp-org">Madras School of Economics &nbsp;&middot;&nbsp; Advisor: Dr. Naveen Srinivasan</div>
+          <div class="exp-org"><a href="https://mse.ac.in/" target="_blank" class="inst-link">Madras School of Economics</a> &nbsp;&middot;&nbsp; Advisor: Dr. Naveen Srinivasan</div>
         </div>
-        <div class="exp-date">December 2024 to January 2025</div>
+        <div class="exp-date">December 2024 – January 2025</div>
       </div>
       <ul class="exp-ul">
         <li>Studied horizontal innovation and knowledge spillovers within the Romer endogenous growth model using analytical and numerical methods, focusing on long-run productivity implications of innovation intensity.</li>
         <li>Developed micro-founded models and ran calibrated simulations to examine how the rate and direction of knowledge accumulation shapes steady-state growth trajectories.</li>
       </ul>
     </div>
-
     <div class="exp-entry">
       <div class="exp-header">
         <div>
           <div class="exp-role">Finance Intern</div>
           <div class="exp-org">V MACS Yosaney &nbsp;&middot;&nbsp; Chennai, India</div>
         </div>
-        <div class="exp-date">May 2024 to July 2024</div>
+        <div class="exp-date">May 2024 – July 2024</div>
       </div>
       <ul class="exp-ul">
         <li>Built an automated tool to generate profit and loss statements, balance sheets, and supporting schedules, improving reporting speed and accuracy across client accounts.</li>
@@ -1345,9 +610,7 @@ footer p {
         <li>Worked directly with clients on financial reports and automation projects.</li>
       </ul>
     </div>
-
     <div class="sub-label">Other</div>
-
     <div class="exp-entry" style="border-top:1px solid var(--border);">
       <div class="exp-header">
         <div>
@@ -1362,7 +625,6 @@ footer p {
         <li>Represented Chennai District in Tamil Nadu State Under-17 Open (2018)</li>
       </ul>
     </div>
-
     <div class="exp-entry">
       <div class="exp-header">
         <div>
@@ -1374,7 +636,6 @@ footer p {
         <li>Developed an education-tech application under India's first project-based learning programme, run jointly by IIT Madras, Rhapsody Plus, Intellect, and UC San Diego.</li>
       </ul>
     </div>
-
   </div>
   <footer><p>Nikhil Rajan</p><p>nikhilrajan0502@gmail.com</p></footer>
 </div>
@@ -1383,7 +644,7 @@ footer p {
 <div class="page" id="page-articles">
   <div class="wrap">
     <div class="section-label">Articles</div>
-    <p style="font-size:1rem;color:var(--cream-dim);margin-bottom:0.6rem;font-style:italic;font-family:var(--serif);">Notes and short pieces on topics worth writing about.</p>
+    <p style="font-size:1rem;color:var(--text-dim);margin-bottom:0.6rem;font-style:italic;font-family:var(--serif);">Notes and short pieces on topics worth writing about.</p>
     <div class="articles-empty">No articles yet. Check back later.</div>
   </div>
   <footer><p>Nikhil Rajan</p><p>nikhilrajan0502@gmail.com</p></footer>
@@ -1394,121 +655,62 @@ var _researchCat = null;
 
 var PROJECTS = {
   liquidity: {
-    cat: 'Mathematical Finance &middot; F &middot; 01',
-    catKey: 'finance',
+    cat: 'Mathematical Finance &middot; F &middot; 01', catKey: 'finance',
     title: 'Liquidity Regimes as a Markov Chain and Optimal Execution as a Markov Decision Process',
-    status: 'Working Paper', statusClass: 'status-wp',
-    date: '2024 to 2025',
+    status: 'Working Paper', statusClass: 'status-wp', date: '2024–2025',
     desc: 'Discrete-time Markov chain model of market liquidity regimes combined with a formal MDP framework for optimal trade execution. The optimal policy is state-dependent: execute aggressively in high-liquidity states, conservatively in stressed states.',
     tags: ['Markov Chains','MDP','Optimal Execution','Market Microstructure','Stochastic Control','Regime Switching'],
     body: '<h4>Motivation</h4><p>The classical Almgren-Chriss framework for optimal execution treats market impact as a deterministic function of trade rate, implicitly assuming that liquidity conditions are stationary throughout a liquidation schedule. This assumption fails in practice: order-book depth, bid-ask spreads, and volume profiles fluctuate substantially over intraday and multi-day horizons, exhibiting persistence, clustering, and regime-like behaviour. The central question is whether one can embed a probabilistic model of liquidity states directly into the execution problem, and what the optimal policy looks like when the trader must account for future regime transitions.</p><h4>Liquidity Regime Model</h4><p>Market liquidity is characterised as a finite-state, discrete-time, time-homogeneous Markov chain across three regimes: High liquidity (H) with tight bid-ask spread and deep order book; Normal liquidity (N) with intermediate spread and baseline cost structure; and Stressed liquidity (L) with wide spread, thin book, and high price impact.</p><div class="math-block">P = [ p_HH  p_HN  p_HL ]\n    [ p_NH  p_NN  p_NL ]\n    [ p_LH  p_LN  p_LL ]\n\npi = pi * P,  sum(pi_i) = 1\n\nMean first-passage time from state i to j:\n  m_ij = 1 + sum_{k != j} p_ik * m_kj</div><h4>Optimal Execution as an MDP</h4><p>The trader holds Q shares and must execute over T discrete periods. The state is (remaining inventory q_t, current regime s_t, time remaining tau_t). The action is the number of shares to trade x_t in [0, q_t]. The reward is execution proceeds net of transaction costs, with regime-dependent impact coefficients.</p><div class="math-block">Reward: r(q,s,x) = x * (P_mid - lambda(s) * x)\n  where lambda(H) &lt; lambda(N) &lt; lambda(L)\n\nValue function:\n  V(q,s,tau) = max_{x in [0,q]} { r(q,s,x)\n             + sum_{s\'} p_{ss\'} * V(q-x, s\', tau-1) }</div><h4>Key Results</h4><ul><li>The optimal policy is non-monotone in inventory: under deadline pressure the trader executes regardless of regime, while with sufficient time, waiting in the stressed state is optimal with positive probability.</li><li>The value function is strictly concave in remaining inventory and strictly decreasing in regime-stress level.</li><li>The welfare cost of ignoring regime structure is quantified and shown to be economically significant under calibrated parameters.</li></ul>'
   },
   credit: {
-    cat: 'Mathematical Finance &middot; F &middot; 02',
-    catKey: 'finance',
+    cat: 'Mathematical Finance &middot; F &middot; 02', catKey: 'finance',
     title: 'Credit Rating Transitions and Risk-Neutral Pricing of Defaultable Bonds',
-    status: 'Complete', statusClass: 'status-done',
-    date: '2024',
+    status: 'Complete', statusClass: 'status-done', date: '2024',
     desc: 'Finite-state Markov chain model of credit migration with an absorbing default state. Reconstructs the JLT (1997) framework from first principles; derives risk-neutral bond prices, credit spreads, and hedging strategies.',
     tags: ['Credit Risk','Markov Chains','Risk-Neutral Pricing','JLT Framework','Hitting Times','Credit Spreads'],
     body: '<h4>Motivation</h4><p>The Jarrow-Lando-Turnbull (1997) framework characterises the default event not as a structural consequence of asset value falling below a threshold, but as the absorption of a Markov chain into a default state. This project reconstructs the full JLT framework from first principles, derives the key pricing equations independently, and examines the relationship between physical and risk-neutral transition matrices.</p><h4>The Credit Rating Markov Chain</h4><p>Credit ratings are modelled as a finite-state, time-homogeneous Markov chain on S = {AAA, AA, A, BBB, BB, B, CCC, D}, where D (default) is the unique absorbing state.</p><div class="math-block">Fundamental matrix: N = (I - Q)^{-1}\n  where Q = sub-matrix of P restricted to non-default states\n\nExpected absorption time from state i: t_i = sum_j N_{ij}\n\nDefault probability before period n from state i:\n  F_i(n) = 1 - sum_{j != D} [P^n]_{ij}</div><h4>Risk-Neutral Pricing</h4><div class="math-block">V_i(n) = e^{-rn} [ (1 - delta) * S_tilde_i(n) + delta ]\n\nCredit spread: cs_i(n) = -(1/n) * ln[ (1-delta)*S_tilde_i(n) + delta ]</div><h4>Key Results</h4><ul><li>Credit spreads are increasing in ratings distance from AAA and increasing in maturity for investment-grade ratings, consistent with empirical yield curve shapes.</li><li>The model matches the broad shape of historical investment-grade spreads, though it underestimates short-term spreads for speculative-grade issuers.</li><li>Hedging strategies derived by computing sensitivity of bond prices to shifts in the transition matrix.</li></ul>'
   },
   contagion: {
-    cat: 'Mathematical Finance &middot; F &middot; 03',
-    catKey: 'finance',
+    cat: 'Mathematical Finance &middot; F &middot; 03', catKey: 'finance',
     title: 'Financial Contagion and Cross-Market Return Transmission: S&amp;P 500 and Nifty 50',
-    status: 'Complete', statusClass: 'status-done',
-    date: '2024 to 2025',
+    status: 'Complete', statusClass: 'status-done', date: '2024–2025',
     desc: 'Estimates lagged return spillovers using OLS, logistic regression, and a two-state Markov regime-switching model. The stress-regime coefficient is approximately three times the tranquil-regime coefficient, confirming state-dependent contagion.',
     tags: ['Regime Switching','Financial Contagion','Time Series','VIX','OLS','Logit'],
-    body: '<h4>Motivation</h4><p>Whether financial stress in the US equity market propagates causally to Indian equity markets, and whether this propagation intensifies during periods of elevated volatility, has direct implications for international portfolio diversification and macro-prudential policy. This project estimates cross-market return transmission between the S&amp;P 500 and Nifty 50 using linear regression, binary classification, and regime-switching models.</p><h4>Primary OLS Specification</h4><div class="math-block">r_{Nifty,t} = alpha + beta * r_{SP500,t-1}\n            + gamma_1 * DVIX_{t-1}\n            + gamma_2 * r_{Oil,t-1}\n            + gamma_3 * r_{USDINR,t-1} + eps_t\n\nEstimated: beta_hat ~ 0.28 (t-stat > 4.1), R^2 ~ 0.18</div><h4>Markov Regime-Switching Model</h4><div class="math-block">r_{Nifty,t} = alpha(s_t) + beta(s_t) * r_{SP500,t-1} + sigma(s_t) * eps_t\ns_t in {1 = tranquil, 2 = stress}\n\nbeta_hat(tranquil) ~ 0.14,  sigma_hat(tranquil) ~ 0.62%\nbeta_hat(stress)   ~ 0.43,  sigma_hat(stress)   ~ 1.74%\np_11_hat ~ 0.97,  p_22_hat ~ 0.91</div><h4>Key Results</h4><ul><li>Statistically significant lagged spillover from S&amp;P 500 to Nifty 50 identified across OLS, logit, and regime-switching specifications.</li><li>A 1% S&amp;P 500 decline is associated with approximately a 0.28% Nifty 50 decline the following trading day.</li><li>The stress-regime coefficient (~0.43) is approximately three times the tranquil-regime coefficient (~0.14), confirming state-dependent contagion intensification.</li><li>Smoothed regime probabilities align well with the March 2020 crash, late-2018 selloff, and mid-2022 episode.</li></ul>'
+    body: '<h4>Motivation</h4><p>Whether financial stress in the US equity market propagates causally to Indian equity markets, and whether this propagation intensifies during periods of elevated volatility, has direct implications for international portfolio diversification and macro-prudential policy.</p><h4>Primary OLS Specification</h4><div class="math-block">r_{Nifty,t} = alpha + beta * r_{SP500,t-1}\n            + gamma_1 * DVIX_{t-1}\n            + gamma_2 * r_{Oil,t-1}\n            + gamma_3 * r_{USDINR,t-1} + eps_t\n\nEstimated: beta_hat ~ 0.28 (t-stat > 4.1), R^2 ~ 0.18</div><h4>Markov Regime-Switching Model</h4><div class="math-block">r_{Nifty,t} = alpha(s_t) + beta(s_t) * r_{SP500,t-1} + sigma(s_t) * eps_t\ns_t in {1 = tranquil, 2 = stress}\n\nbeta_hat(tranquil) ~ 0.14,  sigma_hat(tranquil) ~ 0.62%\nbeta_hat(stress)   ~ 0.43,  sigma_hat(stress)   ~ 1.74%\np_11_hat ~ 0.97,  p_22_hat ~ 0.91</div><h4>Key Results</h4><ul><li>Statistically significant lagged spillover from S&amp;P 500 to Nifty 50 identified across OLS, logit, and regime-switching specifications.</li><li>A 1% S&amp;P 500 decline is associated with approximately a 0.28% Nifty 50 decline the following trading day.</li><li>The stress-regime coefficient (~0.43) is approximately three times the tranquil-regime coefficient (~0.14), confirming state-dependent contagion intensification.</li><li>Smoothed regime probabilities align well with the March 2020 crash, late-2018 selloff, and mid-2022 episode.</li></ul>'
   },
   sintax: {
-    cat: 'Mathematical Economics &middot; E &middot; 01',
-    catKey: 'economics',
+    cat: 'Mathematical Economics &middot; E &middot; 01', catKey: 'economics',
     title: 'Optimal Sin Taxation Under Stochastic Consumption: A Dynamic Welfare Framework',
-    status: 'Ongoing', statusClass: 'status-wip',
-    date: '2024 to 2025',
+    status: 'Ongoing', statusClass: 'status-wip', date: '2024–2025',
     desc: 'Dynamic welfare framework with Markov consumption transitions for addictive goods. The optimal tax formula generalises the Pigouvian result with a dynamic adjustment term that accounts for the long-run stationary distribution.',
     tags: ['Markov Models','Welfare Economics','Dynamic Optimisation','Externalities','Addictive Goods','NSSO'],
     body: '<h4>Motivation</h4><p>Standard welfare analyses of sin taxes proceed in a static framework: a demand elasticity is estimated, welfare triangles are computed, and an optimal tax is derived from the Pigou formula. This approach misses two features of addictive consumption. First, individual consumption is inherently dynamic. Second, the welfare consequences of a tax change depend on the entire trajectory of consumption adjustments, including the long-run stationary distribution across consumption states.</p><h4>The Consumption Transition Model</h4><div class="math-block">State space: S = {N, L, M, H}\n\nTax-dependent TPM: P(tau) = [p_{ij}(tau)]\nStationary distribution: pi(tau) = pi(tau) * P(tau)\nAggregate consumption: C(tau) = sum_i pi_i(tau) * c_i</div><h4>Optimal Tax</h4><div class="math-block">tau* = e\'(C) * C\'(tau*)         [standard Pigou term]\n     + sum_i [d pi_i/d tau]      [dynamic adjustment term]\n         * [u_i + e\'(C) * c_i]\n\nd pi/d tau = pi * [dP/d tau] * (I - P + Pi)^{-1}</div><h4>Status</h4><p>The theoretical framework is fully developed. The ongoing component is empirical calibration using NSSO rounds 50, 60, and 68, estimating tax-sensitivity using household-level price variation as an instrument. Welfare simulations will derive the optimal tax rate and compare it to India\'s current GST rate on tobacco products.</p>'
   },
   mgnrega: {
-    cat: 'Mathematical Economics &middot; E &middot; 02',
-    catKey: 'economics',
+    cat: 'Mathematical Economics &middot; E &middot; 02', catKey: 'economics',
     title: 'Labour Market Effects of MGNREGA: Panel Econometric Analysis of Rural Wages, Employment, and Female LFPR',
-    status: 'Complete', statusClass: 'status-done',
-    date: '2024',
+    status: 'Complete', statusClass: 'status-done', date: '2024',
     desc: 'State-level panel data with two-way fixed effects estimating the causal impact of MGNREGA expenditure on rural labour market outcomes across 20 states over 13 years.',
     tags: ['Panel Data','Two-Way Fixed Effects','Labour Economics','Rural Wages','Female LFPR','Causal Inference'],
-    body: '<h4>Motivation</h4><p>The Mahatma Gandhi National Rural Employment Guarantee Act (2005) mandates one hundred days of wage employment per year to every rural household. By guaranteeing a statutory minimum wage, the programme creates a floor on rural casual wages and alters the outside option of agricultural labourers. This project estimates the magnitude of these effects using state-level panel data and a two-way fixed effects identification strategy.</p><h4>Specification</h4><div class="math-block">Y_{st} = alpha + beta * log(NREGS_{st})\n       + delta_s + lambda_t + gamma * X_{st} + eps_{st}\n\n  delta_s = state fixed effects (20 states)\n  lambda_t = year fixed effects (13 years)\n  X_{st} = rainfall deviation, NSDP growth, SC/ST share, rural density\n\nSEs clustered at state level. Sample: 20 x 13 = 260 observations</div><h4>Key Results</h4><ul><li>Rural wages: A 10% increase in real per capita MGNREGA expenditure is associated with a 1.8 to 2.3% increase in real casual agricultural wages (p &lt; 0.05).</li><li>Female LFPR: Significant increase of approximately 0.9 percentage points per 10% increase in MGNREGA expenditure (p &lt; 0.01). Effect larger in states with lower initial female LFPR.</li><li>Employment intensity: Positive and significant in non-drought years; attenuates in drought years, consistent with MGNREGA acting as a countercyclical buffer.</li><li>Non-agricultural wages: Spillover effect with elasticity approximately 40% of the agricultural wage elasticity.</li></ul><h4>Robustness</h4><ul><li>Results robust to dropping the four states with highest MGNREGA expenditure shares.</li><li>Placebo regressions using pre-programme periods (2000 to 2005) find no significant relationship, supporting parallel trends.</li></ul>'
+    body: '<h4>Motivation</h4><p>The Mahatma Gandhi National Rural Employment Guarantee Act (2005) mandates one hundred days of wage employment per year to every rural household. By guaranteeing a statutory minimum wage, the programme creates a floor on rural casual wages and alters the outside option of agricultural labourers.</p><h4>Specification</h4><div class="math-block">Y_{st} = alpha + beta * log(NREGS_{st})\n       + delta_s + lambda_t + gamma * X_{st} + eps_{st}\n\n  delta_s = state fixed effects (20 states)\n  lambda_t = year fixed effects (13 years)\n  X_{st} = rainfall deviation, NSDP growth, SC/ST share, rural density\n\nSEs clustered at state level. Sample: 20 x 13 = 260 observations</div><h4>Key Results</h4><ul><li>Rural wages: A 10% increase in real per capita MGNREGA expenditure is associated with a 1.8 to 2.3% increase in real casual agricultural wages (p &lt; 0.05).</li><li>Female LFPR: Significant increase of approximately 0.9 percentage points per 10% increase in MGNREGA expenditure (p &lt; 0.01).</li><li>Employment intensity: Positive and significant in non-drought years; attenuates in drought years, consistent with MGNREGA acting as a countercyclical buffer.</li><li>Non-agricultural wages: Spillover effect with elasticity approximately 40% of the agricultural wage elasticity.</li></ul><h4>Robustness</h4><ul><li>Results robust to dropping the four states with highest MGNREGA expenditure shares.</li><li>Placebo regressions using pre-programme periods (2000 to 2005) find no significant relationship, supporting parallel trends.</li></ul>'
   }
 };
 
 var TEACHING = {
-  sp25: {
-    sem: 'Sem V &middot; Jul to Nov 2025',
-    title: 'Stochastic Processes',
-    inst: 'Madras School of Economics',
-    duration: '5 months',
-    desc: 'Led weekly problem-solving sessions and wrote detailed solution notes distributed to the cohort after each session. Covered core topics including Markov chains, martingales, Poisson processes, and Brownian motion.',
-    topics: ['Discrete-time Markov chains: classification of states, irreducibility, periodicity, stationary distributions','Markov decision processes: value functions, Bellman equations, policy iteration and value iteration','Martingales: optional stopping theorem, convergence theorems, financial applications','Poisson processes: inter-arrival times, superposition, thinning, compound Poisson processes','Brownian motion and the Wiener process: construction, properties, quadratic variation']
-  },
-  micro25: {
-    sem: 'Sem V &middot; Jul to Nov 2025',
-    title: 'Intermediate Microeconomics',
-    inst: 'Madras School of Economics (2nd Year Batch)',
-    duration: '5 months',
-    desc: 'Designed tutorial problem sets and ran sessions on advanced microeconomic concepts. Based on Hal Varian and Osborne.',
-    topics: ['Monopoly: profit maximisation, price discrimination, social welfare','General equilibrium: Walrasian equilibrium, Edgeworth box, first and second welfare theorems','Externalities: Pigouvian taxes, Coase theorem, public goods','Welfare analysis: consumer surplus, deadweight loss, social welfare functions','Oligopoly models: Cournot, Bertrand, Stackelberg (Osborne)','Market structure: entry deterrence and limit pricing']
-  },
-  mitx25: {
-    sem: 'May to Jul 2025',
-    title: 'MITx MicroMasters: Foundations of Modern Finance I and II',
-    inst: 'TECO Summer Course',
-    duration: '3 months',
-    desc: 'Designed and evaluated 8 graded assignments and the final examination for a TECO-conducted summer course based on the MITx MicroMasters programme in Finance.',
-    topics: ['Derivatives pricing: options, futures, swaps; put-call parity; binomial trees','Portfolio theory: mean-variance optimisation, efficient frontier, Sharpe ratio','CAPM: security market line, beta, systematic and idiosyncratic risk','Capital budgeting: NPV, IRR, real options, project analysis','Capital structure: Modigliani-Miller, trade-off theory, pecking order','Risk management: hedging strategies, value at risk, scenario analysis']
-  },
-  calc25: {
-    sem: 'Sem IV &middot; Jan to Apr 2025',
-    title: 'Multivariable Calculus',
-    inst: 'Madras School of Economics (2nd Year Batch)',
-    duration: '4 months',
-    desc: 'Conducted weekly tutorial sessions for the second-year cohort. Based on Thomas Calculus.',
-    topics: ['Partial derivatives: computation, geometric interpretation, higher-order partials','Gradient, directional derivatives, and the chain rule in multiple variables','Constrained optimisation: Lagrange multipliers, equality and inequality constraints','Unconstrained optimisation: second-order conditions, saddle points, bordered Hessian','Double and triple integrals: Fubini theorem, change of variables, Jacobians']
-  },
-  ts26: {
-    sem: 'Sem VI &middot; Jan 2026 to Present',
-    title: 'Time Series Analysis',
-    inst: 'Madras School of Economics',
-    duration: '4 months (ongoing)',
-    desc: "Setting and evaluating weekly assignments for the senior batch, working through the first five chapters of Hamilton's Time Series Analysis.",
-    topics: ['ARMA processes: stationarity, invertibility, autocovariance structure','ARIMA: integration, differencing, unit root identification','Unit root testing: Dickey-Fuller, augmented DF, Phillips-Perron tests','VAR models: estimation, lag selection, Granger causality, impulse response functions','Estimation: OLS, MLE, Yule-Walker equations (Hamilton Ch. 1 to 5)']
-  },
-  gt26: {
-    sem: 'Sem VI &middot; Jan 2026 to Present',
-    title: 'Game Theory',
-    inst: 'Madras School of Economics (2nd Year Batch)',
-    duration: '4 months (ongoing)',
-    desc: 'Running weekly assignment sessions for the second-year cohort, covering core game-theoretic concepts in both normal and extensive form settings.',
-    topics: ['Normal form games: dominant strategies, iterated elimination, Nash equilibrium','Extensive form games: information sets, strategies, backward induction','Subgame perfect Nash equilibrium: credible threats, Zermelo theorem','Repeated games: folk theorems, cooperation and punishment strategies','Mechanism design: revelation principle, incentive compatibility, Vickrey auctions','Auctions: first-price, second-price, English, Dutch, revenue equivalence']
-  },
-  calc24: {
-    sem: 'Sem II &middot; Mar 2024',
-    title: 'Multivariable Calculus (Peer)',
-    inst: 'Madras School of Economics (1st Year Cohort, Peer)',
-    duration: '1 month',
-    desc: 'Conducted three intensive pre-examination revision sessions for the first-year cohort, covering all major topics and clarifying conceptual doubts.',
-    topics: ['Full syllabus revision: all topics from the semester in condensed form','Key concept consolidation: common misconceptions addressed systematically','Exam technique: time management, question prioritisation, presentation','Worked examples: representative past problems with complete solutions']
-  }
+  sp25: { sem:'Sem V &middot; Jul to Nov 2025', title:'Stochastic Processes', inst:'Madras School of Economics', duration:'5 months', desc:'Led weekly problem-solving sessions and wrote detailed solution notes distributed to the cohort after each session. Covered core topics including Markov chains, martingales, Poisson processes, and Brownian motion.', topics:['Discrete-time Markov chains: classification of states, irreducibility, periodicity, stationary distributions','Markov decision processes: value functions, Bellman equations, policy iteration and value iteration','Martingales: optional stopping theorem, convergence theorems, financial applications','Poisson processes: inter-arrival times, superposition, thinning, compound Poisson processes','Brownian motion and the Wiener process: construction, properties, quadratic variation'] },
+  micro25: { sem:'Sem V &middot; Jul to Nov 2025', title:'Intermediate Microeconomics', inst:'Madras School of Economics (2nd Year Batch)', duration:'5 months', desc:'Designed tutorial problem sets and ran sessions on advanced microeconomic concepts. Based on Hal Varian and Osborne.', topics:['Monopoly: profit maximisation, price discrimination, social welfare','General equilibrium: Walrasian equilibrium, Edgeworth box, first and second welfare theorems','Externalities: Pigouvian taxes, Coase theorem, public goods','Welfare analysis: consumer surplus, deadweight loss, social welfare functions','Oligopoly models: Cournot, Bertrand, Stackelberg (Osborne)','Market structure: entry deterrence and limit pricing'] },
+  mitx25: { sem:'May to Jul 2025', title:'MITx MicroMasters: Foundations of Modern Finance I and II', inst:'TECO Summer Course', duration:'3 months', desc:'Designed and evaluated 8 graded assignments and the final examination for a TECO-conducted summer course based on the MITx MicroMasters programme in Finance.', topics:['Derivatives pricing: options, futures, swaps; put-call parity; binomial trees','Portfolio theory: mean-variance optimisation, efficient frontier, Sharpe ratio','CAPM: security market line, beta, systematic and idiosyncratic risk','Capital budgeting: NPV, IRR, real options, project analysis','Capital structure: Modigliani-Miller, trade-off theory, pecking order','Risk management: hedging strategies, value at risk, scenario analysis'] },
+  calc25: { sem:'Sem IV &middot; Jan to Apr 2025', title:'Multivariable Calculus', inst:'Madras School of Economics (2nd Year Batch)', duration:'4 months', desc:'Conducted weekly tutorial sessions for the second-year cohort. Based on Thomas Calculus.', topics:['Partial derivatives: computation, geometric interpretation, higher-order partials','Gradient, directional derivatives, and the chain rule in multiple variables','Constrained optimisation: Lagrange multipliers, equality and inequality constraints','Unconstrained optimisation: second-order conditions, saddle points, bordered Hessian','Double and triple integrals: Fubini theorem, change of variables, Jacobians'] },
+  ts26: { sem:'Sem VI &middot; Jan 2026 to Present', title:'Time Series Analysis', inst:'Madras School of Economics', duration:'4 months (ongoing)', desc:"Setting and evaluating weekly assignments for the senior batch, working through the first five chapters of Hamilton's Time Series Analysis.", topics:['ARMA processes: stationarity, invertibility, autocovariance structure','ARIMA: integration, differencing, unit root identification','Unit root testing: Dickey-Fuller, augmented DF, Phillips-Perron tests','VAR models: estimation, lag selection, Granger causality, impulse response functions','Estimation: OLS, MLE, Yule-Walker equations (Hamilton Ch. 1–5)'] },
+  gt26: { sem:'Sem VI &middot; Jan 2026 to Present', title:'Game Theory', inst:'Madras School of Economics (2nd Year Batch)', duration:'4 months (ongoing)', desc:'Running weekly assignment sessions for the second-year cohort, covering core game-theoretic concepts in both normal and extensive form settings.', topics:['Normal form games: dominant strategies, iterated elimination, Nash equilibrium','Extensive form games: information sets, strategies, backward induction','Subgame perfect Nash equilibrium: credible threats, Zermelo theorem','Repeated games: folk theorems, cooperation and punishment strategies','Mechanism design: revelation principle, incentive compatibility, Vickrey auctions','Auctions: first-price, second-price, English, Dutch, revenue equivalence'] },
+  calc24: { sem:'Sem II &middot; Mar 2024', title:'Multivariable Calculus (Peer)', inst:'Madras School of Economics (1st Year Cohort, Peer)', duration:'1 month', desc:'Conducted three intensive pre-examination revision sessions for the first-year cohort, covering all major topics and clarifying conceptual doubts.', topics:['Full syllabus revision: all topics from the semester in condensed form','Key concept consolidation: common misconceptions addressed systematically','Exam technique: time management, question prioritisation, presentation','Worked examples: representative past problems with complete solutions'] }
 };
 
 function showPage(id) {
-  document.querySelectorAll('.page').forEach(function(p){ p.classList.remove('active'); });
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.getElementById('page-' + id).classList.add('active');
   window.scrollTo(0, 0);
-  document.querySelectorAll('.nav-links button').forEach(function(b){ b.classList.remove('active'); });
+  document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
   var nb = document.getElementById('nb-' + id);
   if (nb) nb.classList.add('active');
 }
@@ -1525,69 +727,58 @@ function showResearchCat(cat) {
   showPage('research');
   document.getElementById('research-landing').style.display = 'none';
   document.getElementById('research-cat-view').style.display = 'block';
-
   var labels = { finance: 'Mathematical Finance', economics: 'Mathematical Economics' };
-  document.getElementById('res-cat-label-display').innerHTML =
-    '<div class="res-sub-hd">' + labels[cat] + '</div>';
-
+  document.getElementById('res-cat-label-display').innerHTML = '<div class="res-sub-hd">' + labels[cat] + '</div>';
   var keys = { finance: ['liquidity','credit','contagion'], economics: ['sintax','mgnrega'] };
   var html = '';
-  keys[cat].forEach(function(key) {
+  keys[cat].forEach(key => {
     var p = PROJECTS[key];
-    var tags = p.tags.slice(0,4).map(function(t){ return '<span class="proj-tag">' + t + '</span>'; }).join('');
+    var tags = p.tags.slice(0,4).map(t => '<span class="proj-tag">' + t + '</span>').join('');
     html += '<div class="proj-item" onclick="showProject(\'' + key + '\')">' +
       '<div class="proj-code">' + p.cat + '</div>' +
       '<div class="proj-title">' + p.title + '</div>' +
       '<div class="proj-desc">' + p.desc + '</div>' +
       '<div class="proj-foot"><div class="proj-tags">' + tags + '</div>' +
-      '<span class="proj-status ' + p.statusClass + '">' + p.status + '</span></div>' +
-      '</div>';
+      '<span class="proj-status ' + p.statusClass + '">' + p.status + '</span></div></div>';
   });
   document.getElementById('research-cat-projects').innerHTML = html;
   window.scrollTo(0, 0);
 }
 
 function backFromProject() {
-  if (_researchCat) {
-    showResearchCat(_researchCat);
-  } else {
-    showResearchLanding();
-  }
+  _researchCat ? showResearchCat(_researchCat) : showResearchLanding();
 }
 
 function showProject(key) {
   var p = PROJECTS[key];
   if (!p) return;
-  var tags = p.tags.map(function(t){ return '<span class="proj-tag">' + t + '</span>'; }).join('');
+  var tags = p.tags.map(t => '<span class="proj-tag">' + t + '</span>').join('');
   document.getElementById('project-detail-content').innerHTML =
     '<div class="d-cat">' + p.cat + '</div>' +
     '<div class="d-title">' + p.title + '</div>' +
     '<div class="d-meta">Status: ' + p.status + ' &nbsp;&middot;&nbsp; ' + p.date + '</div>' +
     '<div class="d-tags">' + tags + '</div>' +
     '<div class="d-body">' + p.body + '</div>';
-
   var labels = { finance: 'Mathematical Finance', economics: 'Mathematical Economics' };
-  var backLabel = _researchCat ? labels[_researchCat] : 'Research';
-  document.getElementById('proj-back-label').textContent = backLabel;
-
+  document.getElementById('proj-back-label').textContent = _researchCat ? labels[_researchCat] : 'Research';
   showPage('project-detail');
-  document.querySelectorAll('.nav-links button').forEach(function(b){ b.classList.remove('active'); });
+  document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
   document.getElementById('nb-research').classList.add('active');
 }
 
 function showTeaching(key) {
   var t = TEACHING[key];
   if (!t) return;
-  var topicsHtml = t.topics.map(function(tp){ return '<li>' + tp + '</li>'; }).join('');
+  var topicsHtml = t.topics.map(tp => '<li>' + tp + '</li>').join('');
   document.getElementById('teaching-detail-content').innerHTML =
     '<div class="d-cat">' + t.sem + '</div>' +
     '<div class="d-title">' + t.title + '</div>' +
     '<div class="d-meta">' + t.inst + ' &nbsp;&middot;&nbsp; ' + t.duration + '</div>' +
-    '<div style="margin-top:1.8rem;padding-top:1.8rem;border-top:1px solid var(--border)"></div>' +
+    '<div style="margin-top:1.6rem;padding-top:1.6rem;border-top:1px solid var(--border)"></div>' +
     '<div class="td-section"><div class="td-hd">Overview</div><p>' + t.desc + '</p></div>' +
     '<div class="td-section"><div class="td-hd">Topics Covered</div><ul class="td-topics">' + topicsHtml + '</ul></div>';
   showPage('teaching-detail');
-  document.querySelectorAll('.nav-links button').forEach(function(b){ b.classList.remove('active'); });
+  document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
   document.getElementById('nb-teaching').classList.add('active');
 }
 </script>
