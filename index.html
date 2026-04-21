@@ -271,9 +271,72 @@ footer p { font-family: var(--mono); font-size: 0.68rem; color: var(--text-faint
 
 /* RESPONSIVE */
 @media (max-width: 820px) {
-  nav { padding: 0 1.2rem; }
-  .nav-name { margin-right: 0.8rem; font-size: 0.9rem; }
-  .nav-links button { padding: 0 0.5rem; font-size: 0.74rem; }
+  /* --- MOBILE NAV FIX --- */
+  nav {
+    padding: 0;
+    height: auto;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  /* Top row: name + CV */
+  .nav-top-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.2rem;
+    height: 48px;
+    flex-shrink: 0;
+  }
+
+  .nav-name {
+    margin-right: 0;
+    font-size: 0.95rem;
+  }
+
+  /* Hide CV from desktop position; shown in top row on mobile */
+  .nav-cv {
+    margin-left: 0;
+    font-size: 0.72rem;
+    padding: 0.26rem 0.75rem;
+  }
+
+  /* Scrollable nav links row */
+  .nav-links-wrap {
+    display: flex;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    border-top: 1px solid var(--border);
+    padding: 0 0.4rem;
+  }
+  .nav-links-wrap::-webkit-scrollbar { display: none; }
+
+  .nav-links {
+    display: flex;
+    flex: none;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    gap: 0;
+  }
+
+  .nav-links button {
+    font-size: 0.78rem;
+    padding: 0 0.9rem;
+    height: 38px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .nav-links button.active::after {
+    left: 0.9rem;
+    right: 0.9rem;
+    bottom: 0;
+  }
+
+  /* Update nav height CSS var for mobile (2-row nav) */
+  :root { --nav-h: 86px; }
+
   .wrap { padding: calc(var(--nav-h) + 2.2rem) 1.4rem 4rem; }
   footer { padding: 1.2rem 1.4rem; }
   .about-layout { grid-template-columns: 1fr; gap: 2.4rem; }
@@ -289,16 +352,21 @@ footer p { font-family: var(--mono); font-size: 0.68rem; color: var(--text-faint
 <body>
 
 <nav>
-  <span class="nav-name" onclick="showResearchLanding(); showPage('about');">Nikhil Rajan</span>
-  <ul class="nav-links">
-    <li><button onclick="showPage('about')" id="nb-about" class="active">About</button></li>
-    <li><button onclick="showResearchLanding()" id="nb-research">Research</button></li>
-    <li><button onclick="showPage('teaching')" id="nb-teaching">Teaching</button></li>
-    <li><button onclick="showPage('education')" id="nb-education">Education</button></li>
-    <li><button onclick="showPage('experience')" id="nb-experience">Experience</button></li>
-    <li><button onclick="showPage('articles')" id="nb-articles">Articles</button></li>
-  </ul>
-  <a href="nikhil_cv.pdf" download class="nav-cv">CV ↓</a>
+  <!-- Mobile: name + CV in top row, links in scrollable second row -->
+  <div class="nav-top-row">
+    <span class="nav-name" onclick="showResearchLanding(); showPage('about');">Nikhil Rajan</span>
+    <a href="nikhil_cv.pdf" download class="nav-cv">CV ↓</a>
+  </div>
+  <div class="nav-links-wrap">
+    <ul class="nav-links">
+      <li><button onclick="showPage('about')" id="nb-about" class="active">About</button></li>
+      <li><button onclick="showResearchLanding()" id="nb-research">Research</button></li>
+      <li><button onclick="showPage('teaching')" id="nb-teaching">Teaching</button></li>
+      <li><button onclick="showPage('education')" id="nb-education">Education</button></li>
+      <li><button onclick="showPage('experience')" id="nb-experience">Experience</button></li>
+      <li><button onclick="showPage('articles')" id="nb-articles">Articles</button></li>
+    </ul>
+  </div>
 </nav>
 
 <!-- ABOUT -->
