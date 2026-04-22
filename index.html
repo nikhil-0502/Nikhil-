@@ -193,7 +193,7 @@ nav {
 .d-body ul { list-style: none; margin-bottom: 1rem; }
 .d-body ul li { font-family: var(--serif); font-size: 0.91rem; color: var(--text-mid); padding: 0.5rem 0 0.5rem 1.4rem; position: relative; line-height: 1.75; border-bottom: 1px solid var(--border); }
 .d-body ul li:last-child { border-bottom: none; }
-.d-body ul li::before { content: '–'; position: absolute; left: 0; top: 0.5rem; color: var(--text-faint); }
+.d-body ul li::before { content: '/'; position: absolute; left: 0; top: 0.5rem; color: var(--text-faint); font-family: var(--mono); font-size: 0.7rem; }
 .math-block { background: var(--bg-alt); border: 1px solid var(--border); border-left: 3px solid var(--accent); padding: 1.1rem 1.4rem; margin: 1.3rem 0; font-family: var(--mono); font-size: 0.75rem; color: var(--text-mid); line-height: 2; overflow-x: auto; white-space: pre; border-radius: 0 3px 3px 0; }
 
 /* TEACHING */
@@ -225,7 +225,7 @@ nav {
 .td-topics { list-style: none; }
 .td-topics li { font-family: var(--serif); font-size: 0.92rem; color: var(--text-mid); padding: 0.5rem 0 0.5rem 1.4rem; position: relative; border-bottom: 1px solid var(--border); line-height: 1.72; }
 .td-topics li:last-child { border-bottom: none; }
-.td-topics li::before { content: '–'; position: absolute; left: 0; top: 0.5rem; color: var(--text-faint); }
+.td-topics li::before { content: '/'; position: absolute; left: 0; top: 0.5rem; color: var(--text-faint); font-family: var(--mono); font-size: 0.7rem; }
 
 /* PROFESSOR BADGE */
 .prof-badge {
@@ -331,6 +331,54 @@ nav {
   padding: 0.3rem 0.8rem; border-radius: 2px; line-height: 1.4;
 }
 
+/* NOTES PAGE */
+.notes-page-intro { font-family: var(--serif); font-size: 0.97rem; color: var(--text-dim); margin-bottom: 2.4rem; font-style: italic; line-height: 1.78; }
+.notes-page-grid { display: flex; flex-direction: column; gap: 1.4rem; }
+.notes-page-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 4px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  transition: border-color 0.18s, box-shadow 0.18s, transform 0.18s;
+}
+.notes-page-card:hover { border-color: var(--accent); box-shadow: 0 8px 28px rgba(0,0,0,0.09); transform: translateY(-2px); }
+.notes-page-card-header {
+  padding: 1.3rem 1.6rem; border-bottom: 1px solid var(--border);
+  display: flex; align-items: flex-start; gap: 1.2rem;
+}
+.notes-page-icon {
+  width: 52px; height: 52px; border-radius: 3px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem;
+}
+.notes-page-icon-purple { background: linear-gradient(135deg, #f3f0f9, #e8e2f4); }
+.notes-page-icon-blue   { background: linear-gradient(135deg, #eef2f9, #dce8f4); }
+.notes-page-icon-green  { background: linear-gradient(135deg, #eef7f2, #dcf0e6); }
+.notes-page-meta { flex: 1; }
+.notes-page-course-tag { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 0.3rem; }
+.notes-page-title { font-family: var(--display); font-size: 1.1rem; font-weight: 600; color: var(--text); line-height: 1.32; margin-bottom: 0.2rem; }
+.notes-page-sub { font-family: var(--serif); font-size: 0.82rem; color: var(--text-dim); font-style: italic; }
+.notes-page-card-body { padding: 1.2rem 1.6rem; }
+.notes-page-desc { font-family: var(--serif); font-size: 0.93rem; color: var(--text-mid); line-height: 1.88; margin-bottom: 1rem; }
+.notes-page-chips { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 1.1rem; }
+.notes-page-chip { font-family: var(--mono); font-size: 0.60rem; color: var(--purple); background: #f4f1fb; border: 1px solid #cec5ec; padding: 0.15rem 0.55rem; border-radius: 2px; }
+.notes-page-footer {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-top: 0.9rem; border-top: 1px solid var(--border); flex-wrap: wrap; gap: 0.7rem;
+}
+.notes-page-file { font-family: var(--mono); font-size: 0.65rem; color: var(--text-faint); display: flex; align-items: center; gap: 0.4rem; }
+.notes-page-warning {
+  display: flex; align-items: flex-start; gap: 0.6rem;
+  background: #fdf8ee; border: 1px solid #e8d8a0; border-radius: 3px;
+  padding: 0.6rem 0.85rem; margin-bottom: 1rem;
+}
+.notes-page-warning-text { font-family: var(--serif); font-size: 0.82rem; color: var(--amber); line-height: 1.65; }
+.notes-page-dl-btn {
+  font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--purple); border: 1.5px solid var(--purple); border-radius: 3px;
+  padding: 0.42rem 1.1rem; text-decoration: none; transition: all 0.15s;
+  display: inline-flex; align-items: center; gap: 0.35rem;
+}
+.notes-page-dl-btn:hover { background: var(--purple); color: white; text-decoration: none; }
+
 /* EDUCATION */
 .edu-entry { padding: 2.2rem 0; border-bottom: 1px solid var(--border); }
 .edu-entry:first-child { border-top: 1px solid var(--border); }
@@ -364,7 +412,7 @@ nav {
 .exp-ul { list-style: none; margin-top: 0.8rem; }
 .exp-ul li { font-family: var(--serif); font-size: 0.90rem; color: var(--text-mid); padding: 0.45rem 0 0.45rem 1.4rem; position: relative; line-height: 1.78; border-bottom: 1px solid var(--border); }
 .exp-ul li:last-child { border-bottom: none; }
-.exp-ul li::before { content: '–'; position: absolute; left: 0; top: 0.45rem; color: var(--text-faint); }
+.exp-ul li::before { content: '/'; position: absolute; left: 0; top: 0.45rem; color: var(--text-faint); font-family: var(--mono); font-size: 0.7rem; }
 .sub-label { font-family: var(--mono); font-size: 0.65rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-faint); margin: 2.8rem 0 0; padding-top: 2.2rem; border-top: 1px solid var(--border); }
 
 /* ARTICLES */
@@ -419,13 +467,14 @@ footer p { font-family: var(--mono); font-size: 0.68rem; color: var(--text-faint
 <nav>
   <div class="nav-top-row">
     <span class="nav-name" onclick="showResearchLanding(); showPage('about');">Nikhil Rajan</span>
-    <a href="nikhil_cv.pdf" download class="nav-cv">CV ↓</a>
+    <a href="nikhil_cv.pdf" download class="nav-cv">CV &#8595;</a>
   </div>
   <div class="nav-links-wrap">
     <ul class="nav-links">
       <li><button onclick="showPage('about')" id="nb-about" class="active">About</button></li>
       <li><button onclick="showResearchLanding()" id="nb-research">Research</button></li>
       <li><button onclick="showPage('teaching')" id="nb-teaching">Teaching</button></li>
+      <li><button onclick="showPage('notes')" id="nb-notes">Notes</button></li>
       <li><button onclick="showPage('education')" id="nb-education">Education</button></li>
       <li><button onclick="showPage('experience')" id="nb-experience">Experience</button></li>
       <li><button onclick="showPage('articles')" id="nb-articles">Articles</button></li>
@@ -448,8 +497,8 @@ footer p { font-family: var(--mono); font-size: 0.68rem; color: var(--text-faint
         </div>
         <div class="sidebar-name">Nikhil Rajan</div>
         <div class="sidebar-deg">
-          BA Economics, <a href="https://mse.ac.in/" target="_blank" class="inst-link">Madras School of Economics</a> (2023–2026)<br/>
-          MSc Financial Statistics &amp; Mathematics, <a href="https://www.lse.ac.uk/" target="_blank" class="inst-link">LSE</a> (2026–2027, incoming)
+          BA Economics, <a href="https://mse.ac.in/" target="_blank" class="inst-link">Madras School of Economics</a> (2023 to 2026)<br/>
+          MSc Financial Statistics &amp; Mathematics, <a href="https://www.lse.ac.uk/" target="_blank" class="inst-link">LSE</a> (2026 to 2027, incoming)
         </div>
         <div class="sidebar-rule"></div>
         <div class="contact-block">
@@ -477,7 +526,7 @@ footer p { font-family: var(--mono); font-size: 0.68rem; color: var(--text-faint
         </div>
         <div class="sidebar-rule"></div>
         <div class="clabel" style="margin-bottom:0.45rem;">Chess</div>
-        <div class="cval" style="font-size:0.82rem;color:var(--text-dim);">FIDE-rated (~1500) &middot; District and State representative</div>
+        <div class="cval" style="font-size:0.82rem;color:var(--text-dim);">FIDE-rated (approx. 1500) &middot; District and State representative</div>
       </div>
 
       <div class="about-main">
@@ -554,7 +603,19 @@ footer p { font-family: var(--mono); font-size: 0.68rem; color: var(--text-faint
     <p class="teaching-intro">Seven teaching assistantships at <a href="https://mse.ac.in/" target="_blank" class="inst-link">Madras School of Economics</a>, spanning mathematics, probability, economics, and finance. Click any card to read what was covered.</p>
     <div class="teaching-grid">
 
-      <!-- 1. Stochastic Processes — FIRST -->
+      <!-- 1. MITx MicroMasters (top) -->
+      <div class="ta-card" onclick="showTeaching('mitx25')">
+        <div class="ta-card-icon ta-bg-5"><span class="ta-icon-text">&#x221E;</span></div>
+        <div class="ta-card-body">
+          <div class="ta-card-sem">May to Jul 2025</div>
+          <div class="ta-card-title">MITx MicroMasters: Foundations of Modern Finance I &amp; II</div>
+          <div class="ta-card-inst">TECO Summer Course</div>
+          <div class="ta-card-prof">Co-TA with Anagha &middot; 8 Assignments + Final Exam</div>
+          <div class="ta-card-cta">Topics, Assignments &amp; Notes &#8594;</div>
+        </div>
+      </div>
+
+      <!-- 2. Stochastic Processes -->
       <div class="ta-card" onclick="showTeaching('sp25')">
         <div class="ta-card-icon ta-bg-3"><span class="ta-icon-text">&#x03A9;</span></div>
         <div class="ta-card-body">
@@ -566,7 +627,7 @@ footer p { font-family: var(--mono); font-size: 0.68rem; color: var(--text-faint
         </div>
       </div>
 
-      <!-- 2. Time Series Analysis -->
+      <!-- 3. Time Series Analysis -->
       <div class="ta-card" onclick="showTeaching('ts26')">
         <div class="ta-card-icon ta-bg-1"><span class="ta-icon-text">&#x223F;</span></div>
         <div class="ta-card-body">
@@ -578,7 +639,7 @@ footer p { font-family: var(--mono); font-size: 0.68rem; color: var(--text-faint
         </div>
       </div>
 
-      <!-- 3. Game Theory -->
+      <!-- 4. Game Theory -->
       <div class="ta-card" onclick="showTeaching('gt26')">
         <div class="ta-card-icon ta-bg-2"><span class="ta-icon-text">&#x25B7;&#x25B7;</span></div>
         <div class="ta-card-body">
@@ -590,7 +651,7 @@ footer p { font-family: var(--mono); font-size: 0.68rem; color: var(--text-faint
         </div>
       </div>
 
-      <!-- 4. Intermediate Microeconomics -->
+      <!-- 5. Intermediate Microeconomics -->
       <div class="ta-card" onclick="showTeaching('micro25')">
         <div class="ta-card-icon ta-bg-4"><span class="ta-icon-text">&#x03C3;</span></div>
         <div class="ta-card-body">
@@ -599,18 +660,6 @@ footer p { font-family: var(--mono); font-size: 0.68rem; color: var(--text-faint
           <div class="ta-card-inst">Madras School of Economics (2nd Year)</div>
           <div class="ta-card-prof">Under Prof. Aritri Chakravarty</div>
           <div class="ta-card-cta">View Topics &#8594;</div>
-        </div>
-      </div>
-
-      <!-- 5. MITx MicroMasters -->
-      <div class="ta-card" onclick="showTeaching('mitx25')">
-        <div class="ta-card-icon ta-bg-5"><span class="ta-icon-text">&#x221E;</span></div>
-        <div class="ta-card-body">
-          <div class="ta-card-sem">May to Jul 2025</div>
-          <div class="ta-card-title">MITx MicroMasters: Foundations of Modern Finance I &amp; II</div>
-          <div class="ta-card-inst">TECO Summer Course</div>
-          <div class="ta-card-prof">Co-TA with Anagha &middot; 8 Assignments + Final Exam</div>
-          <div class="ta-card-cta">Topics, Assignments &amp; Notes &#8594;</div>
         </div>
       </div>
 
@@ -651,6 +700,48 @@ footer p { font-family: var(--mono); font-size: 0.68rem; color: var(--text-faint
   </div>
 </div>
 
+<!-- NOTES -->
+<div class="page" id="page-notes">
+  <div class="wrap">
+    <div class="section-label">Notes</div>
+    <p class="notes-page-intro">Study notes and reference materials prepared during teaching assistantships and independent study. All materials are shared as-is and should be cross-checked against standard references.</p>
+    <div class="notes-page-grid">
+
+      <!-- Markowitz Portfolio Theory -->
+      <div class="notes-page-card">
+        <div class="notes-page-card-header">
+          <div class="notes-page-icon notes-page-icon-purple">&#128218;</div>
+          <div class="notes-page-meta">
+            <div class="notes-page-course-tag">Finance &middot; MITx MicroMasters &middot; TECO Summer 2025</div>
+            <div class="notes-page-title">Markowitz Portfolio Theory</div>
+            <div class="notes-page-sub">Mean-variance optimisation from first principles, with worked examples</div>
+          </div>
+        </div>
+        <div class="notes-page-card-body">
+          <div class="notes-page-desc">These notes cover Markowitz Portfolio Theory from first principles: the mean-variance framework, construction of the efficient frontier, the minimum variance portfolio, and the two-fund separation theorem. Worked numerical examples are included alongside the theory. Prepared as a supplementary resource for students in the TECO Summer course on Foundations of Modern Finance.</div>
+          <div class="notes-page-warning">
+            <div style="font-size:0.85rem;flex-shrink:0;padding-top:0.1rem;">&#9888;</div>
+            <div class="notes-page-warning-text">These notes have not been formally proofread and may contain minor errors. They are shared as a study aid and should be cross-checked against standard references (Markowitz 1952; Bodie, Kane, Marcus).</div>
+          </div>
+          <div class="notes-page-chips">
+            <span class="notes-page-chip">Mean-Variance Optimisation</span>
+            <span class="notes-page-chip">Efficient Frontier</span>
+            <span class="notes-page-chip">Minimum Variance Portfolio</span>
+            <span class="notes-page-chip">Two-Fund Separation</span>
+            <span class="notes-page-chip">Worked Examples</span>
+          </div>
+          <div class="notes-page-footer">
+            <div class="notes-page-file">&#128196; markowitz_portfolio_theory.pdf</div>
+            <a href="markowitz_portfolio_theory%20(1).pdf" target="_blank" class="notes-page-dl-btn">&#8595; Open Notes</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <footer><p>Nikhil Rajan</p><p>nikhilrajan0502@gmail.com</p></footer>
+</div>
+
 <!-- EDUCATION -->
 <div class="page" id="page-education">
   <div class="wrap">
@@ -661,13 +752,13 @@ footer p { font-family: var(--mono); font-size: 0.68rem; color: var(--text-faint
           <div class="edu-school"><a href="https://www.lse.ac.uk/" target="_blank" class="inst-link">London School of Economics and Political Science</a></div>
           <div class="edu-deg">MSc Financial Statistics &amp; Mathematics</div>
         </div>
-        <div class="edu-meta">London, United Kingdom &middot; 2026–2027</div>
+        <div class="edu-meta">London, United Kingdom &middot; 2026 to 2027</div>
       </div>
       <div class="course-block">
         <div class="course-sub-label">Mathematical Finance</div>
         <div class="course-row" onclick="this.classList.toggle('open')">
           <div class="course-hdr"><span class="course-nm"><span class="course-code">ST409</span>Stochastic Calculus</span><span class="course-arr">&#9658;</span></div>
-          <div class="course-body">Martingales, optional stopping theorem. Poisson processes. BM construction, quadratic variation, the Itô integral. SDEs and diffusions — Itô's formula, Girsanov's theorem. Feynman-Kac connecting SDEs to PDEs. Option pricing under the risk-neutral measure, ruin theory, interest rate models.</div>
+          <div class="course-body">Martingales, optional stopping theorem. Poisson processes. BM construction, quadratic variation, the Ito integral. SDEs and diffusions: Ito's formula, Girsanov's theorem. Feynman-Kac connecting SDEs to PDEs. Option pricing under the risk-neutral measure, ruin theory, interest rate models.</div>
         </div>
         <div class="course-row" onclick="this.classList.toggle('open')">
           <div class="course-hdr"><span class="course-nm"><span class="course-code">MA415</span>Mathematics of the Black and Scholes Theory</span><span class="course-arr">&#9658;</span></div>
@@ -675,11 +766,11 @@ footer p { font-family: var(--mono); font-size: 0.68rem; color: var(--text-faint
         </div>
         <div class="course-row" onclick="this.classList.toggle('open')">
           <div class="course-hdr"><span class="course-nm"><span class="course-code">ST461</span>Mathematics of Market Microstructure</span><span class="course-arr">&#9658;</span></div>
-          <div class="course-body">Part I: HJB equation and dynamic programming under uncertainty. Inventory models and price impact. Optimal execution — Almgren-Chriss and Obizhaeva-Wang frameworks. Avellaneda-Stoikov limit order book model. Part II: asymmetric information in continuous time. Stochastic and Kalman filtering. Kyle model and extensions, Glosten-Milgrom, Glosten's electronic LOB. Part III: DEXes, AMMs, dark pools.</div>
+          <div class="course-body">Part I: HJB equation and dynamic programming under uncertainty. Inventory models and price impact. Optimal execution: Almgren-Chriss and Obizhaeva-Wang frameworks. Avellaneda-Stoikov limit order book model. Part II: asymmetric information in continuous time. Stochastic and Kalman filtering. Kyle model and extensions, Glosten-Milgrom, Glosten's electronic LOB. Part III: DEXes, AMMs, dark pools.</div>
         </div>
         <div class="course-row" onclick="this.classList.toggle('open')">
           <div class="course-hdr"><span class="course-nm"><span class="course-code">MA417</span>Computational Methods in Finance</span><span class="course-arr">&#9658;</span></div>
-          <div class="course-body">RNG and Monte Carlo basics. Variance reduction: antithetic variates, control variates, importance sampling, quasi-MC. SDE simulation via Euler-Maruyama and Milstein schemes. Finite-difference methods for the BS PDE — explicit and implicit schemes, stability and convergence.</div>
+          <div class="course-body">RNG and Monte Carlo basics. Variance reduction: antithetic variates, control variates, importance sampling, quasi-MC. SDE simulation via Euler-Maruyama and Milstein schemes. Finite-difference methods for the BS PDE: explicit and implicit schemes, stability and convergence.</div>
         </div>
         <div class="course-row" onclick="this.classList.toggle('open')">
           <div class="course-hdr"><span class="course-nm"><span class="course-code">ST463</span>Stochastic Simulation and Calibration</span><span class="course-arr">&#9658;</span></div>
@@ -692,7 +783,7 @@ footer p { font-family: var(--mono); font-size: 0.68rem; color: var(--text-faint
         <div class="course-sub-label" style="border-top:1px solid var(--border);margin-top:0.4rem;">Statistical Finance</div>
         <div class="course-row" onclick="this.classList.toggle('open')">
           <div class="course-hdr"><span class="course-nm"><span class="course-code">ST425</span>Statistical Inference: Principles, Methods and Computation</span><span class="course-arr">&#9658;</span></div>
-          <div class="course-body">MLE, score functions, Fisher information, Cramér-Rao. Bayesian inference — conjugate priors, MCMC (Gibbs sampler, Metropolis-Hastings). Bootstrap, model selection via AIC/BIC and cross-validation, elements of nonparametric inference. R throughout.</div>
+          <div class="course-body">MLE, score functions, Fisher information, Cramer-Rao. Bayesian inference: conjugate priors, MCMC (Gibbs sampler, Metropolis-Hastings). Bootstrap, model selection via AIC/BIC and cross-validation, elements of nonparametric inference. R throughout.</div>
         </div>
         <div class="course-row" onclick="this.classList.toggle('open')">
           <div class="course-hdr"><span class="course-nm"><span class="course-code">ST436</span>Financial Statistics</span><span class="course-arr">&#9658;</span></div>
@@ -711,13 +802,13 @@ footer p { font-family: var(--mono); font-size: 0.68rem; color: var(--text-faint
           <div class="edu-school"><a href="https://mse.ac.in/" target="_blank" class="inst-link">Madras School of Economics</a></div>
           <div class="edu-deg">BA (Honours) Economics</div>
         </div>
-        <div class="edu-meta">Chennai, India &middot; 2023–2026</div>
+        <div class="edu-meta">Chennai, India &middot; 2023 to 2026</div>
       </div>
       <div class="edu-note">
         <strong>CGPA: 9.66 / 10.0</strong> &nbsp;&middot;&nbsp; Dean's List: Semester II (9.9), Semester III (10.0), Semester IV (9.77)
       </div>
       <div class="course-block">
-        <div class="course-row" onclick="this.classList.toggle('open')"><div class="course-hdr"><span class="course-nm">Stochastic Processes</span><span class="course-arr">&#9658;</span></div><div class="course-body">Markov chains in discrete and continuous time — classification of states, stationary distributions. Martingales. BM, Poisson processes. First-passage times and hitting probabilities.</div></div>
+        <div class="course-row" onclick="this.classList.toggle('open')"><div class="course-hdr"><span class="course-nm">Stochastic Processes</span><span class="course-arr">&#9658;</span></div><div class="course-body">Markov chains in discrete and continuous time: classification of states, stationary distributions. Martingales. BM, Poisson processes. First-passage times and hitting probabilities.</div></div>
         <div class="course-row" onclick="this.classList.toggle('open')"><div class="course-hdr"><span class="course-nm">Real Analysis</span><span class="course-arr">&#9658;</span></div><div class="course-body">Sequences, series, continuity, differentiability, Riemann integration. Metric spaces. Convergence theorems.</div></div>
         <div class="course-row" onclick="this.classList.toggle('open')"><div class="course-hdr"><span class="course-nm">Advanced Differential Equations</span><span class="course-arr">&#9658;</span></div><div class="course-body">ODEs and PDEs, BVPs, phase-plane analysis, Fourier methods. Applications to continuous-time financial and economic models.</div></div>
         <div class="course-row" onclick="this.classList.toggle('open')"><div class="course-hdr"><span class="course-nm">Linear Algebra</span><span class="course-arr">&#9658;</span></div><div class="course-body">Vector spaces, eigendecomposition, matrix factorisation, linear transformations. Transition matrices, PCA, factor models.</div></div>
@@ -743,7 +834,7 @@ footer p { font-family: var(--mono); font-size: 0.68rem; color: var(--text-faint
           <div class="exp-role">Research Intern</div>
           <div class="exp-org"><a href="https://mse.ac.in/" target="_blank" class="inst-link">Madras School of Economics</a> &nbsp;&middot;&nbsp; Advisor: Dr. Naveen Srinivasan</div>
         </div>
-        <div class="exp-date">December 2024 – January 2025</div>
+        <div class="exp-date">December 2024 to January 2025</div>
       </div>
       <ul class="exp-ul">
         <li>Studied horizontal innovation and knowledge spillovers within the Romer endogenous growth model using analytical and numerical methods, focusing on long-run productivity implications of innovation intensity.</li>
@@ -756,7 +847,7 @@ footer p { font-family: var(--mono); font-size: 0.68rem; color: var(--text-faint
           <div class="exp-role">Finance Intern</div>
           <div class="exp-org">V MACS Yosaney &nbsp;&middot;&nbsp; Chennai, India</div>
         </div>
-        <div class="exp-date">May 2024 – July 2024</div>
+        <div class="exp-date">May 2024 to July 2024</div>
       </div>
       <ul class="exp-ul">
         <li>Built an automated tool to generate profit and loss statements, balance sheets, and supporting schedules, improving reporting speed and accuracy across client accounts.</li>
@@ -811,7 +902,7 @@ var PROJECTS = {
   liquidity: {
     cat: 'Mathematical Finance &middot; F &middot; 01', catKey: 'finance',
     title: 'Liquidity Regimes as a Markov Chain and Optimal Execution as a Markov Decision Process',
-    status: 'Working Paper', statusClass: 'status-wp', date: '2024–2025',
+    status: 'Working Paper', statusClass: 'status-wp', date: '2024 to 2025',
     desc: 'Discrete-time Markov chain model of market liquidity regimes combined with a formal MDP framework for optimal trade execution. The optimal policy is state-dependent: execute aggressively in high-liquidity states, conservatively in stressed states.',
     tags: ['Markov Chains','MDP','Optimal Execution','Market Microstructure','Stochastic Control','Regime Switching'],
     body: '<h4>Motivation</h4><p>The classical Almgren-Chriss framework for optimal execution treats market impact as a deterministic function of trade rate, implicitly assuming that liquidity conditions are stationary throughout a liquidation schedule. This assumption fails in practice: order-book depth, bid-ask spreads, and volume profiles fluctuate substantially over intraday and multi-day horizons, exhibiting persistence, clustering, and regime-like behaviour. The central question is whether one can embed a probabilistic model of liquidity states directly into the execution problem, and what the optimal policy looks like when the trader must account for future regime transitions.</p><h4>Liquidity Regime Model</h4><p>Market liquidity is characterised as a finite-state, discrete-time, time-homogeneous Markov chain across three regimes: High liquidity (H) with tight bid-ask spread and deep order book; Normal liquidity (N) with intermediate spread and baseline cost structure; and Stressed liquidity (L) with wide spread, thin book, and high price impact.</p><div class="math-block">P = [ p_HH  p_HN  p_HL ]\n    [ p_NH  p_NN  p_NL ]\n    [ p_LH  p_LN  p_LL ]\n\npi = pi * P,  sum(pi_i) = 1\n\nMean first-passage time from state i to j:\n  m_ij = 1 + sum_{k != j} p_ik * m_kj</div><h4>Optimal Execution as an MDP</h4><p>The trader holds Q shares and must execute over T discrete periods. The state is (remaining inventory q_t, current regime s_t, time remaining tau_t). The action is the number of shares to trade x_t in [0, q_t]. The reward is execution proceeds net of transaction costs, with regime-dependent impact coefficients.</p><div class="math-block">Reward: r(q,s,x) = x * (P_mid - lambda(s) * x)\n  where lambda(H) &lt; lambda(N) &lt; lambda(L)\n\nValue function:\n  V(q,s,tau) = max_{x in [0,q]} { r(q,s,x)\n             + sum_{s\'} p_{ss\'} * V(q-x, s\', tau-1) }</div><h4>Key Results</h4><ul><li>The optimal policy is non-monotone in inventory: under deadline pressure the trader executes regardless of regime, while with sufficient time, waiting in the stressed state is optimal with positive probability.</li><li>The value function is strictly concave in remaining inventory and strictly decreasing in regime-stress level.</li><li>The welfare cost of ignoring regime structure is quantified and shown to be economically significant under calibrated parameters.</li></ul>'
@@ -827,7 +918,7 @@ var PROJECTS = {
   contagion: {
     cat: 'Mathematical Finance &middot; F &middot; 03', catKey: 'finance',
     title: 'Financial Contagion and Cross-Market Return Transmission: S&amp;P 500 and Nifty 50',
-    status: 'Complete', statusClass: 'status-done', date: '2024–2025',
+    status: 'Complete', statusClass: 'status-done', date: '2024 to 2025',
     desc: 'Estimates lagged return spillovers using OLS, logistic regression, and a two-state Markov regime-switching model. The stress-regime coefficient is approximately three times the tranquil-regime coefficient, confirming state-dependent contagion.',
     tags: ['Regime Switching','Financial Contagion','Time Series','VIX','OLS','Logit'],
     body: '<h4>Motivation</h4><p>Whether financial stress in the US equity market propagates causally to Indian equity markets, and whether this propagation intensifies during periods of elevated volatility, has direct implications for international portfolio diversification and macro-prudential policy.</p><h4>Primary OLS Specification</h4><div class="math-block">r_{Nifty,t} = alpha + beta * r_{SP500,t-1}\n            + gamma_1 * DVIX_{t-1}\n            + gamma_2 * r_{Oil,t-1}\n            + gamma_3 * r_{USDINR,t-1} + eps_t\n\nEstimated: beta_hat ~ 0.28 (t-stat > 4.1), R^2 ~ 0.18</div><h4>Markov Regime-Switching Model</h4><div class="math-block">r_{Nifty,t} = alpha(s_t) + beta(s_t) * r_{SP500,t-1} + sigma(s_t) * eps_t\ns_t in {1 = tranquil, 2 = stress}\n\nbeta_hat(tranquil) ~ 0.14,  sigma_hat(tranquil) ~ 0.62%\nbeta_hat(stress)   ~ 0.43,  sigma_hat(stress)   ~ 1.74%\np_11_hat ~ 0.97,  p_22_hat ~ 0.91</div><h4>Key Results</h4><ul><li>Statistically significant lagged spillover from S&amp;P 500 to Nifty 50 identified across OLS, logit, and regime-switching specifications.</li><li>A 1% S&amp;P 500 decline is associated with approximately a 0.28% Nifty 50 decline the following trading day.</li><li>The stress-regime coefficient (~0.43) is approximately three times the tranquil-regime coefficient (~0.14), confirming state-dependent contagion intensification.</li><li>Smoothed regime probabilities align well with the March 2020 crash, late-2018 selloff, and mid-2022 episode.</li></ul>'
@@ -835,7 +926,7 @@ var PROJECTS = {
   sintax: {
     cat: 'Mathematical Economics &middot; E &middot; 01', catKey: 'economics',
     title: 'Optimal Sin Taxation Under Stochastic Consumption: A Dynamic Welfare Framework',
-    status: 'Ongoing', statusClass: 'status-wip', date: '2024–2025',
+    status: 'Ongoing', statusClass: 'status-wip', date: '2024 to 2025',
     desc: 'Dynamic welfare framework with Markov consumption transitions for addictive goods. The optimal tax formula generalises the Pigouvian result with a dynamic adjustment term that accounts for the long-run stationary distribution.',
     tags: ['Markov Models','Welfare Economics','Dynamic Optimisation','Externalities','Addictive Goods','NSSO'],
     body: '<h4>Motivation</h4><p>Standard welfare analyses of sin taxes proceed in a static framework: a demand elasticity is estimated, welfare triangles are computed, and an optimal tax is derived from the Pigou formula. This approach misses two features of addictive consumption. First, individual consumption is inherently dynamic. Second, the welfare consequences of a tax change depend on the entire trajectory of consumption adjustments, including the long-run stationary distribution across consumption states.</p><h4>The Consumption Transition Model</h4><div class="math-block">State space: S = {N, L, M, H}\n\nTax-dependent TPM: P(tau) = [p_{ij}(tau)]\nStationary distribution: pi(tau) = pi(tau) * P(tau)\nAggregate consumption: C(tau) = sum_i pi_i(tau) * c_i</div><h4>Optimal Tax</h4><div class="math-block">tau* = e\'(C) * C\'(tau*)         [standard Pigou term]\n     + sum_i [d pi_i/d tau]      [dynamic adjustment term]\n         * [u_i + e\'(C) * c_i]\n\nd pi/d tau = pi * [dP/d tau] * (I - P + Pi)^{-1}</div><h4>Status</h4><p>The theoretical framework is fully developed. The ongoing component is empirical calibration using NSSO rounds 50, 60, and 68, estimating tax-sensitivity using household-level price variation as an instrument. Welfare simulations will derive the optimal tax rate and compare it to India\'s current GST rate on tobacco products.</p>'
@@ -865,7 +956,11 @@ var TEACHING = {
       'Martingales: optional stopping theorem, convergence theorems, financial applications',
       'Poisson processes: inter-arrival times, superposition, thinning, compound Poisson processes',
       'Brownian motion and the Wiener process: construction, properties, quadratic variation'
-    ]
+    ],
+    assignments: null,
+    finalExam: null,
+    notes: null,
+    passedStudents: null
   },
   micro25: {
     sem: 'Sem V &middot; Jul to Nov 2025',
@@ -882,7 +977,11 @@ var TEACHING = {
       'Welfare analysis: consumer surplus, deadweight loss, social welfare functions',
       'Oligopoly models: Cournot, Bertrand, Stackelberg (Osborne)',
       'Market structure: entry deterrence and limit pricing'
-    ]
+    ],
+    assignments: null,
+    finalExam: null,
+    notes: null,
+    passedStudents: null
   },
   mitx25: {
     sem: 'May to Jul 2025',
@@ -891,7 +990,7 @@ var TEACHING = {
     duration: '3 months',
     professor: null,
     coTA: 'Anagha',
-    desc: 'Served as Teaching Assistant (alongside Anagha, with equal work split) for a rigorous summer programme based on the MITx MicroMasters in Finance. The course covered core quantitative finance from first principles — derivatives pricing, portfolio theory, CAPM, capital structure, and risk management. Eight weekly assignment sheets were designed and distributed to students, each combining rigorous mathematical derivations with conceptual theory questions drawn directly from the MITx course material. A final examination question paper was also prepared and administered.',
+    desc: 'Served as Teaching Assistant (alongside Anagha, with equal work split) for a rigorous summer programme based on the MITx MicroMasters in Finance. The course covered core quantitative finance from first principles: derivatives pricing, portfolio theory, CAPM, capital structure, and risk management. Eight weekly assignment sheets were designed and distributed to students, each combining rigorous mathematical derivations with conceptual theory questions drawn directly from the MITx course material. A final examination question paper was also prepared and administered.',
     topics: [
       'Derivatives pricing: options, futures, swaps; put-call parity; binomial trees',
       'Portfolio theory: mean-variance optimisation, efficient frontier, Sharpe ratio',
@@ -912,7 +1011,7 @@ var TEACHING = {
     ],
     finalExam: { label: 'Final Exam Question Paper', file: 'Fnance_ta.pdf' },
     notes: {
-      title: 'Markowitz Portfolio Theory — Student Notes',
+      title: 'Markowitz Portfolio Theory: Student Notes',
       file: 'markowitz_portfolio_theory (1).pdf',
       fileEncoded: 'markowitz_portfolio_theory%20(1).pdf',
       chips: ['Mean-Variance Optimisation','Efficient Frontier','Minimum Variance Portfolio','Two-Fund Separation','Worked Examples']
@@ -939,7 +1038,11 @@ var TEACHING = {
       'Constrained optimisation: Lagrange multipliers, equality and inequality constraints',
       'Unconstrained optimisation: second-order conditions, saddle points, bordered Hessian',
       'Double and triple integrals: Fubini theorem, change of variables, Jacobians'
-    ]
+    ],
+    assignments: null,
+    finalExam: null,
+    notes: null,
+    passedStudents: null
   },
   ts26: {
     sem: 'Sem VI &middot; Jan 2026 to Present',
@@ -954,8 +1057,12 @@ var TEACHING = {
       'ARIMA: integration, differencing, unit root identification',
       'Unit root testing: Dickey-Fuller, augmented DF, Phillips-Perron tests',
       'VAR models: estimation, lag selection, Granger causality, impulse response functions',
-      'Estimation: OLS, MLE, Yule-Walker equations (Hamilton Ch. 1–5)'
-    ]
+      'Estimation: OLS, MLE, Yule-Walker equations (Hamilton Ch. 1 to 5)'
+    ],
+    assignments: null,
+    finalExam: null,
+    notes: null,
+    passedStudents: null
   },
   gt26: {
     sem: 'Sem VI &middot; Jan 2026 to Present',
@@ -972,7 +1079,11 @@ var TEACHING = {
       'Repeated games: folk theorems, cooperation and punishment strategies',
       'Mechanism design: revelation principle, incentive compatibility, Vickrey auctions',
       'Auctions: first-price, second-price, English, Dutch, revenue equivalence'
-    ]
+    ],
+    assignments: null,
+    finalExam: null,
+    notes: null,
+    passedStudents: null
   },
   calc24: {
     sem: 'Sem II &middot; Mar 2024',
@@ -987,15 +1098,19 @@ var TEACHING = {
       'Key concept consolidation: common misconceptions addressed systematically',
       'Exam technique: time management, question prioritisation, presentation',
       'Worked examples: representative past problems with complete solutions'
-    ]
+    ],
+    assignments: null,
+    finalExam: null,
+    notes: null,
+    passedStudents: null
   }
 };
 
 function showPage(id) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.page').forEach(function(p){ p.classList.remove('active'); });
   document.getElementById('page-' + id).classList.add('active');
   window.scrollTo(0, 0);
-  document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.nav-links button').forEach(function(b){ b.classList.remove('active'); });
   var nb = document.getElementById('nb-' + id);
   if (nb) nb.classList.add('active');
 }
@@ -1080,15 +1195,15 @@ function showTeaching(key) {
   // Overview
   html += '<div class="td-section"><div class="td-hd">Overview</div><p>' + t.desc + '</p></div>';
 
-  // ── MITx-specific sections ──────────────────────────────
-  if (key === 'mitx25') {
+  // Topics (always shown first after overview)
+  html += '<div class="td-section"><div class="td-hd">Topics Covered</div><ul class="td-topics">' + topicsHtml + '</ul></div>';
 
-    // Weekly Assignments
+  // Assignments (if present)
+  if (t.assignments && t.assignments.length > 0) {
     html += '<div class="assign-section">'
       + '<div class="td-hd">Weekly Assignments</div>'
-      + '<div class="assign-intro">Eight weekly assignment sheets were created and distributed throughout the course. Each sheet combines rigorous mathematical derivations — option pricing proofs, portfolio optimisation problems, Modigliani-Miller propositions — with theory questions based on the MITx lecture material. Students were required to submit solutions weekly; sheets were graded and returned with feedback.</div>'
+      + '<div class="assign-intro">Eight weekly assignment sheets were created and distributed throughout the course. Each sheet combines rigorous mathematical derivations with theory questions based on the MITx lecture material. Students were required to submit solutions weekly; sheets were graded and returned with feedback.</div>'
       + '<ul class="assign-list">';
-
     t.assignments.forEach(function(a) {
       html += '<li class="assign-item">'
         + '<div class="assign-item-left">'
@@ -1098,10 +1213,11 @@ function showTeaching(key) {
         + '<a href="' + a.file + '" target="_blank" class="assign-link">&#128196; Open PDF</a>'
         + '</li>';
     });
-
     html += '</ul></div>';
+  }
 
-    // Final Exam
+  // Final Exam (if present)
+  if (t.finalExam) {
     html += '<div class="td-section">'
       + '<div class="td-hd">Final Examination</div>'
       + '<div class="exam-card">'
@@ -1113,8 +1229,10 @@ function showTeaching(key) {
       + '<a href="' + t.finalExam.file + '" target="_blank" class="exam-dl-btn">&#128196; Open PDF</a>'
       + '</div>'
       + '</div>';
+  }
 
-    // Notes
+  // Notes (if present)
+  if (t.notes) {
     var n = t.notes;
     var chipsHtml = n.chips.map(function(c){ return '<span class="notes-topic-chip">' + c + '</span>'; }).join('');
     html += '<div class="td-section">'
@@ -1128,7 +1246,7 @@ function showTeaching(key) {
       + '</div>'
       + '</div>'
       + '<div class="notes-card-body">'
-      + '<div class="notes-desc">These notes cover Markowitz Portfolio Theory from first principles — the mean-variance framework, construction of the efficient frontier, the minimum variance portfolio, and the two-fund separation theorem. The notes include worked numerical examples alongside the theory, making them useful for both conceptual understanding and exam preparation. They were prepared as a supplementary resource for students in the TECO Summer course.</div>'
+      + '<div class="notes-desc">These notes cover Markowitz Portfolio Theory from first principles: the mean-variance framework, construction of the efficient frontier, the minimum variance portfolio, and the two-fund separation theorem. Worked numerical examples are included alongside the theory. Prepared as a supplementary resource for students in the TECO Summer course.</div>'
       + '<div class="notes-warning">'
       + '<div class="notes-warning-icon">&#9888;</div>'
       + '<div class="notes-warning-text">These notes have not been formally proofread and may contain minor errors. They are shared as a study aid and should be cross-checked against standard references (Markowitz 1952; Bodie, Kane, Marcus).</div>'
@@ -1140,22 +1258,20 @@ function showTeaching(key) {
       + '</div>'
       + '</div>'
       + '</div>'
+      + '<div style="margin-top:0.8rem;font-family:var(--mono);font-size:0.62rem;color:var(--accent);cursor:pointer;" onclick="showPage(\'notes\')">'
+      + '&#128196; Also available in the Notes section &#8594;'
+      + '</div>'
       + '</div>';
+  }
 
-    // Topics
-    html += '<div class="td-section"><div class="td-hd">Topics Covered</div><ul class="td-topics">' + topicsHtml + '</ul></div>';
-
-    // Students who passed
+  // Passed Students (if present)
+  if (t.passedStudents && t.passedStudents.length > 0) {
     var stuHtml = t.passedStudents.map(function(s){ return '<span class="student-chip">' + s + '</span>'; }).join('');
     html += '<div class="students-section">'
       + '<div class="td-hd">Students Who Passed</div>'
       + '<p class="students-intro">The following students successfully completed the course and passed the final examination.</p>'
       + '<div class="students-grid">' + stuHtml + '</div>'
       + '</div>';
-
-  } else {
-    // All other courses — just topics
-    html += '<div class="td-section"><div class="td-hd">Topics Covered</div><ul class="td-topics">' + topicsHtml + '</ul></div>';
   }
 
   document.getElementById('teaching-detail-content').innerHTML = html;
