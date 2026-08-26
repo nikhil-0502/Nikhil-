@@ -81,6 +81,7 @@
   --green:       #216238;
   --amber:       #7a5e12;
   --purple:      #503e7a;
+  --gold:        #96731c;
   --serif:       'Source Serif 4', 'Lora', Georgia, serif;
   --display:     'Lora', 'Source Serif 4', Georgia, serif;
   --mono:        'JetBrains Mono', monospace;
@@ -155,12 +156,41 @@ nav {
 .sidebar-name { font-family: var(--display); font-size: 1.55rem; font-weight: 700; color: var(--text); line-height: 1.2; margin-bottom: 0.4rem; }
 .sidebar-deg { font-family: var(--serif); font-size: 0.85rem; color: var(--text-dim); line-height: 1.8; margin-bottom: 1.5rem; font-style: italic; }
 
+/* ACHIEVEMENT CARD (redesigned) */
 .sidebar-highlight {
-  background: var(--accent-bg); border: 1px solid #d4e0f5; border-left: 3px solid var(--accent);
-  border-radius: 0 3px 3px 0; padding: 0.9rem 1.1rem; margin-bottom: 1.6rem;
+  position: relative;
+  background: linear-gradient(165deg, #ffffff, var(--accent-bg));
+  border: 1px solid #d4e0f5;
+  border-radius: 8px;
+  padding: 1.15rem 1.25rem 1.05rem;
+  margin-bottom: 1.7rem;
+  box-shadow: 0 1px 3px rgba(26,74,138,0.06), 0 6px 18px rgba(26,74,138,0.05);
+  overflow: hidden;
 }
-.sidebar-highlight-stat { font-family: var(--display); font-size: 1.3rem; font-weight: 700; color: var(--accent); line-height: 1.1; }
-.sidebar-highlight-label { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-dim); margin-top: 0.35rem; line-height: 1.6; }
+.sidebar-highlight::before {
+  content: '';
+  position: absolute; top: 0; left: 0; bottom: 0; width: 3px;
+  background: linear-gradient(180deg, var(--accent), var(--accent-light));
+}
+.sidebar-highlight-top {
+  display: flex; align-items: baseline; gap: 0.45rem; margin-bottom: 0.15rem;
+}
+.sidebar-highlight-stat { font-family: var(--display); font-size: 1.7rem; font-weight: 700; color: var(--accent); line-height: 1; letter-spacing: -0.01em; }
+.sidebar-highlight-outof { font-family: var(--mono); font-size: 0.72rem; color: var(--text-faint); font-weight: 400; }
+.sidebar-highlight-caption { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.10em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 0.75rem; }
+.sidebar-highlight-badges { display: flex; flex-direction: column; gap: 0.4rem; }
+.sh-badge {
+  display: flex; align-items: center; gap: 0.5rem;
+  font-family: var(--serif); font-size: 0.76rem; color: var(--text-mid);
+  line-height: 1.3;
+}
+.sh-badge-icon {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 18px; height: 18px; border-radius: 50%; flex-shrink: 0;
+  font-size: 0.62rem;
+}
+.sh-badge-icon.dean { background: var(--accent-bg); color: var(--accent); border: 1px solid #d4e0f5; }
+.sh-badge-icon.gold { background: #fbf3e0; color: var(--gold); border: 1px solid #ecd9a0; }
 
 .sidebar-rule { height: 1px; background: var(--border); margin: 1.2rem 0; }
 
@@ -537,8 +567,15 @@ footer p { font-family: var(--mono); font-size: 0.68rem; color: var(--text-faint
         </div>
 
         <div class="sidebar-highlight">
-          <div class="sidebar-highlight-stat">9.61 CGPA</div>
-          <div class="sidebar-highlight-label">Dean's List every graded semester &middot; Gold Medalist</div>
+          <div class="sidebar-highlight-top">
+            <span class="sidebar-highlight-stat">9.61</span>
+            <span class="sidebar-highlight-outof">/ 10.0 CGPA</span>
+          </div>
+          <div class="sidebar-highlight-caption">Madras School of Economics</div>
+          <div class="sidebar-highlight-badges">
+            <div class="sh-badge"><span class="sh-badge-icon dean">&#9679;</span>Dean's List every graded semester</div>
+            <div class="sh-badge"><span class="sh-badge-icon gold">&#9733;</span>University Gold Medalist &middot; Rank 1</div>
+          </div>
         </div>
 
         <div class="contact-block">
@@ -800,6 +837,10 @@ footer p { font-family: var(--mono); font-size: 0.68rem; color: var(--text-faint
         <div class="course-row" onclick="this.classList.toggle('open')">
           <div class="course-hdr"><span class="course-nm"><span class="course-code">ST444</span>Derivatives</span><span class="course-arr">&#9658;</span></div>
           <div class="course-body">Arbitrage-free pricing from first principles: replication, put-call parity, the binomial model, and the passage to continuous time. The Black-Scholes-Merton framework, the Greeks, and delta hedging in practice. American and exotic options: barriers, Asians, lookbacks. Implied volatility, the volatility smile, and an introduction to local and stochastic volatility models.</div>
+        </div>
+        <div class="course-row" onclick="this.classList.toggle('open')">
+          <div class="course-hdr"><span class="course-nm"><span class="course-code">ST405</span>Computational Methods in Finance</span><span class="course-arr">&#9658;</span></div>
+          <div class="course-body">Computational and numerical techniques for financial engineering. Random number generation and the fundamentals of Monte Carlo simulation. Numerical solutions to stochastic differential equations and their implementation. Finite-difference schemes for the partial differential equations arising in derivative pricing.</div>
         </div>
         <div class="course-row" onclick="this.classList.toggle('open')">
           <div class="course-hdr"><span class="course-nm"><span class="course-code">ST458</span>Machine Learning in Finance</span><span class="course-arr">&#9658;</span></div>
