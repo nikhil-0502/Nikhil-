@@ -149,29 +149,19 @@ nav {
 
 /* ABOUT */
 #page-about .wrap { max-width: 1060px; }
-.about-layout { display: grid; grid-template-columns: 240px 1fr; gap: 5rem; align-items: start; }
+.about-layout { display: grid; grid-template-columns: 260px 1fr; gap: 5rem; align-items: start; }
 .sidebar { position: sticky; top: calc(var(--nav-h) + 2rem); }
 
-.sidebar-photo-wrap { position: relative; margin-bottom: 1.8rem; width: 100%; }
-.sidebar-photo {
-  width: 100%; aspect-ratio: 3 / 4;
-  object-fit: cover; object-position: center top;
-  display: block; border: 1px solid var(--border);
-  border-radius: 3px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-}
-.photo-placeholder {
-  width: 100%; aspect-ratio: 3 / 4; background: var(--bg-alt);
-  border: 1px solid var(--border); border-radius: 3px;
-  display: flex; align-items: center; justify-content: center;
-  flex-direction: column; gap: 0.5rem;
-}
-.photo-placeholder span {
-  font-family: var(--serif); font-size: 0.72rem; color: var(--text-ghost);
-  text-align: center; line-height: 1.7;
-}
+.sidebar-name { font-family: var(--display); font-size: 1.55rem; font-weight: 700; color: var(--text); line-height: 1.2; margin-bottom: 0.4rem; }
+.sidebar-deg { font-family: var(--serif); font-size: 0.85rem; color: var(--text-dim); line-height: 1.8; margin-bottom: 1.5rem; font-style: italic; }
 
-.sidebar-name { font-family: var(--display); font-size: 1.3rem; font-weight: 700; color: var(--text); line-height: 1.2; margin-bottom: 0.25rem; }
-.sidebar-deg { font-family: var(--serif); font-size: 0.84rem; color: var(--text-dim); line-height: 1.75; margin-bottom: 1.4rem; font-style: italic; }
+.sidebar-highlight {
+  background: var(--accent-bg); border: 1px solid #d4e0f5; border-left: 3px solid var(--accent);
+  border-radius: 0 3px 3px 0; padding: 0.9rem 1.1rem; margin-bottom: 1.6rem;
+}
+.sidebar-highlight-stat { font-family: var(--display); font-size: 1.3rem; font-weight: 700; color: var(--accent); line-height: 1.1; }
+.sidebar-highlight-label { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-dim); margin-top: 0.35rem; line-height: 1.6; }
+
 .sidebar-rule { height: 1px; background: var(--border); margin: 1.2rem 0; }
 
 .contact-row { display: grid; grid-template-columns: 64px 1fr; gap: 0.5rem; align-items: baseline; margin-bottom: 0.6rem; }
@@ -506,7 +496,6 @@ footer p { font-family: var(--mono); font-size: 0.68rem; color: var(--text-faint
   footer { padding: 1.2rem 1.4rem; }
   .about-layout { grid-template-columns: 1fr; gap: 2.4rem; }
   .sidebar { position: static; }
-  .sidebar-photo-wrap { width: 200px; }
   .teaching-grid { grid-template-columns: repeat(2, 1fr); }
   .edu-header, .exp-header { flex-direction: column; gap: 0.2rem; }
   .res-cat-grid { grid-template-columns: 1fr; }
@@ -541,19 +530,17 @@ footer p { font-family: var(--mono); font-size: 0.68rem; color: var(--text-faint
     <div class="section-label">About</div>
     <div class="about-layout">
       <div class="sidebar">
-        <div class="sidebar-photo-wrap">
-          <img src="View recent photos.jpeg" alt="Nikhil Rajan" class="sidebar-photo"
-            onerror="this.style.display='none'; document.getElementById('photo-fallback').style.display='flex';"/>
-          <div class="photo-placeholder" id="photo-fallback" style="display:none;">
-            <span>Nikhil Rajan<br/>Photo</span>
-          </div>
-        </div>
         <div class="sidebar-name">Nikhil Rajan</div>
         <div class="sidebar-deg">
           Bachelors in Mathematical Economics, <a href="https://mse.ac.in/" target="_blank" class="inst-link">Madras School of Economics</a> (2023 to 2026)<br/>
           Masters in Financial Statistics &amp; Mathematics, <a href="https://www.lse.ac.uk/" target="_blank" class="inst-link">LSE</a> (2026 to 2027, incoming)
         </div>
-        <div class="sidebar-rule"></div>
+
+        <div class="sidebar-highlight">
+          <div class="sidebar-highlight-stat">9.66 CGPA</div>
+          <div class="sidebar-highlight-label">Dean's List every graded semester &middot; Gold Medalist</div>
+        </div>
+
         <div class="contact-block">
           <div class="contact-row">
             <span class="clabel">Location</span>
@@ -583,7 +570,7 @@ footer p { font-family: var(--mono); font-size: 0.68rem; color: var(--text-faint
         <div class="about-bio">
           <p>My name is Nikhil Rajan. I am a final-year undergraduate at the <a href="https://mse.ac.in/" target="_blank" class="inst-link">Madras School of Economics</a>, heading to post graduation in quant finance at the <a href="https://www.lse.ac.uk/" target="_blank" class="inst-link">London School of Economics</a>. What drew me in was seeing how ideas from measure theory, especially risk-neutral expectations, are used directly in option pricing models like Black Scholes.</p>
           <p>Since then, I have been building and testing models around that: simulating GBM paths, pricing options with Monte Carlo, and checking how sensitive outputs are to discretisation, volatility, and parameter shifts. Most of this I have implemented in Python and C++, with particular interest in how pricing errors, convergence, and simulation variance behave under different modelling choices.</p>
-          <p>I am most interested in how model outputs change when you vary things like the time step, volatility assumptions, or the numerical scheme being used. My current projects span market microstructure (liquidity regimes as Markov chains), credit risk (reconstructing the Jarrow-Lando-Turnbull framework from first principles), financial contagion between the S&amp;P 500 and Nifty 50, and a dynamic welfare analysis of sin taxation using Markov consumption models calibrated to NSSO data.</p>
+          <p>I am most interested in how model outputs change when you vary things like the time step, volatility assumptions, or the numerical scheme being used. My current projects span market microstructure (liquidity regimes as Markov chains), credit risk (reconstructing the Jarrow-Lando-Turnbull framework from first principles, and a hidden Markov model for credit stress detection), financial contagion between the S&amp;P 500 and Nifty 50, and a dynamic welfare analysis of sin taxation using Markov consumption models calibrated to NSSO data.</p>
           <p>At <a href="https://mse.ac.in/" target="_blank" class="inst-link">Madras School of Economics</a>, I have held 7 teaching assistantships covering stochastic processes, game theory, time series analysis, microeconomics, multivariable calculus, and finance. I maintain a CGPA of 9.66 and have been on the Dean's List in every graded semester.</p>
           <p>Outside academics, I am a huge football fan, especially of Real Madrid CF, and closely follow both La Liga and the Premier League. For fun, I sometimes build small prediction models around football using recent form, player ratings, xG trends, injuries, and fixture difficulty to estimate title races and relegation probabilities over a season. I also follow cricket across all formats and end up watching almost every major sporting event at some point.</p>
         </div>
@@ -609,9 +596,10 @@ footer p { font-family: var(--mono); font-size: 0.68rem; color: var(--text-faint
             <div class="res-cat-paper"><span class="res-cat-paper-num">01</span>Liquidity Regimes and Optimal Execution</div>
             <div class="res-cat-paper"><span class="res-cat-paper-num">02</span>Credit Rating Transitions and Defaultable Bonds</div>
             <div class="res-cat-paper"><span class="res-cat-paper-num">03</span>Financial Contagion: S&amp;P 500 and Nifty 50</div>
+            <div class="res-cat-paper"><span class="res-cat-paper-num">04</span>HMM Framework for Credit Stress and Recession Warning</div>
           </div>
           <div class="res-cat-footer">
-            <span class="res-cat-count">3 papers</span>
+            <span class="res-cat-count">4 papers</span>
             <span class="res-cat-arrow">&#8594;</span>
           </div>
         </div>
@@ -797,43 +785,33 @@ footer p { font-family: var(--mono); font-size: 0.68rem; color: var(--text-faint
         <div class="edu-meta">London, United Kingdom &middot; 2026 to 2027</div>
       </div>
       <div class="course-block">
-        <div class="course-sub-label">Mathematical Finance</div>
         <div class="course-row" onclick="this.classList.toggle('open')">
           <div class="course-hdr"><span class="course-nm"><span class="course-code">ST409</span>Stochastic Calculus</span><span class="course-arr">&#9658;</span></div>
           <div class="course-body">Martingales, optional stopping theorem. Poisson processes. BM construction, quadratic variation, the Ito integral. SDEs and diffusions: Ito's formula, Girsanov's theorem. Feynman-Kac connecting SDEs to PDEs. Option pricing under the risk-neutral measure, ruin theory, interest rate models.</div>
-        </div>
-        <div class="course-row" onclick="this.classList.toggle('open')">
-          <div class="course-hdr"><span class="course-nm"><span class="course-code">MA415</span>Mathematics of the Black and Scholes Theory</span><span class="course-arr">&#9658;</span></div>
-          <div class="course-body">Risk-neutral valuation built from the ground up. Binomial model first: replication portfolios, no-arbitrage, martingale measures. Then continuous time: European claims as risk-neutral expectations, BS PDE via self-financing portfolio arguments, Feynman-Kac and the connection to the heat equation. Barrier options, American options, path-dependent claims. Implied vol and stochastic vol models. FX market extensions.</div>
         </div>
         <div class="course-row" onclick="this.classList.toggle('open')">
           <div class="course-hdr"><span class="course-nm"><span class="course-code">ST461</span>Mathematics of Market Microstructure</span><span class="course-arr">&#9658;</span></div>
           <div class="course-body">Part I: HJB equation and dynamic programming under uncertainty. Inventory models and price impact. Optimal execution: Almgren-Chriss and Obizhaeva-Wang frameworks. Avellaneda-Stoikov limit order book model. Part II: asymmetric information in continuous time. Stochastic and Kalman filtering. Kyle model and extensions, Glosten-Milgrom, Glosten's electronic LOB. Part III: DEXes, AMMs, dark pools.</div>
         </div>
         <div class="course-row" onclick="this.classList.toggle('open')">
-          <div class="course-hdr"><span class="course-nm"><span class="course-code">MA417</span>Computational Methods in Finance</span><span class="course-arr">&#9658;</span></div>
-          <div class="course-body">RNG and Monte Carlo basics. Variance reduction: antithetic variates, control variates, importance sampling, quasi-MC. SDE simulation via Euler-Maruyama and Milstein schemes. Finite-difference methods for the BS PDE: explicit and implicit schemes, stability and convergence.</div>
+          <div class="course-hdr"><span class="course-nm"><span class="course-code">ST442</span>Fixed Income</span><span class="course-arr">&#9658;</span></div>
+          <div class="course-body">Bond pricing and the term structure: spot and forward rates, duration, convexity, and immunisation. Short rate models (Vasicek, CIR, Hull-White) and no-arbitrage term structure frameworks including Heath-Jarrow-Morton. Pricing of caps, floors, and swaptions under market models. Credit spreads and defaultable bonds, with a practical emphasis on calibrating models to observed yield curves.</div>
         </div>
         <div class="course-row" onclick="this.classList.toggle('open')">
-          <div class="course-hdr"><span class="course-nm"><span class="course-code">ST463</span>Stochastic Simulation and Calibration</span><span class="course-arr">&#9658;</span></div>
-          <div class="course-body">Monte Carlo and process simulation. GANs for risk management. GLMs as a bridge to deep learning, applied to insurance pricing. Model calibration. RL for hedging and swing option pricing. Main references: Glasserman and Sutton-Barto.</div>
+          <div class="course-hdr"><span class="course-nm"><span class="course-code">ST444</span>Derivatives</span><span class="course-arr">&#9658;</span></div>
+          <div class="course-body">Arbitrage-free pricing from first principles: replication, put-call parity, the binomial model, and the passage to continuous time. The Black-Scholes-Merton framework, the Greeks, and delta hedging in practice. American and exotic options: barriers, Asians, lookbacks. Implied volatility, the volatility smile, and an introduction to local and stochastic volatility models.</div>
         </div>
         <div class="course-row" onclick="this.classList.toggle('open')">
-          <div class="course-hdr"><span class="course-nm"><span class="course-code">MA435</span>Deep Learning in Finance</span><span class="course-arr">&#9658;</span></div>
-          <div class="course-body">Deep learning for portfolio optimisation, optimal execution, derivative pricing and hedging, vol model calibration. ERM, bias-complexity tradeoff. Feedforward NNs, universal approximation, SGD, backprop, regularisation, RNNs, CNNs. Python throughout. Goodfellow et al. and Horvath et al. as main references.</div>
-        </div>
-        <div class="course-sub-label" style="border-top:1px solid var(--border);margin-top:0.4rem;">Statistical Finance</div>
-        <div class="course-row" onclick="this.classList.toggle('open')">
-          <div class="course-hdr"><span class="course-nm"><span class="course-code">ST425</span>Statistical Inference: Principles, Methods and Computation</span><span class="course-arr">&#9658;</span></div>
-          <div class="course-body">MLE, score functions, Fisher information, Cramer-Rao. Bayesian inference: conjugate priors, MCMC (Gibbs sampler, Metropolis-Hastings). Bootstrap, model selection via AIC/BIC and cross-validation, elements of nonparametric inference. R throughout.</div>
+          <div class="course-hdr"><span class="course-nm"><span class="course-code">ST458</span>Machine Learning in Finance</span><span class="course-arr">&#9658;</span></div>
+          <div class="course-body">Extension of ST436. Advanced portfolio optimisation, factor models, large-portfolio constraints, algorithmic trading, deep learning for prediction. R. Main references: Hastie-Tibshirani-Friedman, Dixon-Halperin-Bilokon, Jansen.</div>
         </div>
         <div class="course-row" onclick="this.classList.toggle('open')">
           <div class="course-hdr"><span class="course-nm"><span class="course-code">ST436</span>Financial Statistics</span><span class="course-arr">&#9658;</span></div>
           <div class="course-body">Financial data in R. ARCH-type models and volatility. Markowitz portfolio theory and CAPM. ML in financial forecasting. VaR. Ends with a trading case study.</div>
         </div>
         <div class="course-row" onclick="this.classList.toggle('open')">
-          <div class="course-hdr"><span class="course-nm"><span class="course-code">ST458</span>Machine Learning in Finance</span><span class="course-arr">&#9658;</span></div>
-          <div class="course-body">Extension of ST436. Advanced portfolio optimisation, factor models, large-portfolio constraints, algorithmic trading, deep learning for prediction. R. Main references: Hastie-Tibshirani-Friedman, Dixon-Halperin-Bilokon, Jansen.</div>
+          <div class="course-hdr"><span class="course-nm"><span class="course-code">ST426</span>Advanced Statistics</span><span class="course-arr">&#9658;</span></div>
+          <div class="course-body">Likelihood-based inference at a deeper level: sufficiency, exponential families, and the asymptotic theory behind MLEs. Hypothesis testing theory, including uniformly most powerful tests and the Neyman-Pearson lemma. Elements of decision theory and an introduction to the generalised linear model as a unifying framework for regression problems.</div>
         </div>
       </div>
     </div>
@@ -1162,6 +1140,18 @@ Regime classification aligns with:
 <p>The S&P 500 overnight return is the dominant transmission channel into Indian equities (b = 0.28), but this channel more than quadruples during episodes where multiple India-specific stress factors activate simultaneously, as in the Russia-Ukraine war. The CBOE VIX change, USD/INR return, and gold return are statistically irrelevant on ordinary days but become significant crash predictors specifically at the tail, meaning they are tail-risk indicators, not daily signals. A risk monitoring framework for Indian equity exposure should track the Markov regime probability alongside these tail-risk indicators: when the estimated probability of being in the crisis regime rises above a threshold, all the nonlinear transmission channels documented here simultaneously switch on.</p>`
   },
 
+  hmm_credit: {
+    cat: 'Mathematical Finance &middot; F &middot; 04', catKey: 'finance',
+    title: 'Hidden Markov Model Framework for Credit Stress Detection and Recession Early Warning',
+    status: 'Working Paper', statusClass: 'status-wp', date: '2026',
+    desc: 'A hidden Markov model built to pick up credit stress regimes early, using signals already sitting in credit markets, with the aim of flagging recession risk before it shows up in growth data.',
+    tags: ['Hidden Markov Models','Credit Risk','Regime Detection','Recession Prediction','Early Warning','Macro-Finance'],
+    body: `<h4>Motivation</h4>
+<p>Credit markets tend to move before the real economy does. Spreads widen, lending gets tighter, and default risk starts building up well before GDP growth actually turns down. I wanted to build something that takes this lead time seriously, using a hidden Markov model to sort credit markets into a small number of stress regimes that are not directly observable but show up clearly once you know where to look.</p>
+<p>The idea behind this is simple. Most investors only realise a recession is coming once it is already showing up in the numbers everyone is watching, by which point it is too late to act on it. I want to get ahead of that, using signals that are already sitting in credit markets but usually get read too late or not read at all.</p>
+<p>I am still working through the estimation and backtesting side of this, so I would rather not get into the exact structure of the model just yet. More on this soon.</p>`
+  },
+
   sintax: {
     cat: 'Mathematical Economics &middot; E &middot; 01', catKey: 'economics',
     title: 'Optimal Sin Taxation Under Stochastic Consumption: A Dynamic Welfare Framework',
@@ -1351,7 +1341,7 @@ function showResearchCat(cat) {
   document.getElementById('research-cat-view').style.display = 'block';
   var labels = { finance: 'Mathematical Finance', economics: 'Mathematical Economics' };
   document.getElementById('res-cat-label-display').innerHTML = '<div class="res-sub-hd">' + labels[cat] + '</div>';
-  var keys = { finance: ['liquidity','credit','contagion'], economics: ['sintax','mgnrega'] };
+  var keys = { finance: ['liquidity','credit','contagion','hmm_credit'], economics: ['sintax','mgnrega'] };
   var html = '';
   keys[cat].forEach(function(key) {
     var p = PROJECTS[key];
